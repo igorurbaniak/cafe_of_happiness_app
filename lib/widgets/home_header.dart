@@ -1,3 +1,4 @@
+import 'package:cafe_of_happiness_app/widgets/contact_informations.dart';
 import 'package:cafe_of_happiness_app/widgets/home_discription.dart';
 import 'package:cafe_of_happiness_app/widgets/home_menu_list.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ class HomeHeader extends StatelessWidget {
         toolbarHeight: 80,
         actions: [
           Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               const Padding(padding: EdgeInsets.only(top: 20)),
               Row(
@@ -95,11 +97,15 @@ class HomeHeader extends StatelessWidget {
           ),
         ],
       ),
-      body: const Column(
-        children: [
-          HomeDiscription(),
-          HomeMednuList(),
-        ],
+      body: const SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            HomeDiscription(),
+            HomeMenuList(),
+            ContactInformations(),
+          ],
+        ),
       ),
     );
   }

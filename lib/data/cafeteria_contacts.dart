@@ -1,0 +1,25 @@
+import 'package:cafe_of_happiness_app/models/cafeteria_contacts.dart';
+import 'package:flutter/material.dart';
+
+List<CafeteriaContacts> contacts = [
+  CafeteriaContacts(
+    contactInformation: 'Wi-Fi:',
+    contactDetailInformation: "cafe.of.happiness",
+    contactIcon: const Icon(Icons.wifi),
+  ),
+  CafeteriaContacts(
+    contactInformation: 'Working hours:',
+    contactDetailInformation: "08:00 - 19:00",
+    contactIcon: const Icon(Icons.access_time_outlined),
+  ),
+  CafeteriaContacts(
+    contactInformation: 'Address:',
+    contactDetailInformation: "Piotrkowska Street 217, Poland",
+    contactIcon: const Icon(Icons.location_city),
+  ),
+  CafeteriaContacts(
+    contactInformation: 'Phone number:',
+    contactDetailInformation: "555-666-777",
+    contactIcon: const Icon(Icons.phone),
+  ),
+];
