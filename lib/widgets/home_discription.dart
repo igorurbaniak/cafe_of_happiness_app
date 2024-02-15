@@ -7,7 +7,7 @@ class HomeDiscription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 200,
+      height: 180,
       padding: const EdgeInsets.only(top: 25, left: 15, right: 15),
       child: const Stack(
         alignment: Alignment.topLeft,

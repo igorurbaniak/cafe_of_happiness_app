@@ -1,4 +1,5 @@
 import 'package:cafe_of_happiness_app/widgets/home_discription.dart';
+import 'package:cafe_of_happiness_app/widgets/home_menu_list.dart';
 import 'package:flutter/material.dart';
 
 class HomeHeader extends StatelessWidget {
@@ -97,6 +98,7 @@ class HomeHeader extends StatelessWidget {
       body: const Column(
         children: [
           HomeDiscription(),
+          HomeMednuList(),
         ],
       ),
     );
