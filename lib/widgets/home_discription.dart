@@ -7,7 +7,7 @@ class HomeDiscription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 180,
+      height: 200,
       padding: const EdgeInsets.only(top: 25, left: 15, right: 15),
       child: const Stack(
         alignment: Alignment.topLeft,
@@ -36,7 +36,6 @@ class HomeDiscription extends StatelessWidget {
               height: 80,
             ),
           ),
-          SizedBox(height: 15),
           Positioned(
             top: 100,
             child: Text(
