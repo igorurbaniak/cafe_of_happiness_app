@@ -1,7 +1,18 @@
+import 'package:cafe_of_happiness_app/screens/menu_meal_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeMednuList extends StatelessWidget {
   const HomeMednuList({super.key});
+
+  // void _selectCategory(BuildContext context) {
+  //   Navigator.of(context).push(
+  //     MaterialPageRoute(
+  //       builder: (ctx) => const MenuScreen(
+  //         title: 'Some title',
+  //       ),
+  //     ),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -52,21 +63,32 @@ class HomeMednuList extends StatelessWidget {
               shrinkWrap: true,
               itemCount: items.length,
               itemBuilder: (context, index) {
-                return Card(
-                  shape: RoundedRectangleBorder(
-                      side: BorderSide(color: Colors.grey.shade200, width: 1),
-                      borderRadius: BorderRadius.circular(8)),
-                  shadowColor: Colors.grey.shade100,
-                  elevation: 0.3,
-                  color: Colors.white,
-                  child: ListTile(
-                    title: Text(
-                      items[index],
-                      style: const TextStyle(fontWeight: FontWeight.w500),
-                    ),
-                    trailing: const Icon(
-                      Icons.keyboard_arrow_right,
-                      size: 30,
+                return InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) => const MenuScreen(
+                          title: 'Some title',
+                        ),
+                      ),
+                    );
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.grey.shade200, width: 1),
+                        borderRadius: BorderRadius.circular(8)),
+                    shadowColor: Colors.grey.shade100,
+                    elevation: 0.3,
+                    color: Colors.white,
+                    child: ListTile(
+                      title: Text(
+                        items[index],
+                        style: const TextStyle(fontWeight: FontWeight.w500),
+                      ),
+                      trailing: const Icon(
+                        Icons.keyboard_arrow_right,
+                        size: 30,
+                      ),
                     ),
                   ),
                 );

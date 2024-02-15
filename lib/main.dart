@@ -1,4 +1,5 @@
 import 'package:cafe_of_happiness_app/screens/home_screen.dart';
+import 'package:cafe_of_happiness_app/screens/menu_meal_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,13 +12,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Cafe of Happiness',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const HomeScreen(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Cafe of Happiness',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const HomeScreen()
+        // MenuScreen(
+        //   title: 'Some meal...',
+        // ),
+        );
   }
 }
