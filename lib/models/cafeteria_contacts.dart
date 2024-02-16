@@ -10,3 +10,4 @@ class CafeteriaContacts {
   final String contactDetailInformation;
   final Icon contactIcon;
 }
+
