@@ -14,7 +14,7 @@ List<CafeteriaContacts> contacts = [
   ),
   CafeteriaContacts(
     contactInformation: 'Address:',
-    contactDetailInformation: "Piotrkowska Street 217, Poland",
+    contactDetailInformation: "Drewnowska Street 58,\n91-002 Łódź, Poland",
     contactIcon: const Icon(Icons.location_city),
   ),
   CafeteriaContacts(

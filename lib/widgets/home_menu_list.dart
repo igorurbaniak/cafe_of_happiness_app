@@ -4,18 +4,11 @@ import 'package:flutter/material.dart';
 class HomeMenuList extends StatelessWidget {
   const HomeMenuList({super.key});
 
-  // void _selectCategory(BuildContext context) {
-  //   Navigator.of(context).push(
-  //     MaterialPageRoute(
-  //       builder: (ctx) => const MenuScreen(
-  //         title: 'Some title',
-  //       ),
-  //     ),
-  //   );
-  // }
+
 
   @override
   Widget build(BuildContext context) {
+
     final items = [
       'JEDZENIE 🥪',
       'NAPOJE ☕',
@@ -65,14 +58,14 @@ class HomeMenuList extends StatelessWidget {
             itemCount: items.length,
             itemBuilder: (context, index) {
               return InkWell(
-                onTap: () {
+                onTap: () => {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (ctx) => const MenuScreen(
                         title: 'Some title',
                       ),
                     ),
-                  );
+                  ),
                 },
                 child: Card(
                   shape: RoundedRectangleBorder(

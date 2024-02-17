@@ -104,7 +104,7 @@ class HomeHeader extends StatelessWidget {
             HomeDiscription(),
             HomeMenuList(),
             ContactInformations(),
-            MapInformation(),
+            LocationInformation(),
           ],
         ),
       ),

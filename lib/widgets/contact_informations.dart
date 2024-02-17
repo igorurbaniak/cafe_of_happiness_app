@@ -66,7 +66,7 @@ class ContactInformations extends StatelessWidget {
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     Text(
-                        'Piotrowska Street 217 \nLodz, Poland \n\n+48 666777888 \n\ncafe.of.happiness@gmail.com'),
+                        'Drewnowska Street 58 \nŁódź, Poland \n\n+48 666777888 \n\ncafe.of.happiness@gmail.com'),
                     SizedBox(height: 25),
                     Text('We in social networks',
                         style: TextStyle(
@@ -86,6 +86,7 @@ class ContactInformations extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 10),
           ],
         )
       ],
