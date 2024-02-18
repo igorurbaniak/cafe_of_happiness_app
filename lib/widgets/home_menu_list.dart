@@ -4,11 +4,8 @@ import 'package:flutter/material.dart';
 class HomeMenuList extends StatelessWidget {
   const HomeMenuList({super.key});
 
-
-
   @override
   Widget build(BuildContext context) {
-
     final items = [
       'JEDZENIE 🥪',
       'NAPOJE ☕',
@@ -88,7 +85,7 @@ class HomeMenuList extends StatelessWidget {
               );
             },
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 15),
         ],
       ),
     );

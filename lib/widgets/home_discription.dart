@@ -8,7 +8,7 @@ class HomeDiscription extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 200,
-      padding: const EdgeInsets.only(top: 25, left: 15, right: 15),
+      padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
       child: const Stack(
         alignment: Alignment.topLeft,
         children: [
@@ -29,7 +29,8 @@ class HomeDiscription extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: 30,
+            top: 5,
+            right: 35,
             child: Image(
               image: AssetImage('images/coffee_logo.png'),
               width: 80,
@@ -38,8 +39,12 @@ class HomeDiscription extends StatelessWidget {
           ),
           Positioned(
             top: 100,
-            child: Text(
-                'A place where coffee tastes like a smile and every sip is \na snippet of joy. Come and discover the magic in a cup.'),
+            child: Wrap(
+              children: [
+                Text(
+                    'A place where coffee tastes like a smile and every \nsip is a snippet of joy. Come and discover the magic\nin a cup and tasty appetizers.'),
+              ],
+            ),
           ),
         ],
       ),
