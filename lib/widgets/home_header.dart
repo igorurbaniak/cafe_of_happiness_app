@@ -25,11 +25,12 @@ class _HomeHeaderState extends State<HomeHeader> {
         child: SafeArea(
           minimum: const EdgeInsets.only(top: 40, right: 20, left: 20),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Card(
                 shape: RoundedRectangleBorder(
                   side: BorderSide(width: 1, color: Colors.grey.shade300),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(8),
                 ),
                 margin: EdgeInsets.zero,
                 elevation: 0,
@@ -46,7 +47,7 @@ class _HomeHeaderState extends State<HomeHeader> {
                   ),
                   title: const Text(
                     'Zaloguj się',
-                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                   ),
                   trailing: const Icon(
                     Icons.arrow_right_sharp,
@@ -54,35 +55,66 @@ class _HomeHeaderState extends State<HomeHeader> {
                   ),
                 ),
               ),
+              const SizedBox(height: 10),
               ListTile(
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(width: 1, color: Colors.grey.shade300),
+                  borderRadius: BorderRadius.circular(8),
+                ),
                 title: const Text(
-                    'Zaloguj',
-                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-                  ),
+                  'Zaloguj sie aby uprościć proces zamawiania i korzystać z dodatkowych funkcji.',
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+                ),
               ),
+              const SizedBox(height: 50),
+              const Text(
+                'Kontakt',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 10),
               Expanded(
                 child: ListView(
                   children: ListTile.divideTiles(
-                    color: Colors.grey,
+                    color: Colors.grey.shade300,
                     context: context,
                     tiles: [
                       ListTile(
-                        leading: const Icon(Icons.alarm),
-                        splashColor: Colors.red,
-                        title: const Text('Horse'),
+                        leading: const Icon(Icons.location_on),
+                        title: const Text(
+                          'Drewnowska 58, 91-002 Łódź, Poland',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                        onTap: () {},
+                        trailing: const Icon(Icons.open_in_new),
+                        splashColor: Colors.brown.shade500,
+                      ),
+                      ListTile(
+                        leading: const Icon(Icons.phone_in_talk_rounded),
+                        title: const Text(
+                          '555-666-777',
+                          style: TextStyle(fontSize: 12),
+                        ),
                         onTap: () {},
                       ),
-                      const ListTile(
-                        title: Text('Cow'),
+                      ListTile(
+                        leading: const Icon(Icons.mail_sharp),
+                        title: const Text(
+                          'cafe.of.happiness@gmail.com',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                        onTap: () {},
                       ),
-                      const ListTile(
-                        title: Text('Camel'),
-                      ),
-                      const ListTile(
-                        title: Text('Sheep'),
-                      ),
-                      const ListTile(
-                        title: Text('Goat'),
+                      ListTile(
+                        leading: const Icon(Icons.facebook),
+                        title: const Text(
+                          'Facebook',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                        onTap: () {},
+                        trailing: const Icon(Icons.open_in_new),
                       ),
                     ],
                   ).toList(),
