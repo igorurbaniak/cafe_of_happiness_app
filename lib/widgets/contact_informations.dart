@@ -1,4 +1,4 @@
-import 'package:cafe_of_happiness_app/data/cafeteria_contacts.dart';
+import 'package:cafe_of_happiness_app/data/cafeteria_contact.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
