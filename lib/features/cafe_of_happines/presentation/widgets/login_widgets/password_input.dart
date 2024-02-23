@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
-class EmailInput extends StatelessWidget {
-  const EmailInput({
-    Key? key,
-    required this.emailController,
-  }) : super(key: key);
+class PasswordInput extends StatefulWidget {
+  const PasswordInput({super.key, required this.passwordController});
 
-  final TextEditingController emailController;
+  final TextEditingController passwordController;
+
+  @override
+  State<PasswordInput> createState() => _PasswordInputState();
+}
+
+class _PasswordInputState extends State<PasswordInput> {
+  bool _isObscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -21,26 +25,31 @@ class EmailInput extends StatelessWidget {
             ),
           ),
           child: TextFormField(
-            controller: emailController,
-            keyboardType: TextInputType.emailAddress,
+            obscureText: _isObscure,
+            controller: widget.passwordController,
+            keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
             style: const TextStyle(fontSize: 18, color: Colors.black),
-            onChanged: (email) {},
+            onChanged: (text) {
+              setState(() {});
+            },
             decoration: InputDecoration(
               border: InputBorder.none,
-              hintText: 'Twój adres e-mail',
+              hintText: 'Hasło',
               hintStyle: TextStyle(fontSize: 18, color: Colors.grey.shade500),
               suffixIcon: IconButton(
-                icon: Icon(
-                  Icons.clear,
-                  color: Colors.grey.shade500,
-                ),
+                icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off,
+                    color: Colors.grey.shade500),
                 onPressed: () {
-                  emailController.clear();
+                  setState(
+                    () {
+                      _isObscure = !_isObscure;
+                    },
+                  );
                 },
               ),
               contentPadding: const EdgeInsets.symmetric(vertical: 18),
-              prefixIcon: const Icon(Icons.email, size: 26),
+              prefixIcon: const Icon(Icons.lock, size: 26),
             ),
           ),
         ),

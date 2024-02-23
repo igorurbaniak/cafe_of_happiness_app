@@ -1,4 +1,5 @@
 import 'package:cafe_of_happiness_app/features/cafe_of_happines/presentation/widgets/login_widgets/login_input.dart';
+import 'package:cafe_of_happiness_app/features/cafe_of_happines/presentation/widgets/login_widgets/password_input.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -18,8 +19,7 @@ class _LoginPageState extends State<LoginPage> {
     var errorMessage = '';
     var isCreatingAccount = false;
 
-    return
-        Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: const Text('Zaloguj się'),
       ),
@@ -53,9 +53,9 @@ class _LoginPageState extends State<LoginPage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        EmailInput(
-                          emailController: emailController,
-                        ),
+                        EmailInput(emailController: emailController),
+                        const SizedBox(height: 10),
+                        PasswordInput(passwordController: passwordController),
                         if (isCreatingAccount == false) ...[
                           TextButton(
                             style: TextButton.styleFrom(
