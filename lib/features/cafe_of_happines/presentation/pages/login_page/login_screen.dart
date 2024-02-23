@@ -1,3 +1,4 @@
+import 'package:cafe_of_happiness_app/features/cafe_of_happines/presentation/widgets/login_widgets/forgot_password.dart';
 import 'package:cafe_of_happiness_app/features/cafe_of_happines/presentation/widgets/login_widgets/login_input.dart';
 import 'package:cafe_of_happiness_app/features/cafe_of_happines/presentation/widgets/login_widgets/password_input.dart';
 import 'package:flutter/material.dart';
@@ -34,8 +35,6 @@ class _LoginPageState extends State<LoginPage> {
                 height: 150,
                 fit: BoxFit.contain,
               ),
-              // const Text('Zaloguj się do'),
-              // const Text('Cafe of Happiness'),
               const SizedBox(height: 35),
               Text(
                 isCreatingAccount == true ? 'Sign up' : 'Sign in',
@@ -60,9 +59,16 @@ class _LoginPageState extends State<LoginPage> {
                           TextButton(
                             style: TextButton.styleFrom(
                                 foregroundColor: Colors.brown.shade500),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: ((context) =>
+                                      const ForgotPassword()),
+                                ),
+                              );
+                            },
                             child: const Text(
-                              'Forgot Password?',
+                              'Forgot your Password?',
                               style: TextStyle(
                                 fontSize: 14,
                                 fontStyle: FontStyle.italic,
@@ -81,10 +87,10 @@ class _LoginPageState extends State<LoginPage> {
                           width: double.infinity,
                           decoration: BoxDecoration(
                             color: Colors.brown.shade500,
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           child: SizedBox(
-                            height: 50,
+                            height: 60,
                             child: TextButton(
                               onPressed: () {},
                               child: Text(
