@@ -1,12 +1,34 @@
 import 'package:flutter/material.dart';
 
-class EmailInput extends StatelessWidget {
-  const EmailInput({
-    Key? key,
-    required this.emailController,
-  }) : super(key: key);
+class EmailInput extends StatefulWidget {
+  const EmailInput({super.key, required this.emailController});
 
   final TextEditingController emailController;
+
+  @override
+  State<EmailInput> createState() => _EmailInputState();
+}
+
+class _EmailInputState extends State<EmailInput> {
+  bool _showCloseIcon = false;
+
+  @override
+  void initState() {
+    super.initState();
+    widget.emailController.addListener(_onTextChanged);
+  }
+
+ void _onTextChanged() {
+    setState(() {
+      _showCloseIcon = widget.emailController.text.isNotEmpty;
+    });
+  }
+  
+  @override
+  void dispose() {
+    widget.emailController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +43,7 @@ class EmailInput extends StatelessWidget {
             ),
           ),
           child: TextFormField(
-            controller: emailController,
+            controller: widget.emailController,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             style: const TextStyle(fontSize: 18, color: Colors.black),
@@ -30,15 +52,15 @@ class EmailInput extends StatelessWidget {
               border: InputBorder.none,
               hintText: 'Twój adres e-mail',
               hintStyle: TextStyle(fontSize: 18, color: Colors.grey.shade500),
-              suffixIcon: IconButton(
+              suffixIcon: _showCloseIcon ? IconButton(
                 icon: Icon(
                   Icons.clear,
                   color: Colors.grey.shade500,
                 ),
                 onPressed: () {
-                  emailController.clear();
+                  widget.emailController.clear();
                 },
-              ),
+              ) : null,
               contentPadding: const EdgeInsets.symmetric(vertical: 18),
               prefixIcon: const Icon(Icons.email, size: 26),
             ),

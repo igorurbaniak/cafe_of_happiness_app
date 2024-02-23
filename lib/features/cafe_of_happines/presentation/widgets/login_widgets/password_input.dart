@@ -11,6 +11,25 @@ class PasswordInput extends StatefulWidget {
 
 class _PasswordInputState extends State<PasswordInput> {
   bool _isObscure = true;
+  bool _showObscureIcon = false;
+
+  @override
+  void initState() {
+    super.initState();
+    widget.passwordController.addListener(_onTextChanged);
+  }
+
+ void _onTextChanged() {
+    setState(() {
+      _showObscureIcon = widget.passwordController.text.isNotEmpty;
+    });
+  }
+  
+  @override
+  void dispose() {
+    widget.passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +56,7 @@ class _PasswordInputState extends State<PasswordInput> {
               border: InputBorder.none,
               hintText: 'Hasło',
               hintStyle: TextStyle(fontSize: 18, color: Colors.grey.shade500),
-              suffixIcon: IconButton(
+              suffixIcon: _showObscureIcon ? IconButton(
                 icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off,
                     color: Colors.grey.shade500),
                 onPressed: () {
@@ -47,7 +66,7 @@ class _PasswordInputState extends State<PasswordInput> {
                     },
                   );
                 },
-              ),
+              ): null,
               contentPadding: const EdgeInsets.symmetric(vertical: 18),
               prefixIcon: const Icon(Icons.lock, size: 26),
             ),
