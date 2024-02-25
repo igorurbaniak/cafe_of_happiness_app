@@ -9,20 +9,23 @@ class DishDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+      ),
       body: Padding(
-        padding: const EdgeInsets.all(30),
+        padding: const EdgeInsets.only(left: 30, right: 30),
         child: Column(
           children: [
             Hero(
               tag: dish,
               child: Image.asset(dish.dishImage),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
             Text(
               dish.dishName,
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
             Text(
               '${dish.dishPrice} PLN',
               style: const TextStyle(
@@ -30,7 +33,7 @@ class DishDetails extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Colors.brown),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 10),
             SizedBox(
               width: double.infinity,
               height: 100,
