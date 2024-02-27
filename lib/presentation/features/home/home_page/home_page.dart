@@ -4,15 +4,18 @@ import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widge
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/home_discription.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/home_menu_list.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/location_input.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({super.key, required this.user});
+
+  final User user;
 
   @override
   Widget build(BuildContext context) {
     final scaffoldKey = GlobalKey<ScaffoldState>();
-    
+
     return Scaffold(
       backgroundColor: Colors.white,
       key: scaffoldKey,

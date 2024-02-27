@@ -1,4 +1,5 @@
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/forgot_password_page/forgot_password_page.dart';
+import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/google_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/login_input.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/password_input.dart';
 import 'package:flutter/material.dart';
@@ -28,14 +29,14 @@ class _LoginPageState extends State<LoginPage> {
         child: SafeArea(
           child: Column(
             children: [
-              const SizedBox(height: 40),
+              const SizedBox(height: 20),
               Image.asset(
                 'images/coffee_logo.png',
-                width: 150,
-                height: 150,
+                width: 120,
+                height: 120,
                 fit: BoxFit.contain,
               ),
-              const SizedBox(height: 35),
+              const SizedBox(height: 20),
               Text(
                 isCreatingAccount == true ? 'Sign up' : 'Sign in',
                 style: const TextStyle(
@@ -103,9 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 25,
-                        ),
+                        const SizedBox(height: 20),
                         if (isCreatingAccount == false) ...[
                           const Row(
                             children: [
@@ -133,13 +132,10 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ],
                           ),
-                          const SizedBox(
-                            height: 10,
-                          ),
                         ],
-                        const SizedBox(
-                          height: 40,
-                        ),
+                        const SizedBox(height: 20),
+                        const GoogleButton(),
+                        const SizedBox(height: 40),
                         if (isCreatingAccount == false) ...[
                           TextButton.icon(
                             icon: const Icon(Icons.create),
