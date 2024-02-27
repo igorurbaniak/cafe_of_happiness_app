@@ -6,8 +6,8 @@ import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widge
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/location_input.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

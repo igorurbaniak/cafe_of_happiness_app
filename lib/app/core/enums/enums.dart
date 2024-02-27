@@ -4,3 +4,10 @@ enum DishesCategory {
   sweet,
   drinks,
 }
+
+enum Status {
+  initial,
+  loading,
+  success,
+  error
+}
