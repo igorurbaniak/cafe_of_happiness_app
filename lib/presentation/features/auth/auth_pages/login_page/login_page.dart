@@ -17,7 +17,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    var errorMessage = '';
+    // var errorMessage = '';
     var isCreatingAccount = false;
 
     return Scaffold(

@@ -1,4 +1,4 @@
-import 'package:cafe_of_happiness_app/core/enums/enums.dart';
+import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
 
 class DishModel {
   DishModel({

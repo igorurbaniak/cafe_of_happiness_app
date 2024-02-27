@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "686675744085",
+    "project_id": "cafe-of-happines-777",
+    "storage_bucket": "cafe-of-happines-777.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:686675744085:android:f3d9d60eaf8af6eb92cbdc",
+        "android_client_info": {
+          "package_name": "com.igorurbaniak.cafe_of_happiness_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoNtpBpzxGt5DXhPjoM5OtS2kKzwQXmZk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
