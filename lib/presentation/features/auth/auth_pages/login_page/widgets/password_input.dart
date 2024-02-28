@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PasswordInput extends StatefulWidget {
-  const PasswordInput({super.key, required this.passwordController});
-
-  final TextEditingController passwordController;
+  const PasswordInput({super.key});
 
   @override
   State<PasswordInput> createState() => _PasswordInputState();
@@ -12,22 +10,23 @@ class PasswordInput extends StatefulWidget {
 class _PasswordInputState extends State<PasswordInput> {
   bool _isObscure = true;
   bool _showObscureIcon = false;
+  final passwordController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    widget.passwordController.addListener(_onTextChanged);
+    passwordController.addListener(_onTextChanged);
   }
 
  void _onTextChanged() {
     setState(() {
-      _showObscureIcon = widget.passwordController.text.isNotEmpty;
+      _showObscureIcon = passwordController.text.isNotEmpty;
     });
   }
   
   @override
   void dispose() {
-    widget.passwordController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 
@@ -45,7 +44,7 @@ class _PasswordInputState extends State<PasswordInput> {
           ),
           child: TextFormField(
             obscureText: _isObscure,
-            controller: widget.passwordController,
+            controller: passwordController,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
             style: const TextStyle(fontSize: 18, color: Colors.black),

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class EmailInput extends StatefulWidget {
-  const EmailInput({super.key, required this.emailController});
-
-  final TextEditingController emailController;
+  const EmailInput({super.key});
 
   @override
   State<EmailInput> createState() => _EmailInputState();
@@ -11,22 +9,23 @@ class EmailInput extends StatefulWidget {
 
 class _EmailInputState extends State<EmailInput> {
   bool _showCloseIcon = false;
+  final emailController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    widget.emailController.addListener(_onTextChanged);
+    emailController.addListener(_onTextChanged);
   }
 
  void _onTextChanged() {
     setState(() {
-      _showCloseIcon = widget.emailController.text.isNotEmpty;
+      _showCloseIcon = emailController.text.isNotEmpty;
     });
   }
   
   @override
   void dispose() {
-    widget.emailController.dispose();
+    emailController.dispose();
     super.dispose();
   }
 
@@ -43,7 +42,7 @@ class _EmailInputState extends State<EmailInput> {
             ),
           ),
           child: TextFormField(
-            controller: widget.emailController,
+            controller: emailController,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             style: const TextStyle(fontSize: 18, color: Colors.black),
@@ -58,7 +57,7 @@ class _EmailInputState extends State<EmailInput> {
                   color: Colors.grey.shade500,
                 ),
                 onPressed: () {
-                  widget.emailController.clear();
+                  emailController.clear();
                 },
               ) : null,
               contentPadding: const EdgeInsets.symmetric(vertical: 18),
