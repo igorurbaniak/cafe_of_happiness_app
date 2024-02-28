@@ -9,16 +9,16 @@ class CreateAccountHeader extends StatelessWidget {
       children: [
         Image.asset(
           'images/coffee_logo.png',
-          width: 135,
-          height: 135,
+          width: 150,
+          height: 150,
           fit: BoxFit.contain,
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 60),
         const Text(
           'Sign up',
           style: TextStyle(
             color: Colors.black,
-            fontSize: 22,
+            fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
         ),

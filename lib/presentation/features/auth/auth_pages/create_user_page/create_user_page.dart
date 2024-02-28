@@ -11,35 +11,27 @@ class CreateUserPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        children: [
-          const CreateAccountHeader(),
-          const SizedBox(height: 20),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 40.0),
-            child: const Column(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    CreateEmailInput(),
-                    SizedBox(height: 10),
-                    CreatePasswordInput(),
-                  ],
-                ),
-                Column(
-                  children: [
-                    SizedBox(height: 25),
-                    CreateAccountButton(),
-                    SizedBox(height: 20),
-                    HaveAccountButton(),
-                  ],
-                )
-              ],
-            ),
-          ),
-        ],
+      appBar: AppBar(
+        title: const Text(
+          'Welcome to Café of Happiness',
+          style: TextStyle(fontSize: 18),
+        ),
+      ),
+      body: Container(
+        padding: const EdgeInsets.only(top: 20, left: 40, right: 40),
+        child: const Column(
+          children: [
+            CreateAccountHeader(),
+            SizedBox(height: 20),
+            CreateEmailInput(),
+            SizedBox(height: 10),
+            CreatePasswordInput(),
+            SizedBox(height: 50),
+            CreateAccountButton(),
+            SizedBox(height: 70),
+            HaveAccountButton(),
+          ],
+        ),
       ),
     );
   }

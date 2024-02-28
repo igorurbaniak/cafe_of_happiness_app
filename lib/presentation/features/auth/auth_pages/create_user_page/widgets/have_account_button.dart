@@ -1,3 +1,4 @@
+import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/login_page.dart';
 import 'package:flutter/material.dart';
 
 class HaveAccountButton extends StatelessWidget {
@@ -12,10 +13,16 @@ class HaveAccountButton extends StatelessWidget {
           style: TextStyle(color: Colors.black),
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (ctx) => const LoginPage(),
+              ),
+            );
+          },
           child: const Text(
             'Sign in',
-            style: TextStyle(color: Colors.blue, fontSize: 20),
+            style: TextStyle(color: Colors.brown, fontSize: 20),
           ),
         ),
       ],
