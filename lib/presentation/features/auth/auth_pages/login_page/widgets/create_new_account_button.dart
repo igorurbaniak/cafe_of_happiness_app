@@ -7,18 +7,18 @@ class CreateNewAccountButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton.icon(
-                      icon: const Icon(Icons.create),
-                      label: const Text('Create New Account'),
-                      style: TextButton.styleFrom(
-                        foregroundColor: Colors.grey.shade700,
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (ctx) => const CreateUserPage(),
-                          ),
-                        );
-                      },
-                    );
+      icon: const Icon(Icons.create),
+      label: const Text('Create New Account'),
+      style: TextButton.styleFrom(
+        foregroundColor: Colors.grey.shade700,
+      ),
+      onPressed: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (ctx) => const CreateUserPage(),
+          ),
+        );
+      },
+    );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
 class EmailInput extends StatefulWidget {
@@ -9,23 +10,24 @@ class EmailInput extends StatefulWidget {
 
 class _EmailInputState extends State<EmailInput> {
   bool _showCloseIcon = false;
-  final emailController = TextEditingController();
+  bool _isEmailValid = false;
+  final _emailController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    emailController.addListener(_onTextChanged);
+    _emailController.addListener(_onTextChanged);
   }
 
- void _onTextChanged() {
+  void _onTextChanged() {
     setState(() {
-      _showCloseIcon = emailController.text.isNotEmpty;
+      _showCloseIcon = _emailController.text.isNotEmpty;
     });
   }
-  
+
   @override
   void dispose() {
-    emailController.dispose();
+    _emailController.dispose();
     super.dispose();
   }
 
@@ -42,24 +44,31 @@ class _EmailInputState extends State<EmailInput> {
             ),
           ),
           child: TextFormField(
-            controller: emailController,
+            controller: _emailController,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             style: const TextStyle(fontSize: 18, color: Colors.black),
-            onChanged: (email) {},
+            onChanged: (email) {
+              setState(() {
+                _isEmailValid = EmailValidator.validate(email);
+              });
+            },
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: 'Twój adres e-mail',
               hintStyle: TextStyle(fontSize: 18, color: Colors.grey.shade500),
-              suffixIcon: _showCloseIcon ? IconButton(
-                icon: Icon(
-                  Icons.clear,
-                  color: Colors.grey.shade500,
-                ),
-                onPressed: () {
-                  emailController.clear();
-                },
-              ) : null,
+              errorText: _isEmailValid ? null : "Enter a valid email address",
+              suffixIcon: _showCloseIcon
+                  ? IconButton(
+                      icon: Icon(
+                        Icons.clear,
+                        color: Colors.grey.shade500,
+                      ),
+                      onPressed: () {
+                        _emailController.clear();
+                      },
+                    )
+                  : null,
               contentPadding: const EdgeInsets.symmetric(vertical: 18),
               prefixIcon: const Icon(Icons.email, size: 26),
             ),
