@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class LoginButton extends StatelessWidget {
-  const LoginButton({super.key});
+  const LoginButton({super.key, required this.loginPressed});
+
+  final VoidCallback loginPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,9 @@ class LoginButton extends StatelessWidget {
       child: SizedBox(
         height: 60,
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            loginPressed;
+          },
           child: const Text(
             'Login',
             style: TextStyle(

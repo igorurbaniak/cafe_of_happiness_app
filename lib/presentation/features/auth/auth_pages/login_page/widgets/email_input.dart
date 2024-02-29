@@ -1,8 +1,9 @@
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
 class EmailInput extends StatefulWidget {
-  const EmailInput({super.key});
+  const EmailInput({super.key, required this.onEmailChanged});
+
+  final Function(String?) onEmailChanged;
 
   @override
   State<EmailInput> createState() => _EmailInputState();
@@ -10,7 +11,6 @@ class EmailInput extends StatefulWidget {
 
 class _EmailInputState extends State<EmailInput> {
   bool _showCloseIcon = false;
-  bool _isEmailValid = false;
   final _emailController = TextEditingController();
 
   @override
@@ -48,16 +48,11 @@ class _EmailInputState extends State<EmailInput> {
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             style: const TextStyle(fontSize: 18, color: Colors.black),
-            onChanged: (email) {
-              setState(() {
-                _isEmailValid = EmailValidator.validate(email);
-              });
-            },
+            onChanged: widget.onEmailChanged,
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: 'Twój adres e-mail',
               hintStyle: TextStyle(fontSize: 18, color: Colors.grey.shade500),
-              errorText: _isEmailValid ? null : "Enter a valid email address",
               suffixIcon: _showCloseIcon
                   ? IconButton(
                       icon: Icon(
@@ -78,3 +73,24 @@ class _EmailInputState extends State<EmailInput> {
     );
   }
 }
+
+// bool _showCloseIcon = false;
+  // final _emailController = TextEditingController();
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _emailController.addListener(_onTextChanged);
+  // }
+
+  // void _onTextChanged() {
+  //   setState(() {
+  //     _showCloseIcon = _emailController.text.isNotEmpty;
+  //   });
+  // }
+
+  // @override
+  // void dispose() {
+  //   _emailController.dispose();
+  //   super.dispose();
+  // }
