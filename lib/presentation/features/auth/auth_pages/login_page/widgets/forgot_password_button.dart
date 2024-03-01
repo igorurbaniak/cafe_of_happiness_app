@@ -6,20 +6,23 @@ class ForgotPasswordButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      style: TextButton.styleFrom(foregroundColor: Colors.brown.shade500),
-      onPressed: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: ((context) => const ForgotPassword()),
+    return Align(
+      alignment: Alignment.centerRight,
+      child: TextButton(
+        style: TextButton.styleFrom(foregroundColor: Colors.brown.shade500),
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: ((context) => const ForgotPassword()),
+            ),
+          );
+        },
+        child: const Text(
+          'Forgot your Password?',
+          style: TextStyle(
+            fontSize: 14,
+            fontStyle: FontStyle.italic,
           ),
-        );
-      },
-      child: const Text(
-        'Forgot your Password?',
-        style: TextStyle(
-          fontSize: 14,
-          fontStyle: FontStyle.italic,
         ),
       ),
     );

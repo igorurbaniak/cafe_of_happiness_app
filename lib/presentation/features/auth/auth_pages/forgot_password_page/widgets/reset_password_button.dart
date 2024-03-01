@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ResetPasswordButton extends StatelessWidget {
-  const ResetPasswordButton({super.key});
+  const ResetPasswordButton({super.key, required this.forgotPasswordPressed, required this.emailController});
+
+  final VoidCallback forgotPasswordPressed;
+  final TextEditingController emailController;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class ResetPasswordButton extends StatelessWidget {
           child: SizedBox(
             height: 60,
             child: TextButton(
-              onPressed: () {},
+              onPressed: forgotPasswordPressed,
               child: const Padding(
                 padding: EdgeInsets.symmetric(vertical: 5.0),
                 child: Text(

@@ -1,6 +1,3 @@
-
-
-
 import 'package:cafe_of_happiness_app/data/data_sources/dishes_data_source/dishes_data_source.dart';
 import 'package:cafe_of_happiness_app/data/data_sources/menu_item_data/menu_item_data.dart';
 import 'package:cafe_of_happiness_app/domain/models/menu_item_model/menu_category_model.dart';
@@ -14,7 +11,7 @@ class HomeMenuList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _selectMenuCategory(BuildContext context, MenuItem menuCategory) {
+    void selectMenuCategory(BuildContext context, MenuItem menuCategory) {
       final filteredDishes = dishes
           .where((dish) => dish.categories.contains(menuCategory.id))
           .toList();
@@ -74,7 +71,7 @@ class HomeMenuList extends StatelessWidget {
                     NewOne(
                       category: category,
                       onSelectCategory: () {
-                        _selectMenuCategory(context, category);
+                        selectMenuCategory(context, category);
                       },
                     ),
                 ],

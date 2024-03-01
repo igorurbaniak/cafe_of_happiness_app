@@ -16,9 +16,7 @@ class LoginButton extends StatelessWidget {
       child: SizedBox(
         height: 60,
         child: TextButton(
-          onPressed: () {
-            loginPressed;
-          },
+          onPressed: loginPressed,
           child: const Text(
             'Login',
             style: TextStyle(

@@ -61,17 +61,17 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 10),
                   EmailInput(
-                    onEmailChanged: (newPassword) {
+                    onEmailChanged: (newEmail) {
                       setState(() {
-                        password = newPassword;
+                        email = newEmail;
                       });
                     },
                   ),
                   const SizedBox(height: 10),
                   PasswordInput(
-                    onPasswordChanged: (newEmail) {
+                    onPasswordChanged: (newPassword) {
                       setState(() {
-                        email = newEmail;
+                        password = newPassword;
                       });
                     },
                   ),

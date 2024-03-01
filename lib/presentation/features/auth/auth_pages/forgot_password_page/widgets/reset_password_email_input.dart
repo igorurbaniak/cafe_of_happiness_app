@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ResetPasswordEmailInput extends StatefulWidget {
-  const ResetPasswordEmailInput({super.key});
+  const ResetPasswordEmailInput({super.key, required this.emailController});
+
+  final TextEditingController emailController;
 
   @override
   State<ResetPasswordEmailInput> createState() =>
@@ -9,24 +11,23 @@ class ResetPasswordEmailInput extends StatefulWidget {
 }
 
 class _ResetPasswordEmailInputState extends State<ResetPasswordEmailInput> {
-  final emailController = TextEditingController();
   bool _showCloseIcon = false;
 
   @override
   void initState() {
     super.initState();
-    emailController.addListener(_onTextChanged);
+    widget.emailController.addListener(_onTextChanged);
   }
 
   void _onTextChanged() {
     setState(() {
-      _showCloseIcon = emailController.text.isNotEmpty;
+      _showCloseIcon = widget.emailController.text.isNotEmpty;
     });
   }
 
   @override
   void dispose() {
-    emailController.dispose();
+    widget.emailController.dispose();
     super.dispose();
   }
 
@@ -41,7 +42,7 @@ class _ResetPasswordEmailInputState extends State<ResetPasswordEmailInput> {
         ),
       ),
       child: TextFormField(
-        controller: emailController,
+        controller: widget.emailController,
         keyboardType: TextInputType.emailAddress,
         textInputAction: TextInputAction.done,
         style: const TextStyle(
@@ -56,7 +57,7 @@ class _ResetPasswordEmailInputState extends State<ResetPasswordEmailInput> {
                     color: Colors.black,
                   ),
                   onPressed: () {
-                    emailController.clear();
+                    widget.emailController.clear();
                   },
                 )
               : null,

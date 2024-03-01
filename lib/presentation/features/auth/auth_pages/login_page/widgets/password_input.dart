@@ -10,6 +10,7 @@ class PasswordInput extends StatefulWidget {
 }
 
 class _PasswordInputState extends State<PasswordInput> {
+  bool _isObscure = true;
   bool _showObscureIcon = false;
   final passwordController = TextEditingController();
 
@@ -31,17 +32,14 @@ class _PasswordInputState extends State<PasswordInput> {
     super.dispose();
   }
 
-
-  @override
-  Widget build(BuildContext context) {
-    bool isObscure = true;
-
     void isObscureText() {
       setState(() {
-        isObscure = !isObscure;
+        _isObscure = !_isObscure;
       });
     }
 
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
@@ -53,7 +51,7 @@ class _PasswordInputState extends State<PasswordInput> {
             ),
           ),
           child: TextFormField(
-            obscureText: isObscure,
+            obscureText: _isObscure,
             controller: passwordController,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
@@ -66,7 +64,7 @@ class _PasswordInputState extends State<PasswordInput> {
               suffixIcon: _showObscureIcon
                   ? IconButton(
                       icon: Icon(
-                          isObscure ? Icons.visibility : Icons.visibility_off,
+                          _isObscure ? Icons.visibility : Icons.visibility_off,
                           color: Colors.grey.shade500),
                       onPressed: isObscureText,
                     )

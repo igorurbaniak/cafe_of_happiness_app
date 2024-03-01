@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CreateEmailInput extends StatefulWidget {
-  const CreateEmailInput({super.key});
+  const CreateEmailInput({super.key, required this.onEmailChanged});
+
+  final Function(String?) onEmailChanged;
 
   @override
   State<CreateEmailInput> createState() => _CreateEmailInputState();
@@ -46,7 +48,7 @@ class _CreateEmailInputState extends State<CreateEmailInput> {
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             style: const TextStyle(fontSize: 18, color: Colors.black),
-            onChanged: (email) {},
+            onChanged: widget.onEmailChanged,
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: 'Twój adres e-mail',

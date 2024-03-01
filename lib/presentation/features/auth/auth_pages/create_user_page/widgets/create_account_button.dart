@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CreateAccountButton extends StatelessWidget {
-  const CreateAccountButton({super.key});
+  const CreateAccountButton({super.key, required this.signUpPressed});
+
+  final VoidCallback signUpPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class CreateAccountButton extends StatelessWidget {
       child: SizedBox(
         height: 60,
         child: TextButton(
-          onPressed: () {},
+          onPressed: signUpPressed,
           child: const Text(
             'Sign up',
             style: TextStyle(
