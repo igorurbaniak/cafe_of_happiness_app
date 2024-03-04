@@ -69,4 +69,54 @@ class AuthCubit extends Cubit<AuthState> {
       );
     }
   }
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  bool showCloseIcon = true;
+  bool isObscure = true;
+  bool showObscureIcon = false;
+
+  void updateEmail(String email) {
+    emailController.text = email;
+    emailController.addListener(onEmailChanged);
+    emit(
+      AuthState(
+        showCloseIcon: email.isNotEmpty,
+        email: email,
+      ),
+    );
+  }
+
+  void updatePassword(String password) {
+    passwordController.addListener(onPasswordChanged);
+    emit(
+      AuthState(
+        password: password,
+      ),
+    );
+  }
+
+  void onEmailChanged() {
+    emit(
+      AuthState(
+        email: emailController.text,
+      ),
+    );
+  }
+
+  void onPasswordChanged() {
+    showObscureIcon = passwordController.text.isNotEmpty;
+    emit(
+      AuthState(
+        password: passwordController.text,
+      ),
+    );
+  }
+
+  @override
+  Future<void> close() async {
+    emailController.dispose();
+    passwordController.dispose();
+    super.close();
+  }
 }
