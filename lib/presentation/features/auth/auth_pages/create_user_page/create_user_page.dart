@@ -17,11 +17,8 @@ class CreateUserPage extends StatefulWidget {
 
 String? email;
 String? password;
-final authCubit = AuthCubit(AuthRepository());
 
 class _CreateUserPageState extends State<CreateUserPage> {
-  bool showCloseIcon = true;
-  final emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -67,8 +64,6 @@ class _CreateUserPageState extends State<CreateUserPage> {
                   const CreateAccountHeader(),
                   const SizedBox(height: 20),
                   CreateEmailInput(
-                    showCloseIcon: authCubit.showCloseIcon,
-                    emailController: authCubit.emailController,
                     onEmailChanged: (newEmail) {
                       setState(() {
                         email = newEmail;

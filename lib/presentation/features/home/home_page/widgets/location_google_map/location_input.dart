@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class LocationInformation extends StatefulWidget {
-  const LocationInformation({super.key});
+class LocationGoogleMap extends StatefulWidget {
+  const LocationGoogleMap({super.key});
 
   @override
-  State<LocationInformation> createState() => _LocationInformationState();
+  State<LocationGoogleMap> createState() => _LocationLocationGoogleMapState();
 }
 
-class _LocationInformationState extends State<LocationInformation> {
+class _LocationLocationGoogleMapState extends State<LocationGoogleMap> {
   final Uri _urlGoogleMapsLocation = Uri.parse(
       'https://www.google.pl/maps/place/Manufaktura/@51.7792348,19.4423599,17z/data=!3m1!4b1!4m6!3m5!1s0x471bcb56c4119b59:0xfca7f17fec34f65b!8m2!3d51.7792315!4d19.4449348!16s%2Fm%2F0vxgttm?entry=ttu');
   

@@ -6,7 +6,6 @@ class HomeDiscription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
       height: 200,
       padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
       child: const Stack(

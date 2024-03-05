@@ -3,7 +3,7 @@ import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widge
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/custom_drawer.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/home_discription.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/home_menu_list.dart';
-import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/location_input.dart';
+import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/location_google_map/location_input.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
             HomeDiscription(),
             HomeMenuList(),
             ContactInformations(),
-            LocationInformation(),
+            LocationGoogleMap(),
           ],
         ),
       ),
