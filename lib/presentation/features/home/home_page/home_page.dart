@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key, required this.user});
 
-  final User user;
+  final User? user;
 
   @override
   Widget build(BuildContext context) {

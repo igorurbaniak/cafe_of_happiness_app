@@ -73,24 +73,3 @@ class _EmailInputState extends State<EmailInput> {
     );
   }
 }
-
-// bool _showCloseIcon = false;
-  // final _emailController = TextEditingController();
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _emailController.addListener(_onTextChanged);
-  // }
-
-  // void _onTextChanged() {
-  //   setState(() {
-  //     _showCloseIcon = _emailController.text.isNotEmpty;
-  //   });
-  // }
-
-  // @override
-  // void dispose() {
-  //   _emailController.dispose();
-  //   super.dispose();
-  // }

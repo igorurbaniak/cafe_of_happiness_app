@@ -4,11 +4,13 @@ part of 'root_cubit.dart';
 class RootState {
   const RootState({
     required this.user,
-    this.errorMessage = '',
-    this.status = Status.initial,
+    required this.isLoading,
+    required this.errorMessage,
+    required this.isLogged,
   });
 
   final User? user;
+  final bool isLoading;
   final String errorMessage;
-  final Status status;
+  final Authentication isLogged;
 }

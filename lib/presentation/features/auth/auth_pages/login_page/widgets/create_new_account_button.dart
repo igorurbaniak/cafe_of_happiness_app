@@ -8,7 +8,10 @@ class CreateNewAccountButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton.icon(
       icon: const Icon(Icons.create),
-      label: const Text('Create New Account'),
+      label: const Text(
+        'Create Account',
+        style: TextStyle(fontSize: 12),
+      ),
       style: TextButton.styleFrom(
         foregroundColor: Colors.grey.shade700,
       ),

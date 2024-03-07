@@ -1,17 +1,10 @@
+import 'package:cafe_of_happiness_app/app/root_page/cubit/root_cubit.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/login_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
-
-  Future<void> signOut() async {
-    try {
-      await FirebaseAuth.instance.signOut();
-    } on FirebaseAuthException catch (error) {
-      throw Exception(error.message);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +114,9 @@ class CustomDrawer extends StatelessWidget {
                         'Logout',
                         style: TextStyle(fontSize: 12),
                       ),
-                      onTap: signOut,
+                      onTap: () {
+                        context.read<RootCubit>().signOut();
+                      },
                       trailing: const Icon(Icons.open_in_new),
                     ),
                   ],

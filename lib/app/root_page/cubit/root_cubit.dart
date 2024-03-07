@@ -10,6 +10,9 @@ class RootCubit extends Cubit<RootState> {
       : super(
           const RootState(
             user: null,
+            isLoading: false,
+            errorMessage: '',
+            isLogged: Authentication.loggedOut,
           ),
         );
 
@@ -19,7 +22,9 @@ class RootCubit extends Cubit<RootState> {
     emit(
       const RootState(
         user: null,
-        status: Status.loading,
+        isLoading: true,
+        errorMessage: '',
+        isLogged: Authentication.loggedOut,
       ),
     );
 
@@ -28,7 +33,9 @@ class RootCubit extends Cubit<RootState> {
       emit(
         RootState(
           user: user,
-          status: Status.success,
+          isLoading: false,
+          errorMessage: '',
+          isLogged: Authentication.loggedIn,
         ),
       );
     })
@@ -36,11 +43,16 @@ class RootCubit extends Cubit<RootState> {
             emit(
               RootState(
                 user: null,
+                isLoading: false,
                 errorMessage: error.toString(),
-                status: Status.error,
+                isLogged: Authentication.loggedOut,
               ),
             );
           });
+  }
+
+  Future<void> signOut() async {
+    FirebaseAuth.instance.signOut();
   }
 
   @override

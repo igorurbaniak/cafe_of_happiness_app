@@ -1,4 +1,5 @@
 import 'package:cafe_of_happiness_app/data/repositories/auth_repository/auth_repository.dart';
+import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/back_home_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/create_new_account_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/forgot_password_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/google_button.dart';
@@ -90,7 +91,13 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 20),
                   const GoogleButton(),
                   const SizedBox(height: 40),
-                  const CreateNewAccountButton(),
+                  const Row(
+                    children: [
+                      CreateNewAccountButton(),
+                      SizedBox(width: 24),
+                      BackHomeButton(),
+                    ],
+                  ),
                   const SizedBox(height: 20),
                 ],
               ),
