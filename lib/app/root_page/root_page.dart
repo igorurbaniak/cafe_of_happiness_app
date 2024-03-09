@@ -1,4 +1,3 @@
-import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
 import 'package:cafe_of_happiness_app/app/core/themes/theme.dart';
 import 'package:cafe_of_happiness_app/app/root_page/cubit/root_cubit.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/login_page.dart';
@@ -36,11 +35,14 @@ class RootPage extends StatelessWidget {
           //     case Authentication.loggedOut:
           //     return const HomePage(user: null);
           // }
+          //////////////////////////////////////////////////
           final user = state.user;
           if (user == null) {
-            return const HomePage(user: null);
+            return const LoginPage();
           } 
           return HomePage(user: user);
+          ///////////////////////////////////////////////////
+          
         },
       ),
     );
