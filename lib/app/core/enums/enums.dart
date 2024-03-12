@@ -11,8 +11,3 @@ enum Status {
   success,
   error
 }
-
-enum Authentication {
-  loggedIn,
-  loggedOut,
-}

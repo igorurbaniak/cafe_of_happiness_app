@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CreateAccountButton extends StatelessWidget {
   const CreateAccountButton({super.key, required this.signUpPressed});
 
-  final VoidCallback signUpPressed;
+  final Function()? signUpPressed;
 
   @override
   Widget build(BuildContext context) {

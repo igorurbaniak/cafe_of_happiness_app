@@ -80,10 +80,9 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 25),
                   LoginButton(
                     loginPressed: () {
-                      context.read<AuthCubit>().signIn(
-                            email: email!,
-                            password: password!,
-                          );
+                      context
+                          .read<AuthCubit>()
+                          .signIn(email: email!, password: password!);
                     },
                   ),
                   const SizedBox(height: 20),

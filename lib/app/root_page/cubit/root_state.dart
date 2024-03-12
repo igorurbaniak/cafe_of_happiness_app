@@ -7,10 +7,12 @@ class RootState {
     required this.isLoading,
     required this.errorMessage,
     required this.isLogged,
+    required this.status,
   });
 
   final User? user;
   final bool isLoading;
   final String errorMessage;
-  final Authentication isLogged;
+  final bool isLogged;
+  final Status status;
 }

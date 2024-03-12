@@ -12,7 +12,8 @@ class RootCubit extends Cubit<RootState> {
             user: null,
             isLoading: false,
             errorMessage: '',
-            isLogged: Authentication.loggedOut,
+            isLogged: false,
+            status: Status.initial,
           ),
         );
 
@@ -24,7 +25,8 @@ class RootCubit extends Cubit<RootState> {
         user: null,
         isLoading: true,
         errorMessage: '',
-        isLogged: Authentication.loggedOut,
+        isLogged: false,
+        status: Status.loading,
       ),
     );
 
@@ -35,7 +37,8 @@ class RootCubit extends Cubit<RootState> {
           user: user,
           isLoading: false,
           errorMessage: '',
-          isLogged: Authentication.loggedIn,
+          isLogged: true,
+          status: Status.success,
         ),
       );
     })
@@ -45,7 +48,8 @@ class RootCubit extends Cubit<RootState> {
                 user: null,
                 isLoading: false,
                 errorMessage: error.toString(),
-                isLogged: Authentication.loggedOut,
+                isLogged: false,
+                status: Status.error,
               ),
             );
           });

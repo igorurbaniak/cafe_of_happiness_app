@@ -24,13 +24,14 @@ class HomePage extends StatelessWidget {
         preferredSize: const Size.fromHeight(80),
         child: CustomAppBar(scaffoldKey: scaffoldKey),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            HomeDiscription(),
-            HomeMenuList(),
-            ContactInformations(),
-            LocationGoogleMap(),
+            const HomeDiscription(),
+            Text('Logged in as $user'),
+            const HomeMenuList(),
+            const ContactInformations(),
+            const LocationGoogleMap(),
           ],
         ),
       ),
