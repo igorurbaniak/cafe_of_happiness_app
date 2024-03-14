@@ -7,6 +7,19 @@ class FavoriteDishesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 80,
+        leadingWidth: 100,
+        leading: IconButton(
+          style: IconButton.styleFrom(
+            backgroundColor: Colors.brown.shade500,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+          icon: const Icon(Icons.arrow_back_rounded, color: Colors.white),
+          iconSize: 32,
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title: const Text('🖤  Twoje ulubione'),
       ),
       body: Center(
