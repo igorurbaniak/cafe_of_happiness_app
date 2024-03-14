@@ -1,4 +1,5 @@
 import 'package:cafe_of_happiness_app/domain/models/dishes_model/dishes_model.dart';
+import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/screens/favourite_dishes_page.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/widgets/dish_discription.dart';
 import 'package:flutter/material.dart';
 
@@ -49,10 +50,16 @@ class MenuScreen extends StatelessWidget {
                     ),
                   ),
                   child: TextButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (ctx) => const FavoriteDishesPage(),
+                        ),
+                      );
+                    },
                     style: TextButton.styleFrom(padding: EdgeInsets.zero),
                     icon: const Icon(Icons.favorite),
-                    label: const Text('Favorites: 0'),
+                    label: const Text('Ulubione: 0'),
                   ),
                 ),
               ],
