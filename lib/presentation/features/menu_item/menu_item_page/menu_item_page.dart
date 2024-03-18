@@ -1,5 +1,5 @@
 import 'package:cafe_of_happiness_app/domain/models/dishes_model/dishes_model.dart';
-import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/screens/favourite_dishes_page.dart';
+import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/screens/favorite_dishes/favourite_dishes_page.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/widgets/dish_discription.dart';
 import 'package:flutter/material.dart';
 

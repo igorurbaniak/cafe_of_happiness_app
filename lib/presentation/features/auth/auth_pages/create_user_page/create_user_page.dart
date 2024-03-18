@@ -1,3 +1,4 @@
+import 'package:cafe_of_happiness_app/app/custom_widgets/back_appbar.dart';
 import 'package:cafe_of_happiness_app/data/repositories/auth_repository/auth_repository.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/create_user_page/widgets/create_account_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/create_user_page/widgets/create_account_header.dart';
@@ -51,12 +52,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
         builder: (context, state) {
           return Scaffold(
             resizeToAvoidBottomInset: false,
-            appBar: AppBar(
-              title: const Text(
-                'Welcome to Café of Happiness',
-                style: TextStyle(fontSize: 18),
-              ),
-            ),
+            appBar: const BackAppBar(title: 'Café of Happiness'),
             body: Container(
               padding: const EdgeInsets.only(top: 20, left: 40, right: 40),
               child: Column(
