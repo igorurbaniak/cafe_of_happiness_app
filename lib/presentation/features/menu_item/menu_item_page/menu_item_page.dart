@@ -51,12 +51,12 @@ class MenuScreen extends StatelessWidget {
                   ),
                   child: TextButton.icon(
                     onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (ctx) => const FavoriteDishesPage(),
-                        ),
-                      );
-                    },
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (ctx) => const FavoriteDishesPage(),
+                          ),
+                        );
+                      },
                     style: TextButton.styleFrom(padding: EdgeInsets.zero),
                     icon: const Icon(Icons.favorite),
                     label: const Text('Ulubione: 0'),

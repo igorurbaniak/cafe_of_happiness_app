@@ -12,9 +12,10 @@ class DishModel {
     required this.isRecommended,
     required this.dishesCategory,
     required this.categories,
+    this.isFavorite = false,
   });
 
-  final String id;
+  final int id;
   final String dishName;
   final int dishPrice;
   final String dishIngredients;
@@ -24,4 +25,21 @@ class DishModel {
   final bool isRecommended;
   final DishesCategory dishesCategory;
   final List categories;
+  bool isFavorite;
+
+  DishModel copyWith({required bool isFavorite}) {
+    return DishModel(
+      id: id,
+      dishName: dishName,
+      dishPrice: dishPrice,
+      dishIngredients: dishIngredients,
+      cookTime: cookTime,
+      dishImage: dishImage,
+      isVegetarian: isVegetarian,
+      isRecommended: isRecommended,
+      dishesCategory: dishesCategory,
+      categories: categories,
+      isFavorite: isFavorite,
+    );
+  }
 }

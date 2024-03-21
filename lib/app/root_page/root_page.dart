@@ -1,7 +1,6 @@
 import 'package:cafe_of_happiness_app/app/core/themes/theme.dart';
 import 'package:cafe_of_happiness_app/app/root_page/cubit/root_cubit.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/home_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,11 +20,6 @@ class MyApp extends StatelessWidget {
 
 class RootPage extends StatelessWidget {
   const RootPage({super.key});
-
-  void openHomePage(User user, BuildContext context) {
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (ctx) => HomePage(user: user)));
-  }
 
   @override
   Widget build(BuildContext context) {

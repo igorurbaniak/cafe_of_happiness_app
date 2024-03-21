@@ -3,7 +3,7 @@ import 'package:cafe_of_happiness_app/domain/models/dishes_model/dishes_model.da
 
 List<DishModel> dishes = [
   DishModel(
-    id: '1',
+    id: 1,
     dishName: 'Wspomnienie znad morza',
     dishPrice: 28,
     dishIngredients:
@@ -16,7 +16,7 @@ List<DishModel> dishes = [
     categories: ['m1'],
   ),
   DishModel(
-    id: '2',
+    id: 2,
     dishName: 'Rozkosz w ustach',
     dishPrice: 22,
     dishIngredients:
@@ -29,7 +29,7 @@ List<DishModel> dishes = [
     categories: ['m1'],
   ),
   DishModel(
-    id: '3',
+    id: 3,
     dishName: 'Wegańska radość',
     dishPrice: 25,
     dishIngredients:
@@ -42,7 +42,7 @@ List<DishModel> dishes = [
     categories: ['m1'],
   ),
   DishModel(
-    id: '4',
+    id: 4,
     dishName: 'Dzień dobry po angielsku',
     dishPrice: 25,
     dishIngredients:
@@ -55,7 +55,7 @@ List<DishModel> dishes = [
     categories: ['m1'],
   ),
   DishModel(
-    id: '5',
+    id: 5,
     dishName: 'Szwedzki stół',
     dishPrice: 32,
     dishIngredients:
@@ -68,7 +68,7 @@ List<DishModel> dishes = [
     categories: ['m1'],
   ),
   DishModel(
-    id: '6',
+    id: 6,
     dishName: 'Owsianka na słono',
     dishPrice: 27,
     dishIngredients:
@@ -81,7 +81,7 @@ List<DishModel> dishes = [
     categories: ['m1'],
   ),
   DishModel(
-    id: '7',
+    id: 7,
     dishName: 'Małe cudowności',
     dishPrice: 32,
     dishIngredients:
@@ -94,7 +94,7 @@ List<DishModel> dishes = [
     categories: ['m1'],
   ),
   DishModel(
-    id: '8',
+    id: 8,
     dishName: 'Powrót do dzieciństwa',
     dishPrice: 30,
     dishIngredients:
@@ -107,7 +107,7 @@ List<DishModel> dishes = [
     categories: ['m1'],
   ),
   DishModel(
-    id: '9',
+    id: 9,
     dishName: 'Zdrowy vibe',
     dishPrice: 38,
     dishIngredients:
@@ -120,7 +120,7 @@ List<DishModel> dishes = [
     categories: ['m3'],
   ),
   DishModel(
-    id: '10',
+    id: 10,
     dishName: 'Pyszne chwile (kurczak)',
     dishPrice: 28,
     dishIngredients: '(2 szt) Naleśniki z kurczakiem i pieczarkami',
@@ -132,7 +132,7 @@ List<DishModel> dishes = [
     categories: ['m3'],
   ),
   DishModel(
-    id: '11',
+    id: 11,
     dishName: 'Słodki uśmiech',
     dishPrice: 18,
     dishIngredients: 'croissant, dżem, ser śmietankowo-kremowy',
@@ -144,7 +144,7 @@ List<DishModel> dishes = [
     categories: ['m3'],
   ),
   DishModel(
-    id: '12',
+    id: 12,
     dishName: 'Francuski pocałunek',
     dishPrice: 29,
     dishIngredients:
@@ -157,7 +157,7 @@ List<DishModel> dishes = [
     categories: ['m4'],
   ),
   DishModel(
-    id: '13',
+    id: 13,
     dishName: 'Miłość od pierwszego kęsa',
     dishPrice: 40,
     dishIngredients:
@@ -170,7 +170,7 @@ List<DishModel> dishes = [
     categories: ['m4'],
   ),
   DishModel(
-    id: '14',
+    id: 14,
     dishName: 'Owocowe szczęście',
     dishPrice: 26,
     dishIngredients:
@@ -183,7 +183,7 @@ List<DishModel> dishes = [
     categories: ['m4'],
   ),
   DishModel(
-    id: '15',
+    id: 15,
     dishName: 'Lody dla ochłody',
     dishPrice: 14,
     dishIngredients:
@@ -196,7 +196,7 @@ List<DishModel> dishes = [
     categories: ['m4'],
   ),
   DishModel(
-    id: '16',
+    id: 16,
     dishName: 'Truskawki',
     dishPrice: 12,
     dishIngredients: 'swieżo zerwane truskawki z własnej pielegnacji',
@@ -208,7 +208,7 @@ List<DishModel> dishes = [
     categories: ['m5'],
   ),
   DishModel(
-    id: '17',
+    id: 17,
     dishName: 'Pyszne chwile (szpinak)',
     dishPrice: 22,
     dishIngredients: '(2 szt) Naleśniki ze szpinakiem i serem philadelphia ',
@@ -220,7 +220,7 @@ List<DishModel> dishes = [
     categories: ['m5'],
   ),
   DishModel(
-    id: '18',
+    id: 18,
     dishName: 'Pyszne chwile (bryndza)',
     dishPrice: 31,
     dishIngredients:
@@ -233,7 +233,7 @@ List<DishModel> dishes = [
     categories: ['m5'],
   ),
   DishModel(
-    id: '19',
+    id: 19,
     dishName: 'Sałatka z łososiem',
     dishPrice: 22,
     dishIngredients:
@@ -246,7 +246,7 @@ List<DishModel> dishes = [
     categories: ['m5'],
   ),
   DishModel(
-    id: '20',
+    id: 20,
     dishName: 'Sałatka z kurczakiem',
     dishPrice: 35,
     dishIngredients: 'Mix sałatek, kurczak, parmezan, warzywa',
@@ -258,7 +258,7 @@ List<DishModel> dishes = [
     categories: ['m6'],
   ),
   DishModel(
-    id: '21',
+    id: 21,
     dishName: 'Zupa dnia',
     dishPrice: 16,
     dishIngredients: 'Codziennie inna zupa, proszę pytać przy barze',
@@ -270,7 +270,7 @@ List<DishModel> dishes = [
     categories: ['m6'],
   ),
   DishModel(
-    id: '22',
+    id: 22,
     dishName: 'Cappuccino',
     dishPrice: 17,
     dishIngredients: 'swiezo palona kawaka z serca mleczkiem',
@@ -282,7 +282,7 @@ List<DishModel> dishes = [
     categories: ['m2'],
   ),
   DishModel(
-    id: '23',
+    id: 23,
     dishName: 'Latte',
     dishPrice: 15,
     dishIngredients: 'kawa barzylijka ziarnista z mleczna pianką',
@@ -294,7 +294,7 @@ List<DishModel> dishes = [
     categories: ['m2'],
   ),
   DishModel(
-    id: '24',
+    id: 24,
     dishName: 'Americano',
     dishPrice: 12,
     dishIngredients: '70ml kawy z dodatkiem miodu',
@@ -306,7 +306,7 @@ List<DishModel> dishes = [
     categories: ['m2'],
   ),
   DishModel(
-    id: '25',
+    id: 25,
     dishName: 'Mleko',
     dishPrice: 10,
     dishIngredients: 'swieze mleczko (mozna podgrzac)',
@@ -318,7 +318,7 @@ List<DishModel> dishes = [
     categories: ['m2'],
   ),
   DishModel(
-    id: '26',
+    id: 26,
     dishName: 'Herbata zielona',
     dishPrice: 8,
     dishIngredients: 'zielona herbata cytronowo-miętowa',
