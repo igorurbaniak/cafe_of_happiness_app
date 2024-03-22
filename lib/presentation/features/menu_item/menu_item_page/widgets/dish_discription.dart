@@ -45,6 +45,8 @@ class DishDiscription extends StatelessWidget {
             shrinkWrap: true,
             itemCount: dishes.length,
             itemBuilder: (ctx, index) {
+              final dish = dishes[index];
+              final isFavorite = state.favoriteDishIds.contains(dish.id);
               return Container(
                 padding: const EdgeInsets.all(15),
                 height: 260,
@@ -59,7 +61,7 @@ class DishDiscription extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (ctx) => DishDetails(dish: dishes[index]),
+                        builder: (ctx) => DishDetails(dish: dish),
                       ),
                     );
                   },
@@ -71,9 +73,9 @@ class DishDiscription extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: Hero(
-                            tag: dishes[index],
+                            tag: dish,
                             child: Image.asset(
-                              dishes[index].dishImage,
+                              dish.dishImage,
                               fit: BoxFit.contain,
                               height: 100,
                               width: 140,
@@ -85,13 +87,13 @@ class DishDiscription extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            dishes[index].dishName,
+                            dish.dishName,
                             style: const TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 5),
                           Text(
-                            '${dishes[index].dishPrice} PLN',
+                            '${dish.dishPrice} PLN',
                             style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -102,7 +104,7 @@ class DishDiscription extends StatelessWidget {
                             width: 220,
                             height: 100,
                             child: Text(
-                              dishes[index].dishIngredients,
+                              dish.dishIngredients,
                               style: const TextStyle(
                                 fontSize: 14,
                               ),
@@ -114,7 +116,7 @@ class DishDiscription extends StatelessWidget {
                               const Icon(Icons.access_time, size: 16),
                               const SizedBox(width: 5),
                               Text(
-                                '${dishes[index].cookTime}min',
+                                '${dish.cookTime}min',
                                 style: const TextStyle(fontSize: 14),
                               ),
                               const SizedBox(width: 30),
@@ -129,7 +131,7 @@ class DishDiscription extends StatelessWidget {
                                 onTap: () {
                                   context
                                       .read<MenuItemCubit>()
-                                      .toggleFavorite(dishes[index].id);
+                                      .toggleFavorite(dish.id);
                                 },
                                 child: Container(
                                   height: 40,
@@ -151,11 +153,19 @@ class DishDiscription extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Icon(dishes[index].isFavorite
-                                                ? Icons
-                                                    .favorite_outline_outlined
-                                                : Icons
-                                                    .favorite_border_outlined),
+                                            AnimatedSwitcher(
+                                              switchInCurve: Curves.easeIn,
+                                              switchOutCurve: Curves.easeOut,
+                                              duration: const Duration(
+                                                  milliseconds: 500),
+                                              child: Icon(
+                                                isFavorite
+                                                    ? Icons.favorite
+                                                    : Icons.favorite_border,
+                                                key: ValueKey(
+                                                    state.favoriteDishIds),
+                                              ),
+                                            ),
                                             const Center(
                                               child: Text('20'),
                                             ),
@@ -180,139 +190,6 @@ class DishDiscription extends StatelessWidget {
         },
       );
     }
-    // return ListView.builder(
-    //   physics: const NeverScrollableScrollPhysics(),
-    //   shrinkWrap: true,
-    //   itemCount: dishes.length,
-    //   itemBuilder: (ctx, index) {
-    //     return Container(
-    //       padding: const EdgeInsets.all(15),
-    //       height: 260,
-    //       width: double.infinity,
-    //       decoration: BoxDecoration(
-    //         border: Border.all(
-    //           color: Colors.grey.shade300,
-    //           width: 1,
-    //         ),
-    //       ),
-    //       child: InkWell(
-    //         onTap: () {
-    //           Navigator.of(context).push(
-    //             MaterialPageRoute(
-    //               builder: (ctx) => DishDetails(dish: dishes[index]),
-    //             ),
-    //           );
-    //         },
-    //         child: Stack(
-    //           children: [
-    //             Positioned(
-    //               top: 0,
-    //               right: 0,
-    //               child: ClipRRect(
-    //                 borderRadius: BorderRadius.circular(10),
-    //                 child: Hero(
-    //                   tag: dishes[index],
-    //                   child: Image.asset(
-    //                     dishes[index].dishImage,
-    //                     fit: BoxFit.contain,
-    //                     height: 100,
-    //                     width: 140,
-    //                   ),
-    //                 ),
-    //               ),
-    //             ),
-    //             Column(
-    //               crossAxisAlignment: CrossAxisAlignment.start,
-    //               children: [
-    //                 Text(
-    //                   dishes[index].dishName,
-    //                   style: const TextStyle(
-    //                       fontSize: 18, fontWeight: FontWeight.bold),
-    //                 ),
-    //                 const SizedBox(height: 5),
-    //                 Text(
-    //                   '${dishes[index].dishPrice} PLN',
-    //                   style: const TextStyle(
-    //                       fontSize: 16,
-    //                       fontWeight: FontWeight.bold,
-    //                       color: Colors.brown),
-    //                 ),
-    //                 const SizedBox(height: 5),
-    //                 SizedBox(
-    //                   width: 220,
-    //                   height: 100,
-    //                   child: Text(
-    //                     dishes[index].dishIngredients,
-    //                     style: const TextStyle(
-    //                       fontSize: 14,
-    //                     ),
-    //                   ),
-    //                 ),
-    //                 const SizedBox(height: 10),
-    //                 Row(
-    //                   children: [
-    //                     const Icon(Icons.access_time, size: 16),
-    //                     const SizedBox(width: 5),
-    //                     Text(
-    //                       '${dishes[index].cookTime}min',
-    //                       style: const TextStyle(fontSize: 14),
-    //                     ),
-    //                     const SizedBox(width: 30),
-    //                     const Icon(Icons.thumb_up_alt_outlined, size: 16),
-    //                     const SizedBox(width: 5),
-    //                     const Text(
-    //                       'Polecany',
-    //                       style: TextStyle(fontSize: 14),
-    //                     ),
-    //                     const SizedBox(width: 108),
-    //                     InkWell(
-    //                       onTap: () {
-    //                         context
-    //                             .read<FavoriteDishesCubit>()
-    //                             .toggleFavorite(dishes[index].id);
-    //                       },
-    //                       child: Container(
-    //                         height: 40,
-    //                         width: 80,
-    //                         decoration: BoxDecoration(
-    //                           borderRadius: BorderRadius.circular(12),
-    //                           border: Border.all(
-    //                             color: Colors.grey.shade300,
-    //                             width: 1,
-    //                           ),
-    //                         ),
-    //                         child: Row(
-    //                           mainAxisAlignment: MainAxisAlignment.center,
-    //                           children: [
-    //                             SizedBox(
-    //                               height: 40,
-    //                               width: 50,
-    //                               child: Row(
-    //                                 mainAxisAlignment:
-    //                                     MainAxisAlignment.spaceBetween,
-    //                                 children: [
-    //                                   Icon(dishes[index].isFavorite ? Icons.favorite_outline_outlined : Icons.favorite_border_outlined),
-    //                                   const Center(
-    //                                     child: Text('20'),
-    //                                   ),
-    //                                 ],
-    //                               ),
-    //                             ),
-    //                           ],
-    //                         ),
-    //                       ),
-    //                     ),
-    //                   ],
-    //                 ),
-    //                 const SizedBox(height: 10),
-    //               ],
-    //             ),
-    //           ],
-    //         ),
-    //       ),
-    //     );
-    //   },
-    // );
 
     return Scaffold(
       appBar: AppBar(

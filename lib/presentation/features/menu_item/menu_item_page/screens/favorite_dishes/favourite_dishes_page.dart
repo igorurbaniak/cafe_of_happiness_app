@@ -7,27 +7,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class FavoriteDishesPage extends StatelessWidget {
   const FavoriteDishesPage({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const BackAppBar(title: '🖤  Twoje ulubione'),
       body: BlocBuilder<MenuItemCubit, MenuItemState>(
         builder: (context, state) {
-                    final favoriteDishes =
+          final favoriteDishes =
               state.dishes.where((dish) => dish.isFavorite).toList();
 
           if (favoriteDishes.isEmpty) {
             return const Center(
-              child: Column(
-                children: [
-                  Text('YOYOYOYOYYO'),
-                ],
+              child: Text(
+                'Nie masz nic w ulubionych 🥺',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             );
           }
           return ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: favoriteDishes.length,
             itemBuilder: (ctx, index) {
@@ -105,8 +102,7 @@ class FavoriteDishesPage extends StatelessWidget {
                                 style: const TextStyle(fontSize: 14),
                               ),
                               const SizedBox(width: 30),
-                              const Icon(Icons.thumb_up_alt_outlined,
-                                  size: 16),
+                              const Icon(Icons.thumb_up_alt_outlined, size: 16),
                               const SizedBox(width: 5),
                               const Text(
                                 'Polecany',
@@ -115,7 +111,7 @@ class FavoriteDishesPage extends StatelessWidget {
                               const SizedBox(width: 108),
                               InkWell(
                                 onTap: () {
-                                   context
+                                  context
                                       .read<MenuItemCubit>()
                                       .toggleFavorite(dish.id);
                                 },
@@ -130,8 +126,7 @@ class FavoriteDishesPage extends StatelessWidget {
                                     ),
                                   ),
                                   child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       SizedBox(
                                         height: 40,
@@ -141,10 +136,9 @@ class FavoriteDishesPage extends StatelessWidget {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Icon(dish.isFavorite
-                                                ? Icons
-                                                    .favorite_outline_outlined
+                                                ? Icons.favorite
                                                 : Icons
-                                                    .favorite_border_outlined),
+                                                    .favorite_outline_outlined),
                                             const Center(
                                               child: Text('20'),
                                             ),
