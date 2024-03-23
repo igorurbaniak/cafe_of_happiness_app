@@ -47,6 +47,7 @@ class DishDiscription extends StatelessWidget {
             itemBuilder: (ctx, index) {
               final dish = dishes[index];
               final isFavorite = state.favoriteDishIds.contains(dish.id);
+              final favoriteCounter = state.favoriteCounts[dish.id] ?? 0;
               return Container(
                 padding: const EdgeInsets.all(15),
                 height: 260,
@@ -166,8 +167,9 @@ class DishDiscription extends StatelessWidget {
                                                     state.favoriteDishIds),
                                               ),
                                             ),
-                                            const Center(
-                                              child: Text('20'),
+                                            Center(
+                                              child: Text(
+                                                  favoriteCounter.toString()),
                                             ),
                                           ],
                                         ),

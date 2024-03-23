@@ -5,12 +5,12 @@ class MenuItemState {
   const MenuItemState({
     this.dishes = const [],
     this.favoriteDishIds = const [],
-    this.favoriteCounter = 0,
+    this.favoriteCounts = const {},
     this.errorMessage,
   });
 
   final List<DishModel> dishes;
   final List<int> favoriteDishIds;
-  final int favoriteCounter;
+  final Map<int, int> favoriteCounts;
   final String? errorMessage;
 }

@@ -25,13 +25,24 @@ class MenuItemCubit extends Cubit<MenuItemState> {
       final updatedFavoriteDishIds = isFavorite(dishId)
           ? currentState.favoriteDishIds.where((id) => id != dishId).toList()
           : [...currentState.favoriteDishIds, dishId];
-      final updateFavoriteCounter = updatedFavoriteDishIds.length;
+
+      final updatedFavoriteCounts =
+          Map<int, int>.from(currentState.favoriteCounts);
+      if (updatedFavoriteCounts.containsKey(dishId)) {
+        if (updatedFavoriteCounts[dishId] == 1) {
+          updatedFavoriteCounts.remove(dishId);
+        } else {
+          updatedFavoriteCounts[dishId] = updatedFavoriteCounts[dishId]! - 1;
+        }
+      } else {
+        updatedFavoriteCounts[dishId] = 1;
+      }
 
       emit(
         MenuItemState(
           dishes: updatedDishes,
           favoriteDishIds: updatedFavoriteDishIds,
-          favoriteCounter: updateFavoriteCounter,
+          favoriteCounts: updatedFavoriteCounts,
         ),
       );
     } catch (error) {
