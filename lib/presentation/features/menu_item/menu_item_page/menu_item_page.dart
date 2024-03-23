@@ -1,7 +1,9 @@
 import 'package:cafe_of_happiness_app/domain/models/dishes_model/dishes_model.dart';
+import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/cubit/menu_item_cubit.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/screens/favorite_dishes/favourite_dishes_page.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/widgets/dish_discription.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({
@@ -51,17 +53,24 @@ class MenuScreen extends StatelessWidget {
                   ),
                   child: TextButton.icon(
                     onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (ctx) => const FavoriteDishesPage(),
-                          ),
-                        );
-                      },
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (ctx) => const FavoriteDishesPage(),
+                        ),
+                      );
+                    },
                     style: TextButton.styleFrom(padding: EdgeInsets.zero),
                     icon: const Icon(Icons.favorite),
-                    label: const Text('Ulubione: 0'),
+                    label: BlocBuilder<MenuItemCubit, MenuItemState>(
+                        builder: (context, state) {
+                          final overallFavorites = state.favoriteDishIds.length;
+                          return Text(
+                            'Ulubione: $overallFavorites',
+                          );
+                        },
+                      ),
+                    ),
                   ),
-                ),
               ],
             ),
             const SizedBox(height: 150, width: double.infinity),
