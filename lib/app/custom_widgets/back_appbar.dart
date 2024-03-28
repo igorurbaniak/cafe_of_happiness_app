@@ -15,7 +15,7 @@ class BackAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: 100,
       leading: IconButton(
         style: IconButton.styleFrom(
-          backgroundColor: Colors.brown.shade500,
+          backgroundColor: Colors.brown.shade700,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),

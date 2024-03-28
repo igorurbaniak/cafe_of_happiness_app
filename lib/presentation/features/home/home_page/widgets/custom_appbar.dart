@@ -1,4 +1,6 @@
+import 'package:cafe_of_happiness_app/data/data_sources/dishes_data_source/dishes_data_source.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/login_page.dart';
+import 'package:cafe_of_happiness_app/presentation/features/home/home_page/pages/search_dish_page/search_dish_page.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -103,7 +105,13 @@ class CustomAppBar extends StatelessWidget {
                       Icons.search,
                       size: 20,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (ctx) => SearchDishPage(dishes),
+                        ),
+                      );
+                    },
                   ),
                 ),
                 const SizedBox(width: 30),
