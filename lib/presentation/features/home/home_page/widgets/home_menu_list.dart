@@ -61,23 +61,23 @@ class HomeMenuList extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: 1,
-              itemBuilder: (ctx, index) {
-                return Column(
-                 children: [
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: 1,
+            itemBuilder: (ctx, index) {
+              return Column(
+                children: [
                   for (final category in menuCategory)
-                    NewOne(
+                    MenuCategory(
                       category: category,
                       onSelectCategory: () {
                         selectMenuCategory(context, category);
                       },
                     ),
                 ],
-                );
-              }
-              ),
+              );
+            },
+          ),
           const SizedBox(height: 15),
         ],
       ),
@@ -85,8 +85,8 @@ class HomeMenuList extends StatelessWidget {
   }
 }
 
-class NewOne extends StatelessWidget {
-  const NewOne({
+class MenuCategory extends StatelessWidget {
+  const MenuCategory({
     super.key,
     required this.category,
     required this.onSelectCategory,

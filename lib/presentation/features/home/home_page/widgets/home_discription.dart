@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeDiscription extends StatelessWidget {
   const HomeDiscription({super.key});
@@ -8,13 +9,13 @@ class HomeDiscription extends StatelessWidget {
     return Container(
       height: 200,
       padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-      child: const Stack(
+      child: Stack(
         children: [
           Positioned(
             top: 20,
             child: Text(
-              'Cafe of Happiness',
-              style: TextStyle(
+              AppLocalizations.of(context)!.cafe_of_happines,
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 22,
               ),
@@ -23,10 +24,10 @@ class HomeDiscription extends StatelessWidget {
           Positioned(
             top: 50,
             child: Text(
-              'Cafeteria',
+              AppLocalizations.of(context)!.cafetria,
             ),
           ),
-          Positioned(
+          const Positioned(
             top: 5,
             right: 35,
             child: Image(
@@ -37,12 +38,11 @@ class HomeDiscription extends StatelessWidget {
           ),
           Positioned(
             top: 100,
-            child: Wrap(
-              children: [
-                Text(
-                  'A place where coffee tastes like a smile and every \nsip is a snippet of joy. Come and discover the magic\nin a cup and tasty appetizers.',
-                ),
-              ],
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width - 40,
+              child: Text(
+                AppLocalizations.of(context)!.place_where_coffee_tastes,
+              ),
             ),
           ),
         ],
