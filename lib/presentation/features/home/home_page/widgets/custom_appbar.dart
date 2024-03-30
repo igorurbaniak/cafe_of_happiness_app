@@ -1,6 +1,7 @@
 import 'package:cafe_of_happiness_app/data/data_sources/dishes_data_source/dishes_data_source.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/login_page.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/pages/search_dish_page/search_dish_page.dart';
+import 'package:cafe_of_happiness_app/presentation/features/home/home_page/pages/select_language_page/select_language_page.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -13,6 +14,10 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final systemLocale = Localizations.localeOf(context);
+    final languageText =
+        systemLocale.languageCode == 'pl' ? 'PL 🇵🇱' : 'EN 🇬🇧';
+
     return AppBar(
       elevation: 0,
       automaticallyImplyLeading: false,
@@ -41,18 +46,24 @@ class CustomAppBar extends StatelessWidget {
                         ),
                       ),
                     ),
-                    onPressed: () {},
-                    child: const Wrap(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (ctx) => const SelectLanguagePage(),
+                        ),
+                      );
+                    },
+                    child: Wrap(
                       children: [
                         Text(
-                          'EN',
-                          style: TextStyle(
+                          languageText,
+                          style: const TextStyle(
                             fontWeight: FontWeight.w600,
-                            fontSize: 16,
+                            fontSize: 14,
                           ),
                         ),
-                        SizedBox(width: 5),
-                        Icon(
+                        const SizedBox(width: 5),
+                        const Icon(
                           Icons.arrow_drop_down,
                           size: 16,
                         ),

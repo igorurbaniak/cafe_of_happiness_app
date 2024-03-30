@@ -17,15 +17,14 @@ class MyApp extends StatelessWidget {
       theme: theme,
       localizationsDelegates: const [
         AppLocalizations.delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-  ],
-  supportedLocales: const [
-    Locale('en'),
-    Locale('es'),
-    Locale('pl'),
-  ],
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('pl'),
+      ],
       home: const RootPage(),
     );
   }
