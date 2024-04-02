@@ -36,6 +36,6 @@ An application that allows you to check the menu of available meals, their price
 </p>
 
 <p float="left">
-<img src="https://github.com/igorurbaniak/cafe_of_happiness_app/assets/106092123/a0c2937f-3305-41b4-846d-9d4e3283ca1f.png" width="300" height="600" />
-<img src="https://github.com/igorurbaniak/cafe_of_happiness_app/assets/106092123/0c2e5af1-f5bb-4ed2-93ac-4d77467093cd.png" width="300" height="600" />
+<img src="https://github.com/igorurbaniak/cafe_of_happiness_app/assets/106092123/034543bd-b5ba-482a-8589-6f0508c03633.png" width="300" height="600" />
+<img src="https://github.com/igorurbaniak/cafe_of_happiness_app/assets/106092123/a48693f5-4c1b-4cdf-9e66-c14671ab90a5.png" width="300" height="600" />
 </p>
