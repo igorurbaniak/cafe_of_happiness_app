@@ -6,11 +6,12 @@ An application that allows you to check the menu of available meals, their price
 
 To be added in the near future:
 - changing all language content to 4 different ones (PL, EN, ES, UK) after language change, systemically and on button,
-- - refinement of the view when you go to the category of dishes (depending on the meal : breakfast, lunch, sweet)
+- refinement of the view when you go to the category of dishes (depending on the meal : breakfast, lunch, sweet)
 - changing the view after the user logs into the application (available functionalities or hiding after login),
 - using more data belonging to individual dishes (switch widgets in settings),
 - adding more functionality to buttons (go to phone number when clicked, etc.),
-- using the available REST API,  
+- using the available REST API,
+- using and learning other available packages supported by Dart/Flutter (SQLite, Hive, go_router and others :D) 
 
 
 <p float="left">
