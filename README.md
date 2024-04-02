@@ -4,6 +4,14 @@ Application status: in development
 
 An application that allows you to check the menu of available meals, their price, description and other information. Potential customer of the cafe (user of the application) based on the QR code given on the table and available elsewhere in the store to review all items on the menu of the cafe.
 
+To be added in the near future:
+- changing all language content to 4 different ones (PL, EN, ES, UK) after language change, systemically and on button,
+- - refinement of the view when you go to the category of dishes (depending on the meal : breakfast, lunch, sweet)
+- changing the view after the user logs into the application (available functionalities or hiding after login),
+- using more data belonging to individual dishes (switch widgets in settings),
+- adding more functionality to buttons (go to phone number when clicked, etc.),
+- using the available REST API,  
+
 
 <p float="left">
 <img src="https://github.com/igorurbaniak/cafe_of_happiness_app/assets/106092123/aa843bce-5135-4b98-9990-4ead9d0ca12f.png" width="300" height="600" />
