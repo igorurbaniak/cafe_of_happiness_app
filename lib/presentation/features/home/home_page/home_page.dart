@@ -28,9 +28,8 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             const HomeDiscription(),
-            Text('Logged in as $user'),
             const HomeMenuList(),
-            const ContactInformations(),
+            ContactInformations(),
             const LocationGoogleMap(),
           ],
         ),

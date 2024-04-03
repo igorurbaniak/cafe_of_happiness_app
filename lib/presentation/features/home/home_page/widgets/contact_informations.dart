@@ -1,15 +1,11 @@
 import 'package:cafe_of_happiness_app/data/data_sources/cafe_contacts_data/cafe_contacts_data.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class ContactInformations extends StatefulWidget {
-  const ContactInformations({super.key});
+class ContactInformations extends StatelessWidget {
+  ContactInformations({super.key});
 
-  @override
-  State<ContactInformations> createState() => _ContactInformationsState();
-}
-
-class _ContactInformationsState extends State<ContactInformations> {
   final Uri _urlCafeFacebook = Uri.parse('https://www.facebook.com/');
 
   Future<void> _launchUrl() async {
@@ -68,24 +64,31 @@ class _ContactInformationsState extends State<ContactInformations> {
         const SizedBox(height: 15),
         Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 20),
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Contact details',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      AppLocalizations.of(context)!.contact_details,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     SelectableText(
-                        'Drewnowska Street 58 \nŁódź, Poland \n\n+48 666777888 \n\ncafe.of.happiness@gmail.com'),
-                    SizedBox(height: 25),
-                    Text('We in social networks',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold)),
+                      AppLocalizations.of(context)!.drewnowska_street,
+                    ),
+                    const SizedBox(height: 25),
+                    Text(
+                      AppLocalizations.of(context)!.we_in_social_media,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ],
                 ),
               ),

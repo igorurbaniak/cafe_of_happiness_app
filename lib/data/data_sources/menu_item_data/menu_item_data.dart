@@ -3,26 +3,26 @@ import 'package:cafe_of_happiness_app/domain/models/menu_item_model/menu_categor
 List<MenuItem> menuCategory = [
   MenuItem(
     id: 'm1',
-    title: 'JEDZENIE 🥪',
+    title: 'FOOD 🥪',
   ),
   MenuItem(
     id: 'm2',
-    title: 'NAPOJE ☕',
+    title: 'DRINKS ☕',
   ),
   MenuItem(
     id: 'm3',
-    title: 'ZESTAWY 😍',
+    title: 'SETS 😍',
   ),
   MenuItem(
     id: 'm4',
-    title: 'TYLKO U NAS 🤫',
+    title: 'ONLY HERE 🤫',
   ),
   MenuItem(
     id: 'm5',
-    title: 'DESERY 🍰',
+    title: 'DESSERTS 🍰',
   ),
   MenuItem(
     id: 'm6',
-    title: 'PÓŁKA SKLEPOWA 😋',
+    title: 'YUMMY STORE 😋',
   ),
 ];

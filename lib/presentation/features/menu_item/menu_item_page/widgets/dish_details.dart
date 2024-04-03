@@ -18,7 +18,12 @@ class DishDetails extends StatelessWidget {
           children: [
             Hero(
               tag: dish,
-              child: Image.asset(dish.dishImage),
+              child: Image.asset(
+                dish.dishImage,
+                fit: BoxFit.contain,
+                height: 300,
+                width: double.infinity,
+              ),
             ),
             const SizedBox(height: 20),
             Text(
