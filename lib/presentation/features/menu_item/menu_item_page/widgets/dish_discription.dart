@@ -138,7 +138,7 @@ class DishDiscription extends StatelessWidget {
                                   height: 40,
                                   width: 80,
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
+                                    borderRadius: BorderRadius.circular(8),
                                     border: Border.all(
                                       color: Colors.grey.shade300,
                                       width: 1,
@@ -147,31 +147,46 @@ class DishDiscription extends StatelessWidget {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      SizedBox(
-                                        height: 40,
-                                        width: 50,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            AnimatedSwitcher(
-                                              switchInCurve: Curves.easeIn,
-                                              switchOutCurve: Curves.easeOut,
-                                              duration: const Duration(
-                                                  milliseconds: 500),
-                                              child: Icon(
-                                                isFavorite
-                                                    ? Icons.favorite
-                                                    : Icons.favorite_border,
-                                                key: ValueKey(
-                                                    state.favoriteDishIds),
-                                              ),
+                                      Expanded(
+                                        flex: 7,
+                                        child: Container(
+                                          width: 70,
+                                          decoration: const BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(8),
+                                              bottomLeft: Radius.circular(8),
                                             ),
-                                            Center(
-                                              child: Text(
-                                                  favoriteCounter.toString()),
+                                          ),
+                                          child: AnimatedSwitcher(
+                                            switchInCurve: Curves.easeIn,
+                                            switchOutCurve: Curves.easeOut,
+                                            duration: const Duration(
+                                                milliseconds: 500),
+                                            child: Icon(
+                                              isFavorite
+                                                  ? Icons.favorite
+                                                  : Icons.favorite_border,
+                                              key: ValueKey(
+                                                  state.favoriteDishIds),
                                             ),
-                                          ],
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 5,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.grey.shade100,
+                                            borderRadius:
+                                                const BorderRadius.only(
+                                              topRight: Radius.circular(8),
+                                              bottomRight: Radius.circular(8),
+                                            ),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                                favoriteCounter.toString()),
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -180,7 +195,6 @@ class DishDiscription extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 10),
                         ],
                       ),
                     ],
