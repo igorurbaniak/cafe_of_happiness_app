@@ -69,20 +69,12 @@ class CustomDrawer extends StatelessWidget {
             const SizedBox(height: 10),
             Expanded(
               child: ListView(
+                physics: const NeverScrollableScrollPhysics(),
+                padding: EdgeInsets.zero,
                 children: ListTile.divideTiles(
                   color: Colors.grey.shade300,
                   context: context,
                   tiles: [
-                    ListTile(
-                      leading: const Icon(Icons.location_on),
-                      title: const Text(
-                        'Drewnowska 58, 91-002 Łódź, Poland',
-                        style: TextStyle(fontSize: 12),
-                      ),
-                      onTap: () {},
-                      trailing: const Icon(Icons.open_in_new),
-                      splashColor: Colors.brown.shade500,
-                    ),
                     ListTile(
                       leading: const Icon(Icons.phone_in_talk_rounded),
                       title: const Text(
@@ -98,6 +90,16 @@ class CustomDrawer extends StatelessWidget {
                         style: TextStyle(fontSize: 12),
                       ),
                       onTap: () {},
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.location_on),
+                      title: const Text(
+                        'Drewnowska 58, 91-002 Łódź, Poland',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      onTap: () {},
+                      trailing: const Icon(Icons.open_in_new),
+                      splashColor: Colors.brown.shade500,
                     ),
                     ListTile(
                       leading: const Icon(Icons.facebook),
@@ -123,6 +125,29 @@ class CustomDrawer extends StatelessWidget {
                 ).toList(),
               ),
             ),
+            SwitchListTile(
+              title: const Text(
+                'Are you Vegetarian',
+                style: TextStyle(fontSize: 12),
+              ),
+              secondary: const Icon(Icons.local_florist),
+              activeTrackColor: Colors.brown,
+              inactiveTrackColor: Colors.brown.shade200,
+              value: false,
+              onChanged: (value) {},
+            ),
+            SwitchListTile(
+              title: const Text(
+                'Are you Vegan',
+                style: TextStyle(fontSize: 12),
+              ),
+              secondary: const Icon(Icons.grass),
+              activeTrackColor: Colors.brown,
+              inactiveTrackColor: Colors.brown.shade200,
+              value: false,
+              onChanged: (value) {},
+            ),
+            const SizedBox(height: 40),
           ],
         ),
       ),
