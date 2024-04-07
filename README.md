@@ -10,8 +10,9 @@ To be added in the near future:
 - changing the view after the user logs into the application (available functionalities or hiding after login),
 - using more data belonging to individual dishes (switch widgets in settings),
 - adding more functionality to buttons (go to phone number when clicked, etc.),
-- using the available REST API,
 - using and learning other available packages supported by Dart/Flutter (SQLite, Hive, go_router and others :D) 
+- adding tests
+- using the available REST API,
 
 
 <p float="left">
