@@ -64,7 +64,7 @@ class CustomDrawer extends StatelessWidget {
             const SizedBox(height: 50),
             const Text(
               'Kontakt',
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
             Expanded(
@@ -125,10 +125,15 @@ class CustomDrawer extends StatelessWidget {
                 ).toList(),
               ),
             ),
+            const Text(
+              'Filtry',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
             SwitchListTile(
               title: const Text(
                 'Are you Vegetarian',
-                style: TextStyle(fontSize: 12),
+                style: TextStyle(fontSize: 14),
               ),
               secondary: const Icon(Icons.local_florist),
               activeTrackColor: Colors.brown,
@@ -139,7 +144,7 @@ class CustomDrawer extends StatelessWidget {
             SwitchListTile(
               title: const Text(
                 'Are you Vegan',
-                style: TextStyle(fontSize: 12),
+                style: TextStyle(fontSize: 14),
               ),
               secondary: const Icon(Icons.grass),
               activeTrackColor: Colors.brown,
