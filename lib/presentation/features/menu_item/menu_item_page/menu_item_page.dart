@@ -1,3 +1,4 @@
+import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
 import 'package:cafe_of_happiness_app/domain/models/dishes_model/dishes_model.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/cubit/menu_item_cubit.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/screens/favorite_dishes/favourite_dishes_page.dart';
@@ -6,6 +7,7 @@ import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/widgets/dish_discription.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:cafe_of_happiness_app/app/core/extensions/extensions.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({
@@ -20,9 +22,28 @@ class MenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scrollController = ScrollController();
-    final GlobalKey breakfastKey = GlobalKey();
-    final GlobalKey lunchKey = GlobalKey();
-    final GlobalKey dessertKey = GlobalKey();
+
+    final List<GlobalKey> categoryKeys = List.generate(
+      DishCategory.values.length,
+      (_) => GlobalKey(),
+    );
+
+    List<DishModel> sortDishesByCategory(List<DishModel> dishes) {
+      final Map<String, List<DishModel>> categories = {};
+      for (var dish in dishes) {
+        final categoryTitle = dish.dishCategory.name; // Use category.name
+        categories[categoryTitle] = (categories[categoryTitle] ?? []) + [dish];
+      }
+
+      final sortedCategoryTitles = categories.keys.toList()..sort();
+      final List<DishModel> sortedDishes = [];
+      for (var title in sortedCategoryTitles) {
+        sortedDishes.addAll(categories[title]!);
+      }
+      return sortedDishes;
+    }
+
+    final sortedDishes = sortDishesByCategory(dishes);
 
     return Scaffold(
       appBar: AppBar(
@@ -85,63 +106,64 @@ class MenuScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               child: Row(
                 children: [
-                  DishCategoryButton(
-                    categoryTitle: 'Śniadania 🥐',
-                    onTap: () {
-                      Scrollable.ensureVisible(
-                        breakfastKey.currentContext!,
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.ease,
-                      );
-                    },
-                  ),
-                  const SizedBox(width: 5),
-                   DishCategoryButton(
-                    categoryTitle: 'Lunch 🥞',
-                    onTap: () {
-                      Scrollable.ensureVisible(
-                        lunchKey.currentContext!,
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.ease,
-                      );
-                    },
-                  ),
-                  const SizedBox(width: 5),
-                   DishCategoryButton(
-                    categoryTitle: 'Na słodko 🍨',
-                    onTap: () {
-                      Scrollable.ensureVisible(
-                        dessertKey.currentContext!,
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.ease,
-                      );
+                  ...DishCategory.values.map(
+                    (category) {
+                      final categoryIndex = category.index;
+                      final categoryDishes = sortedDishes
+                          .where((dish) => dish.dishCategory == category)
+                          .toList();
+
+                      return categoryDishes.isNotEmpty
+                          ? Row(
+                              children: [
+                                DishCategoryButton(
+                                  categoryTitle: category.title,
+                                  onTap: () {
+                                    Scrollable.ensureVisible(
+                                      categoryKeys[categoryIndex]
+                                          .currentContext!,
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      curve: Curves.ease,
+                                    );
+                                  },
+                                ),
+                                const SizedBox(width: 5),
+                              ],
+                            )
+                          : Container();
                     },
                   ),
                 ],
               ),
             ),
-            DishCategoryTitle(
-              dishCategoryKey: breakfastKey,
-              categoryTitle: 'Śniadania 🥐',
-              categoryTimer: 'od 8:00 - 13:00',
+            ...List.generate(
+              DishCategory.values.length,
+              (index) {
+                final category = DishCategory.values[index];
+                final categoryDishes = sortedDishes
+                    .where((dish) => dish.dishCategory == category)
+                    .toList();
+
+                if (categoryDishes.isNotEmpty) {
+                  return Column(
+                    children: [
+                      DishCategoryTitle(
+                        dishCategoryKey: categoryKeys[index],
+                        categoryTitle: category.title,
+                        categoryTimer: category.timer,
+                      ),
+                      DishDiscription(
+                        dishes: categoryDishes,
+                        title: title,
+                      ),
+                    ],
+                  );
+                } else {
+                  return const SizedBox();
+                }
+              },
             ),
-            Column(
-              children: [
-                DishDiscription(dishes: dishes, title: title),
-              ],
-            ),
-            DishCategoryTitle(
-              dishCategoryKey: lunchKey,
-              categoryTitle: 'Lunch 🥞',
-              categoryTimer: 'od 13:00 - 19:00',
-            ),
-            const SizedBox(height: 200),
-            DishCategoryTitle(
-              dishCategoryKey: dessertKey,
-              categoryTitle: 'Na słodko 🍨',
-              categoryTimer: 'od od 8:00 - 19:00',
-            ),
-            const SizedBox(height: 200),
           ],
         ),
       ),

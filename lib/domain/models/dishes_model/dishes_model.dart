@@ -10,7 +10,7 @@ class DishModel {
     required this.dishImage,
     required this.isVegetarian,
     required this.isRecommended,
-    required this.dishesCategory,
+    required this.dishCategory,
     required this.categories,
     this.isFavorite = false,
   });
@@ -23,7 +23,7 @@ class DishModel {
   final String dishImage;
   final bool isVegetarian;
   final bool isRecommended;
-  final DishesCategory dishesCategory;
+  final DishCategory dishCategory;
   final List categories;
   bool isFavorite;
 
@@ -37,7 +37,7 @@ class DishModel {
       dishImage: dishImage,
       isVegetarian: isVegetarian,
       isRecommended: isRecommended,
-      dishesCategory: dishesCategory,
+      dishCategory: dishCategory,
       categories: categories,
       isFavorite: isFavorite,
     );

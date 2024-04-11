@@ -12,7 +12,7 @@ List<DishModel> dishes = [
     dishImage: 'images/1.jpg',
     isVegetarian: true,
     isRecommended: false,
-    dishesCategory: DishesCategory.breakfast,
+    dishCategory: DishCategory.breakfast,
     categories: ['m1'],
   ),
   DishModel(
@@ -25,7 +25,7 @@ List<DishModel> dishes = [
     dishImage: 'images/2.jpg',
     isVegetarian: true,
     isRecommended: true,
-    dishesCategory: DishesCategory.breakfast,
+    dishCategory: DishCategory.breakfast,
     categories: ['m1'],
   ),
   DishModel(
@@ -38,7 +38,7 @@ List<DishModel> dishes = [
     dishImage: 'images/3.jpg',
     isVegetarian: true,
     isRecommended: false,
-    dishesCategory: DishesCategory.breakfast,
+    dishCategory: DishCategory.breakfast,
     categories: ['m1'],
   ),
   DishModel(
@@ -51,7 +51,7 @@ List<DishModel> dishes = [
     dishImage: 'images/4.jpg',
     isVegetarian: false,
     isRecommended: true,
-    dishesCategory: DishesCategory.breakfast,
+    dishCategory: DishCategory.breakfast,
     categories: ['m1'],
   ),
   DishModel(
@@ -64,7 +64,7 @@ List<DishModel> dishes = [
     dishImage: 'images/5.jpg',
     isVegetarian: true,
     isRecommended: false,
-    dishesCategory: DishesCategory.breakfast,
+    dishCategory: DishCategory.breakfast,
     categories: ['m1'],
   ),
   DishModel(
@@ -77,7 +77,7 @@ List<DishModel> dishes = [
     dishImage: 'images/6.jpg',
     isVegetarian: true,
     isRecommended: true,
-    dishesCategory: DishesCategory.breakfast,
+    dishCategory: DishCategory.breakfast,
     categories: ['m1'],
   ),
   DishModel(
@@ -90,7 +90,7 @@ List<DishModel> dishes = [
     dishImage: 'images/7.jpg',
     isVegetarian: true,
     isRecommended: false,
-    dishesCategory: DishesCategory.lunch,
+    dishCategory: DishCategory.lunch,
     categories: ['m1'],
   ),
   DishModel(
@@ -103,7 +103,7 @@ List<DishModel> dishes = [
     dishImage: 'images/8.jpg',
     isVegetarian: true,
     isRecommended: true,
-    dishesCategory: DishesCategory.lunch,
+    dishCategory: DishCategory.lunch,
     categories: ['m1'],
   ),
   DishModel(
@@ -116,7 +116,7 @@ List<DishModel> dishes = [
     dishImage: 'images/9.jpg',
     isVegetarian: true,
     isRecommended: true,
-    dishesCategory: DishesCategory.lunch,
+    dishCategory: DishCategory.lunch,
     categories: ['m3'],
   ),
   DishModel(
@@ -128,7 +128,7 @@ List<DishModel> dishes = [
     dishImage: 'images/10.jpg',
     isVegetarian: true,
     isRecommended: false,
-    dishesCategory: DishesCategory.lunch,
+    dishCategory: DishCategory.lunch,
     categories: ['m3'],
   ),
   DishModel(
@@ -140,7 +140,7 @@ List<DishModel> dishes = [
     dishImage: 'images/11.jpg',
     isVegetarian: true,
     isRecommended: true,
-    dishesCategory: DishesCategory.sweet,
+    dishCategory: DishCategory.sweet,
     categories: ['m3'],
   ),
   DishModel(
@@ -153,7 +153,7 @@ List<DishModel> dishes = [
     dishImage: 'images/12.jpg',
     isVegetarian: true,
     isRecommended: true,
-    dishesCategory: DishesCategory.sweet,
+    dishCategory: DishCategory.sweet,
     categories: ['m4'],
   ),
   DishModel(
@@ -166,7 +166,7 @@ List<DishModel> dishes = [
     dishImage: 'images/13.jpg',
     isVegetarian: true,
     isRecommended: true,
-    dishesCategory: DishesCategory.sweet,
+    dishCategory: DishCategory.sweet,
     categories: ['m4'],
   ),
   DishModel(
@@ -179,7 +179,7 @@ List<DishModel> dishes = [
     dishImage: 'images/14.jpg',
     isVegetarian: true,
     isRecommended: true,
-    dishesCategory: DishesCategory.sweet,
+    dishCategory: DishCategory.sweet,
     categories: ['m4'],
   ),
   DishModel(
@@ -192,7 +192,7 @@ List<DishModel> dishes = [
     dishImage: 'images/15.jpg',
     isVegetarian: true,
     isRecommended: true,
-    dishesCategory: DishesCategory.sweet,
+    dishCategory: DishCategory.sweet,
     categories: ['m4'],
   ),
   DishModel(
@@ -204,7 +204,7 @@ List<DishModel> dishes = [
     dishImage: 'images/16.jpg',
     isVegetarian: true,
     isRecommended: false,
-    dishesCategory: DishesCategory.sweet,
+    dishCategory: DishCategory.sweet,
     categories: ['m5'],
   ),
   DishModel(
@@ -216,7 +216,7 @@ List<DishModel> dishes = [
     dishImage: 'images/17.jpg',
     isVegetarian: true,
     isRecommended: false,
-    dishesCategory: DishesCategory.lunch,
+    dishCategory: DishCategory.lunch,
     categories: ['m5'],
   ),
   DishModel(
@@ -229,7 +229,7 @@ List<DishModel> dishes = [
     dishImage: 'images/18.jpg',
     isVegetarian: true,
     isRecommended: true,
-    dishesCategory: DishesCategory.lunch,
+    dishCategory: DishCategory.lunch,
     categories: ['m5'],
   ),
   DishModel(
@@ -242,7 +242,7 @@ List<DishModel> dishes = [
     dishImage: 'images/19.jpg',
     isVegetarian: true,
     isRecommended: true,
-    dishesCategory: DishesCategory.lunch,
+    dishCategory: DishCategory.lunch,
     categories: ['m5'],
   ),
   DishModel(
@@ -254,7 +254,7 @@ List<DishModel> dishes = [
     dishImage: 'images/20.jpg',
     isVegetarian: false,
     isRecommended: false,
-    dishesCategory: DishesCategory.lunch,
+    dishCategory: DishCategory.lunch,
     categories: ['m6'],
   ),
   DishModel(
@@ -266,7 +266,7 @@ List<DishModel> dishes = [
     dishImage: 'images/21.jpg',
     isVegetarian: false,
     isRecommended: true,
-    dishesCategory: DishesCategory.lunch,
+    dishCategory: DishCategory.lunch,
     categories: ['m6'],
   ),
   DishModel(
@@ -278,7 +278,7 @@ List<DishModel> dishes = [
     dishImage: 'images/22.jpg',
     isVegetarian: false,
     isRecommended: true,
-    dishesCategory: DishesCategory.drinks,
+    dishCategory: DishCategory.drinks,
     categories: ['m2'],
   ),
   DishModel(
@@ -290,7 +290,7 @@ List<DishModel> dishes = [
     dishImage: 'images/23.jpg',
     isVegetarian: false,
     isRecommended: true,
-    dishesCategory: DishesCategory.drinks,
+    dishCategory: DishCategory.drinks,
     categories: ['m2'],
   ),
   DishModel(
@@ -302,7 +302,7 @@ List<DishModel> dishes = [
     dishImage: 'images/24.jpg',
     isVegetarian: true,
     isRecommended: true,
-    dishesCategory: DishesCategory.drinks,
+    dishCategory: DishCategory.drinks,
     categories: ['m2'],
   ),
   DishModel(
@@ -314,7 +314,7 @@ List<DishModel> dishes = [
     dishImage: 'images/25.jpg',
     isVegetarian: true,
     isRecommended: false,
-    dishesCategory: DishesCategory.drinks,
+    dishCategory: DishCategory.drinks,
     categories: ['m2'],
   ),
   DishModel(
@@ -326,7 +326,7 @@ List<DishModel> dishes = [
     dishImage: 'images/26.jpg',
     isVegetarian: true,
     isRecommended: true,
-    dishesCategory: DishesCategory.drinks,
+    dishCategory: DishCategory.drinks,
     categories: ['m2'],
   ),
 ];
