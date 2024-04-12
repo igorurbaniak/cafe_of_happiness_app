@@ -8,12 +8,12 @@ class NewDishesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: BackAppBar(title: '🔥  Nowości'),
-      body:  Center(
-              child: Text(
-                'Nowości wkrótce u Nas  👀',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            )
+      body: Center(
+        child: Text(
+          'Nowości wkrótce u Nas  👀',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+      ),
     );
   }
 }
