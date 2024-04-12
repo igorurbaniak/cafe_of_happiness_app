@@ -2,6 +2,7 @@ import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
 import 'package:cafe_of_happiness_app/domain/models/dishes_model/dishes_model.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/cubit/menu_item_cubit.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/screens/favorite_dishes/favourite_dishes_page.dart';
+import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/screens/new_dishes/new_dishes_page.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/widgets/dish_category_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/widgets/dish_category_title.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/widgets/dish_discription.dart';
@@ -65,10 +66,16 @@ class MenuScreen extends StatelessWidget {
                     ),
                   ),
                   child: TextButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (ctx) => const NewDishesPage(),
+                        ),
+                      );
+                    },
                     style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                    icon: const Icon(Icons.star),
-                    label: const Text('Popular'),
+                    icon: const Icon(Icons.local_fire_department),
+                    label: const Text('Nowości!'),
                   ),
                 ),
                 Container(
