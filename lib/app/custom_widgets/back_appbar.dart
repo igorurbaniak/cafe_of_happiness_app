@@ -11,6 +11,7 @@ class BackAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      titleSpacing: 0,
       toolbarHeight: 80,
       leadingWidth: 100,
       leading: IconButton(
