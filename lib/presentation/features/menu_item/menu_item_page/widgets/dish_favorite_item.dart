@@ -32,11 +32,13 @@ class DishFavoriteItem extends StatelessWidget {
         ),
       ),
       child: InkWell(
-        onTap: () => Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (ctx) => DishDetails(dish: dish),
-          ),
-        ),
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (ctx) => DishDetails(dish: dish),
+            ),
+          );
+        },
         child: Stack(
           children: [
             Positioned(
@@ -85,29 +87,42 @@ class DishFavoriteItem extends StatelessWidget {
                     ),
                   ),
                 ),
+                const SizedBox(height: 10),
                 Row(
                   children: [
-                    const Icon(Icons.access_time, size: 16),
+                    const Icon(
+                      Icons.access_time,
+                      size: 16,
+                    ),
                     const SizedBox(width: 5),
                     Text(
                       '${dish.cookTime}min',
-                      style: const TextStyle(fontSize: 14),
+                      style: const TextStyle(
+                        fontSize: 14,
+                      ),
                     ),
                     const SizedBox(width: 30),
-                    const Icon(Icons.thumb_up_alt_outlined, size: 16),
+                    const Icon(
+                      Icons.thumb_up_alt_outlined,
+                      size: 16,
+                    ),
                     const SizedBox(width: 5),
                     const Text(
                       'Polecany',
-                      style: TextStyle(fontSize: 14),
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
                     ),
                     const SizedBox(width: 108),
                     InkWell(
-                      onTap: () => onToggleFavorite(dish.id),
+                      onTap: () {
+                        context.read<MenuItemCubit>().toggleFavorite(dish.id);
+                      },
                       child: Container(
                         height: 40,
                         width: 80,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(8),
                           border: Border.all(
                             color: Colors.grey.shade300,
                             width: 1,
@@ -116,24 +131,38 @@ class DishFavoriteItem extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SizedBox(
-                              height: 40,
-                              width: 50,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Icon(
-                                    isFavorite
-                                        ? Icons.favorite
-                                        : Icons.favorite_outline_outlined,
+                            Expanded(
+                              flex: 7,
+                              child: Container(
+                                width: 70,
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(8),
+                                    bottomLeft: Radius.circular(8),
                                   ),
-                                  Center(
-                                    child: Text(
-                                      favoriteCounter.toString(),
-                                    ),
+                                ),
+                                child: Icon(
+                                  isFavorite
+                                      ? Icons.favorite
+                                      : Icons.favorite_border,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 5,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade100,
+                                  borderRadius: const BorderRadius.only(
+                                    topRight: Radius.circular(8),
+                                    bottomRight: Radius.circular(8),
                                   ),
-                                ],
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    favoriteCounter.toString(),
+                                  ),
+                                ),
                               ),
                             ),
                           ],
