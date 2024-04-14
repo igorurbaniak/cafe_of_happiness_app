@@ -95,7 +95,7 @@ class DishFavoriteItem extends StatelessWidget {
                       ),
                       SizedBox(width: 5),
                       Text(
-                        'Nowe',
+                        'Nowość',
                         style: TextStyle(
                             fontSize: 14,
                             color: Colors.red,
@@ -117,8 +117,10 @@ class DishFavoriteItem extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 30),
-                    const Icon(
-                      Icons.thumb_up_alt_outlined,
+                    Icon(
+                      dish.isRecommended
+                          ? Icons.thumb_up_alt
+                          : Icons.thumb_up_alt_outlined,
                       size: 16,
                     ),
                     const SizedBox(width: 5),

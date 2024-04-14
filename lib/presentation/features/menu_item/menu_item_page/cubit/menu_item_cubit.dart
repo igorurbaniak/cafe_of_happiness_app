@@ -57,4 +57,8 @@ class MenuItemCubit extends Cubit<MenuItemState> {
    List<DishModel> getNewDishes() {
     return state.dishes.where((dish) => dish.isNew).toList();
   }
+
+  List<DishModel> getRecommendedDishes() {
+    return state.dishes.where((dish) => dish.isRecommended).toList();
+  }
 }
