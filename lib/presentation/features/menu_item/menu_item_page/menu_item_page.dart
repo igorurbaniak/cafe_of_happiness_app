@@ -32,7 +32,7 @@ class MenuScreen extends StatelessWidget {
     List<DishModel> sortDishesByCategory(List<DishModel> dishes) {
       final Map<String, List<DishModel>> categories = {};
       for (var dish in dishes) {
-        final categoryTitle = dish.dishCategory.name; // Use category.name
+        final categoryTitle = dish.dishCategory.name;
         categories[categoryTitle] = (categories[categoryTitle] ?? []) + [dish];
       }
 

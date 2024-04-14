@@ -22,9 +22,7 @@ class DishFavoriteItem extends StatelessWidget {
         context.read<MenuItemCubit>().state.favoriteCounts[dish.id] ?? 0;
 
     return Container(
-      padding: const EdgeInsets.all(15),
-      height: 260,
-      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.grey.shade300,
@@ -77,9 +75,8 @@ class DishFavoriteItem extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 5),
-                SizedBox(
-                  width: 220,
-                  height: 100,
+                Container(
+                  constraints: const BoxConstraints(maxWidth: 220),
                   child: Text(
                     dish.dishIngredients,
                     style: const TextStyle(
@@ -87,7 +84,25 @@ class DishFavoriteItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
+                if (dish.isNew)
+                  const Row(
+                    children: [
+                      Icon(
+                        Icons.local_fire_department,
+                        size: 16,
+                        color: Colors.red,
+                      ),
+                      SizedBox(width: 5),
+                      Text(
+                        'Nowe',
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
                 Row(
                   children: [
                     const Icon(
@@ -113,7 +128,7 @@ class DishFavoriteItem extends StatelessWidget {
                         fontSize: 14,
                       ),
                     ),
-                    const SizedBox(width: 108),
+                    const Spacer(),
                     InkWell(
                       onTap: () {
                         context.read<MenuItemCubit>().toggleFavorite(dish.id);
