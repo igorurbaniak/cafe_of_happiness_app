@@ -1,5 +1,8 @@
 import 'package:cafe_of_happiness_app/domain/models/dishes_model/dishes_model.dart';
+import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/cubit/menu_item_cubit.dart';
+import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/widgets/dish_liked.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DishDetails extends StatelessWidget {
   const DishDetails({super.key, required this.dish});
@@ -28,7 +31,10 @@ class DishDetails extends StatelessWidget {
             const SizedBox(height: 20),
             Text(
               dish.dishName,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const SizedBox(height: 30),
             Text(
@@ -49,6 +55,7 @@ class DishDetails extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -61,7 +68,12 @@ class DishDetails extends StatelessWidget {
                       style: const TextStyle(fontSize: 18),
                     ),
                     const SizedBox(height: 20),
-                    const Icon(Icons.thumb_up_alt_outlined, size: 22),
+                    Icon(
+                      dish.isRecommended
+                          ? Icons.thumb_up_alt
+                          : Icons.thumb_up_alt_outlined,
+                      size: 22,
+                    ),
                     const SizedBox(height: 5),
                     const Text(
                       'Polecany',
@@ -69,44 +81,55 @@ class DishDetails extends StatelessWidget {
                     ),
                   ],
                 ),
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    height: 70,
-                    width: 90,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: Colors.grey.shade300,
-                        width: 1,
+                Column(
+                  children: [
+                    if (dish.isNew)
+                      const Row(
+                        children: [
+                          Icon(
+                            Icons.local_fire_department,
+                            size: 22,
+                            color: Colors.red,
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            'Nowość',
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    const SizedBox(height: 40),
+                    SizedBox(
+                      height: 50,
+                      width: 90,
+                      child: BlocBuilder<MenuItemCubit, MenuItemState>(
+                        builder: (context, state) {
+                          final isFavorite = context
+                              .read<MenuItemCubit>()
+                              .state
+                              .favoriteDishIds
+                              .contains(dish.id);
+                          final favoriteCounter = context
+                                  .read<MenuItemCubit>()
+                                  .state
+                                  .favoriteCounts[dish.id] ??
+                              0;
+
+                          return DishLiked(
+                            dish: dish,
+                            isFavorite: isFavorite,
+                            favoriteCounter: favoriteCounter,
+                          );
+                        },
                       ),
                     ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 80,
-                          width: 60,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(Icons.favorite_outline_outlined, size: 28),
-                              Center(
-                                child: Text(
-                                  '20',
-                                  style: TextStyle(fontSize: 22),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  ],
                 ),
               ],
             ),
-            const SizedBox(height: 10),
           ],
         ),
       ),
