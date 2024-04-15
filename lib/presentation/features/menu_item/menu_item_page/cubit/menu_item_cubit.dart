@@ -61,4 +61,8 @@ class MenuItemCubit extends Cubit<MenuItemState> {
   List<DishModel> getRecommendedDishes() {
     return state.dishes.where((dish) => dish.isRecommended).toList();
   }
+
+  List<DishModel> getVegetarianDishes() {
+    return state.dishes.where((dish) => dish.isVegetarian).toList();
+  }
 }

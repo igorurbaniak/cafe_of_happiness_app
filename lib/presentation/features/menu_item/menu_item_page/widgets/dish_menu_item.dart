@@ -4,6 +4,7 @@ import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/widgets/dish_liked.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DishMenuItem extends StatelessWidget {
   const DishMenuItem({
@@ -86,24 +87,50 @@ class DishMenuItem extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                if (dish.isNew)
-                  const Row(
-                    children: [
-                      Icon(
-                        Icons.local_fire_department,
-                        size: 16,
-                        color: Colors.red,
+                Row(
+                  children: [
+                    if (dish.isNew)
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.local_fire_department,
+                            size: 16,
+                            color: Colors.red.shade600,
+                          ),
+                          const SizedBox(width: 5),
+                          Text(
+                            'Nowość',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.red.shade600,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
-                      SizedBox(width: 5),
-                      Text(
-                        'Nowość',
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold),
+                    if (dish.isNew && dish.isVegetarian)
+                      const SizedBox(width: 20),
+                    if (dish.isVegetarian)
+                      Row(
+                        children: [
+                          FaIcon(
+                            FontAwesomeIcons.leaf,
+                            size: 16,
+                            color: Colors.green.shade800,
+                          ),
+                          const SizedBox(width: 5),
+                          Text(
+                            'Vege',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.green.shade800,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                  ],
+                ),
                 Row(
                   children: [
                     const Icon(

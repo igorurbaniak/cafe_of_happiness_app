@@ -9,7 +9,6 @@ class DishModel {
     required this.cookTime,
     required this.dishImage,
     required this.isVegetarian,
-    required this.isVegan,
     required this.isRecommended,
     required this.isNew,
     required this.dishCategory,
@@ -24,7 +23,6 @@ class DishModel {
   final int cookTime;
   final String dishImage;
   final bool isVegetarian;
-  final bool isVegan;
   final bool isRecommended;
   final bool isNew;
   final DishCategory dishCategory;
@@ -40,7 +38,6 @@ class DishModel {
       cookTime: cookTime,
       dishImage: dishImage,
       isVegetarian: isVegetarian,
-      isVegan: isVegan,
       isRecommended: isRecommended,
       isNew: isNew,
       dishCategory: dishCategory,
