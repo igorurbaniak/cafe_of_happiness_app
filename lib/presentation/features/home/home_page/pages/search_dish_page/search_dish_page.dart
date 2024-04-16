@@ -1,3 +1,4 @@
+import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
 import 'package:cafe_of_happiness_app/app/custom_widgets/back_appbar.dart';
 import 'package:cafe_of_happiness_app/domain/models/dishes_model/dishes_model.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/pages/search_dish_page/cubit/search_dish_cubit.dart';
@@ -38,20 +39,27 @@ class SearchDishPage extends StatelessWidget {
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Search dishes...',
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
                       hintStyle:
                           TextStyle(fontSize: 18, color: Colors.grey.shade500),
-                      suffixIcon: IconButton(
-                        icon: const Icon(Icons.close),
-                        onPressed: () => cubit.clearSearch(),
-                      ),
+                      suffixIcon: state.hasText
+                          ? IconButton(
+                              onPressed: () => cubit.clearSearch(),
+                              icon: const Icon(Icons.clear),
+                            )
+                          : null,
                     ),
                     onChanged: (query) => cubit.search(query),
                   ),
                 ),
                 const SizedBox(height: 30),
-                if (state.suggestions != null && state.suggestions!.isNotEmpty)
+                if (state.status == Status.loading)
+                  const CircularProgressIndicator()
+                else if (state.status == Status.error)
+                  Text(state.errorMessage.toString())
+                else if (state.suggestions != null &&
+                    state.suggestions!.isNotEmpty)
                   Expanded(
                     child: ListView.separated(
                       separatorBuilder: (context, index) =>
@@ -63,7 +71,8 @@ class SearchDishPage extends StatelessWidget {
                         final dish = cubit.dishes
                             .firstWhere((dish) => dish.dishName == suggestion);
 
-                        return InkWell(
+                        return ListTile(
+                          key: UniqueKey(),
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
@@ -73,18 +82,15 @@ class SearchDishPage extends StatelessWidget {
                               ),
                             );
                           },
-                          child: ListTile(
-                            key: UniqueKey(),
-                            leading: Image.asset(
-                              dish.dishImage,
-                              height: 50,
-                              width: 50,
-                              fit: BoxFit.cover,
-                              errorBuilder: (context, error, stackTrace) =>
-                                  const Center(child: Icon(Icons.error)),
-                            ),
-                            title: Text(suggestion),
+                          leading: Image.asset(
+                            dish.dishImage,
+                            height: 50,
+                            width: 50,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) =>
+                                const Center(child: Icon(Icons.error)),
                           ),
+                          title: Text(suggestion),
                         );
                       },
                     ),

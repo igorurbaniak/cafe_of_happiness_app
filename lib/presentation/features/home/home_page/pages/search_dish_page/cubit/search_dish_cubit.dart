@@ -13,10 +13,11 @@ class SearchDishCubit extends Cubit<SearchDishState> {
   void search(String query) {
     emit(
       SearchDishState(
-          // isLoading: true,
-          query: query,
-          errorMessage: '',
-          status: Status.loading),
+        query: query,
+        errorMessage: '',
+        status: Status.loading,
+        hasText: query.isNotEmpty,
+      ),
     );
 
     final filteredDishes = dishes.where((dish) {
@@ -28,25 +29,30 @@ class SearchDishCubit extends Cubit<SearchDishState> {
     try {
       emit(
         SearchDishState(
-            // isLoading: false,
-            query: query,
-            suggestions: filteredDishes.map((dish) => dish.dishName).toList(),
-            errorMessage: '',
-            status: Status.success),
+          query: query,
+          suggestions: filteredDishes.map((dish) => dish.dishName).toList(),
+          errorMessage: '',
+          status: Status.success,
+        ),
       );
     } on Exception catch (e) {
       emit(
         SearchDishState(
-            // isLoading: false,
-            query: query,
-            errorMessage: 'An error occurred: $e',
-            status: Status.error),
+          query: query,
+          errorMessage: 'An error occurred: $e',
+          status: Status.error,
+        ),
       );
     }
   }
 
   void clearSearch() {
-    searchController.text = "";
-    emit(const SearchDishState());
+    searchController.clear();
+    emit(
+      const SearchDishState(
+        query: '',
+        hasText: false,
+      ),
+    );
   }
 }
