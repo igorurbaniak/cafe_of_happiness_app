@@ -45,4 +45,18 @@ class DishModel {
       isFavorite: isFavorite,
     );
   }
+
+  DishModel.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        dishName = json['dishName'],
+        dishPrice = json['dishPrice'],
+        dishIngredients = json['dishIngredients'],
+        cookTime = json['cookTime'],
+        dishImage = json['dishImage'],
+        isVegetarian = json['isVegetarian'],
+        isRecommended = json['isRecommended'],
+        isNew = json['isNew'],
+        dishCategory = json['dishCategory'],
+        categories = json['categories'],
+        isFavorite = json['isFavorite'];
 }
