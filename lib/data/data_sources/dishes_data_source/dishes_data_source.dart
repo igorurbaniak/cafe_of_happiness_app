@@ -1,5 +1,5 @@
 import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
-import 'package:cafe_of_happiness_app/domain/models/dishes_model/dish_model.dart';
+import 'package:cafe_of_happiness_app/domain/models/dish_model/dish_model.dart';
 
 List<DishModel> dishes = [
   DishModel(

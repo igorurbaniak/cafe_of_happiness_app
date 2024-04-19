@@ -1,6 +1,6 @@
 import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
 import 'package:cafe_of_happiness_app/app/core/extensions/extensions.dart';
-import 'package:cafe_of_happiness_app/domain/models/dishes_model/dish_model.dart';
+import 'package:cafe_of_happiness_app/domain/models/dish_model/dish_model.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/cubit/menu_item_cubit.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/screens/favorite_dishes/favourite_dishes_page.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/screens/new_dishes/new_dishes_page.dart';
