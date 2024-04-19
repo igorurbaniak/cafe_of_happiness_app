@@ -1,5 +1,5 @@
 import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
-import 'package:cafe_of_happiness_app/domain/models/dishes_model/dishes_model.dart';
+import 'package:cafe_of_happiness_app/domain/models/dishes_model/dish_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'search_dish_state.dart';

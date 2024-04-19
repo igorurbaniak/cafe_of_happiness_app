@@ -9,8 +9,12 @@ extension CustomToString on DishCategory {
         return 'Lunch 🥞';
       case DishCategory.sweet:
         return 'Na słodko 🍨';
-      case DishCategory.drinks:
-        return 'Drinks ☕';
+      case DishCategory.coffee:
+        return 'Coffee ☕';
+      case DishCategory.tea:
+        return 'Tea 🍵';
+      case DishCategory.other:
+        return 'Other 🤯';
     }
   }
 
@@ -22,7 +26,11 @@ extension CustomToString on DishCategory {
         return 'od 13:00 - 19:00';
       case DishCategory.sweet:
         return '8:00 - 19:00';
-      case DishCategory.drinks:
+      case DishCategory.coffee:
+        return '8:00 - 19:00';
+      case DishCategory.tea:
+        return '8:00 - 19:00';
+      case DishCategory.other:
         return '8:00 - 19:00';
     }
   }

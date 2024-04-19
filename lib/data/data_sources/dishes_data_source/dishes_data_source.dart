@@ -1,5 +1,5 @@
 import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
-import 'package:cafe_of_happiness_app/domain/models/dishes_model/dishes_model.dart';
+import 'package:cafe_of_happiness_app/domain/models/dishes_model/dish_model.dart';
 
 List<DishModel> dishes = [
   DishModel(
@@ -300,7 +300,7 @@ List<DishModel> dishes = [
     isVegetarian: false,
     isRecommended: true,
     isNew: false,
-    dishCategory: DishCategory.drinks,
+    dishCategory: DishCategory.coffee,
     categories: ['m2'],
   ),
   DishModel(
@@ -313,7 +313,7 @@ List<DishModel> dishes = [
     isVegetarian: false,
     isRecommended: true,
     isNew: false,
-    dishCategory: DishCategory.drinks,
+    dishCategory: DishCategory.coffee,
     categories: ['m2'],
   ),
   DishModel(
@@ -326,24 +326,11 @@ List<DishModel> dishes = [
     isVegetarian: false,
     isRecommended: true,
     isNew: false,
-    dishCategory: DishCategory.drinks,
+    dishCategory: DishCategory.coffee,
     categories: ['m2'],
   ),
   DishModel(
     id: 25,
-    dishName: 'Mleko',
-    dishPrice: 10,
-    dishIngredients: 'swieze mleczko (mozna podgrzac)',
-    cookTime: 2,
-    dishImage: 'images/25.jpg',
-    isVegetarian: false,
-    isRecommended: false,
-    isNew: true,
-    dishCategory: DishCategory.drinks,
-    categories: ['m2'],
-  ),
-  DishModel(
-    id: 26,
     dishName: 'Herbata zielona',
     dishPrice: 8,
     dishIngredients: 'zielona herbata cytronowo-miętowa',
@@ -352,7 +339,20 @@ List<DishModel> dishes = [
     isVegetarian: false,
     isRecommended: true,
     isNew: false,
-    dishCategory: DishCategory.drinks,
+    dishCategory: DishCategory.tea,
+    categories: ['m2'],
+  ),
+  DishModel(
+    id: 26,
+    dishName: 'Mleko',
+    dishPrice: 10,
+    dishIngredients: 'swieze mleczko (mozna podgrzac)',
+    cookTime: 2,
+    dishImage: 'images/25.jpg',
+    isVegetarian: false,
+    isRecommended: false,
+    isNew: true,
+    dishCategory: DishCategory.other,
     categories: ['m2'],
   ),
 ];
