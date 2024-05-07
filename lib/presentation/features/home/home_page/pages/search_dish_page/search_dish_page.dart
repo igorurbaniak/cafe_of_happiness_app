@@ -23,19 +23,25 @@ class SearchDishPage extends StatelessWidget {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(6),
                     border: Border.all(
-                      color: Colors.grey.shade300,
-                      width: 1,
+                      color: Colors.brown.shade800,
+                      width: 1.2,
                     ),
                   ),
                   child: TextField(
+                    autofocus: true,
                     controller: cubit.searchController,
                     keyboardType: TextInputType.text,
-                    style: const TextStyle(fontSize: 18, color: Colors.black),
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.grey.shade600,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 0.5,
+                    ),
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Search dishes...',
+                      hintText: 'Nazwa dania ...',
                       contentPadding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
                       hintStyle:
@@ -45,9 +51,11 @@ class SearchDishPage extends StatelessWidget {
                               onPressed: () => cubit.clearSearch(),
                               icon: const Icon(Icons.clear),
                             )
-                          : null,
+                          : const Icon(Icons.search),
                     ),
-                    onChanged: (query) => cubit.search(query),
+                    onChanged: (query) {
+                      cubit.search(query);
+                    },
                   ),
                 ),
                 const SizedBox(height: 30),
@@ -65,12 +73,13 @@ class SearchDishPage extends StatelessWidget {
                       itemCount: state.suggestions!.length,
                       itemBuilder: (context, index) {
                         final suggestion = state.suggestions![index];
-                        final dish = state.dishes.firstWhere(
-                            (dish) => dish.dishName == suggestion);
+                        final dish = state.dishes
+                            .firstWhere((dish) => dish.dishName == suggestion);
 
                         return ListTile(
                           key: UniqueKey(),
-                          onTap: () {
+                          onTap: () async {
+                            FocusManager.instance.primaryFocus?.unfocus();
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (ctx) => DishDetails(
@@ -78,7 +87,7 @@ class SearchDishPage extends StatelessWidget {
                                 ),
                               ),
                             );
-                                                    },
+                          },
                           leading: Image.asset(
                             dish.dishImage,
                             height: 50,

@@ -6,38 +6,39 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'search_dish_state.dart';
 
 class SearchDishCubit extends Cubit<SearchDishState> {
-  SearchDishCubit({required this.searchDishesRepository}) : super(const SearchDishState());
+  SearchDishCubit({required this.searchDishesRepository})
+      : super(const SearchDishState());
 
   final TextEditingController searchController = TextEditingController();
   final SearchDishesRepository searchDishesRepository;
 
-  void search(String query) async {
+  Future<void> search(String query) async {
+    final hasText = query.isNotEmpty;
+
     emit(
       SearchDishState(
-        query: query,
-        errorMessage: '',
         status: Status.loading,
-        hasText: query.isNotEmpty,
+        hasText: hasText,
       ),
     );
 
     try {
-      final List<DishModel> filteredDishes = await searchDishesRepository.getFilteredDishes(query);
+      final List<DishModel> filteredDishes =
+          await searchDishesRepository.getFilteredDishes(query);
       emit(
         SearchDishState(
-          query: query,
-          suggestions: filteredDishes.map((dish) => dish.dishName).toList(),
-          errorMessage: '',
           status: Status.success,
+          suggestions: filteredDishes.map((dish) => dish.dishName).toList(),
           dishes: filteredDishes,
+          hasText: hasText,
         ),
       );
-    } on Exception catch (e) {
+    } on Exception catch (error) {
       emit(
         SearchDishState(
-          query: query,
-          errorMessage: 'An error occurred: $e',
           status: Status.error,
+          errorMessage: 'An error occurred: ${error.toString()}',
+          hasText: hasText,
         ),
       );
     }
@@ -47,7 +48,6 @@ class SearchDishCubit extends Cubit<SearchDishState> {
     searchController.clear();
     emit(
       const SearchDishState(
-        query: '',
         hasText: false,
       ),
     );
