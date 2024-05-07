@@ -3,6 +3,7 @@ part of 'search_dish_cubit.dart';
 @immutable
 class SearchDishState {
   const SearchDishState({
+    this.dishes = const [],
     this.query = '',
     this.errorMessage = '',
     this.suggestions,
@@ -10,6 +11,7 @@ class SearchDishState {
     this.hasText = false
   });
 
+  final List<DishModel> dishes;
   final String query;
   final String? errorMessage;
   final List<String>? suggestions;

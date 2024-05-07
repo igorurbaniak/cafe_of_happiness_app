@@ -6,60 +6,31 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DishDiscription extends StatelessWidget {
   const DishDiscription({
-    super.key,
-    required this.title,
+    Key? key,
     required this.dishes,
-  });
+  }) : super(key: key);
 
-  final String title;
   final List<DishModel> dishes;
 
   @override
   Widget build(BuildContext context) {
-    if (dishes.isNotEmpty) {
-      return BlocBuilder<MenuItemCubit, MenuItemState>(
-        builder: (context, state) {
-          return ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: dishes.length,
-            itemBuilder: (ctx, index) {
-              final dish = dishes[index];
-              return DishMenuItem(
-                dish: dish,
-                onToggleFavorite: (dishId) =>
-                    context.read<MenuItemCubit>().toggleFavorite(dishId),
-              );
-            },
-          );
-        },
-      );
-    }
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              'Uh oh ... nothing here!',
-              style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              'Try selecting a different category!',
-              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-            ),
-          ],
+    return Column(
+      children: [
+        ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: dishes.length,
+          itemBuilder: (ctx, index) {
+            final dish = dishes[index];
+            return DishMenuItem(
+              dish: dish,
+              onToggleFavorite: (dishId) =>
+                  context.read<MenuItemCubit>().toggleFavorite(dishId),
+            );
+          },
         ),
-      ),
+      ],
     );
   }
 }
+

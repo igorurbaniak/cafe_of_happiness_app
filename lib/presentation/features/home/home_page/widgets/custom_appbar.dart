@@ -1,4 +1,3 @@
-import 'package:cafe_of_happiness_app/data/data_sources/dishes_data_source/dishes_data_source.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/login_page.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/pages/search_dish_page/search_dish_page.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/pages/select_language_page/select_language_page.dart';
@@ -119,7 +118,7 @@ class CustomAppBar extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (ctx) => SearchDishPage(dishes),
+                          builder: (ctx) => const SearchDishPage(),
                         ),
                       );
                     },

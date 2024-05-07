@@ -1,15 +1,12 @@
 import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
 import 'package:cafe_of_happiness_app/app/custom_widgets/back_appbar.dart';
-import 'package:cafe_of_happiness_app/domain/models/dish_model/dish_model.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/pages/search_dish_page/cubit/search_dish_cubit.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/widgets/dish_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchDishPage extends StatelessWidget {
-  const SearchDishPage(this.dishes, {super.key});
-
-  final List<DishModel> dishes;
+  const SearchDishPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -68,8 +65,8 @@ class SearchDishPage extends StatelessWidget {
                       itemCount: state.suggestions!.length,
                       itemBuilder: (context, index) {
                         final suggestion = state.suggestions![index];
-                        final dish = cubit.dishes
-                            .firstWhere((dish) => dish.dishName == suggestion);
+                        final dish = state.dishes.firstWhere(
+                            (dish) => dish.dishName == suggestion);
 
                         return ListTile(
                           key: UniqueKey(),
@@ -81,7 +78,7 @@ class SearchDishPage extends StatelessWidget {
                                 ),
                               ),
                             );
-                          },
+                                                    },
                           leading: Image.asset(
                             dish.dishImage,
                             height: 50,

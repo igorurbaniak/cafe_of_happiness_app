@@ -1,15 +1,15 @@
-import 'package:cafe_of_happiness_app/domain/models/menu_item_model/menu_category_model.dart';
+import 'package:cafe_of_happiness_app/domain/models/menu_category_model/menu_category_model.dart';
 import 'package:flutter/material.dart';
 
 class MenuCategoryItem extends StatelessWidget {
   const MenuCategoryItem({
     super.key,
-    required this.category,
     required this.onSelectCategory,
+    required this.menuCategoryModel,
   });
 
-  final MenuItem category;
   final void Function() onSelectCategory;
+  final MenuCategoryModel menuCategoryModel;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class MenuCategoryItem extends StatelessWidget {
         color: Colors.white,
         child: ListTile(
           title: Text(
-            category.title,
+            menuCategoryModel.title,
             style: const TextStyle(fontWeight: FontWeight.w500),
           ),
           trailing: const Icon(

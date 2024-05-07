@@ -19,7 +19,7 @@ class DishLiked extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.read<MenuItemCubit>().toggleFavorite(dish.id);
+        context.read<MenuItemCubit>().toggleFavorite(dish.dishId);
       },
       child: Container(
         height: 40,

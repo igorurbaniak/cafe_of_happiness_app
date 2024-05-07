@@ -1,62 +1,63 @@
 import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
+import 'package:cafe_of_happiness_app/app/core/extensions/extensions.dart';
 
 class DishModel {
   DishModel({
-    required this.id,
+    required this.dishId,
     required this.dishName,
     required this.dishPrice,
     required this.dishIngredients,
-    required this.cookTime,
+    required this.dishCookTime,
     required this.dishImage,
-    required this.isVegetarian,
-    required this.isRecommended,
-    required this.isNew,
+    required this.isDishVegetarian,
+    required this.isDishRecommended,
+    required this.isDishNew,
     required this.dishCategory,
-    required this.categories,
-    this.isFavorite = false,
+    required this.dishCategoriesId,
+    this.isDishFavorite = false,
   });
 
-  final int id;
+  final int dishId;
   final String dishName;
   final int dishPrice;
   final String dishIngredients;
-  final int cookTime;
+  final int dishCookTime;
   final String dishImage;
-  final bool isVegetarian;
-  final bool isRecommended;
-  final bool isNew;
+  final bool isDishVegetarian;
+  final bool isDishRecommended;
+  final bool isDishNew;
   final DishCategory dishCategory;
-  final List categories;
-  bool isFavorite;
+  final String dishCategoriesId;
+  bool isDishFavorite;
 
-  DishModel copyWith({required bool isFavorite}) {
+  DishModel copyWith({required bool isDishFavorite}) {
     return DishModel(
-      id: id,
+      dishId: dishId,
       dishName: dishName,
       dishPrice: dishPrice,
       dishIngredients: dishIngredients,
-      cookTime: cookTime,
+      dishCookTime: dishCookTime,
       dishImage: dishImage,
-      isVegetarian: isVegetarian,
-      isRecommended: isRecommended,
-      isNew: isNew,
+      isDishVegetarian: isDishVegetarian,
+      isDishRecommended: isDishRecommended,
+      isDishNew: isDishNew,
       dishCategory: dishCategory,
-      categories: categories,
-      isFavorite: isFavorite,
+      dishCategoriesId: dishCategoriesId,
+      isDishFavorite: isDishFavorite,
     );
   }
 
   DishModel.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
+      : dishId = json['dishId'],
         dishName = json['dishName'],
         dishPrice = json['dishPrice'],
         dishIngredients = json['dishIngredients'],
-        cookTime = json['cookTime'],
+        dishCookTime = json['dishCookTime'],
         dishImage = json['dishImage'],
-        isVegetarian = json['isVegetarian'],
-        isRecommended = json['isRecommended'],
-        isNew = json['isNew'],
-        dishCategory = json['dishCategory'],
-        categories = json['categories'],
-        isFavorite = json['isFavorite'];
+        isDishVegetarian = json['isDishVegetarian'],
+        isDishRecommended = json['isDishRecommended'],
+        isDishNew = json['isDishNew'],
+        dishCategory = getDishCategoryFromValue(json['dishCategory']),
+        dishCategoriesId = json['dishCategoriesId'],
+        isDishFavorite = json['isDishFavorite'] ?? false;
 }

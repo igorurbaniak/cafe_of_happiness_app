@@ -64,12 +64,12 @@ class DishDetails extends StatelessWidget {
                     const Icon(Icons.access_time, size: 22),
                     const SizedBox(height: 5),
                     Text(
-                      '${dish.cookTime}min',
+                      '${dish.dishCookTime}min',
                       style: const TextStyle(fontSize: 18),
                     ),
                     const SizedBox(height: 20),
                     Icon(
-                      dish.isRecommended
+                      dish.isDishRecommended
                           ? Icons.thumb_up_alt
                           : Icons.thumb_up_alt_outlined,
                       size: 22,
@@ -83,7 +83,7 @@ class DishDetails extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    if (dish.isNew)
+                    if (dish.isDishNew)
                       const Row(
                         children: [
                           Icon(
@@ -111,11 +111,11 @@ class DishDetails extends StatelessWidget {
                               .read<MenuItemCubit>()
                               .state
                               .favoriteDishIds
-                              .contains(dish.id);
+                              .contains(dish.dishId);
                           final favoriteCounter = context
                                   .read<MenuItemCubit>()
                                   .state
-                                  .favoriteCounts[dish.id] ??
+                                  .favoriteCounts[dish.dishId] ??
                               0;
 
                           return DishLiked(

@@ -1,5 +1,24 @@
 import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
 
+DishCategory getDishCategoryFromValue(String dishCategoryValue) {
+  switch (dishCategoryValue) {
+    case 'breakfast':
+      return DishCategory.breakfast;
+    case 'lunch':
+      return DishCategory.lunch;
+    case 'sweet':
+      return DishCategory.sweet;
+    case 'coffee':
+      return DishCategory.coffee;
+    case 'tea':
+      return DishCategory.tea;
+    case 'other':
+      return DishCategory.other;
+    default:
+      throw Exception('Unknown dish category: $dishCategoryValue');
+  }
+}
+
 extension CustomToString on DishCategory {
   String get title {
     switch (this) {
