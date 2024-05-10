@@ -65,7 +65,7 @@ class MenuItemCubit extends Cubit<MenuItemState> {
     }
   }
 
-  void toggleFavorite(int dishId) {
+  Future<void> toggleFavorite(int dishId) async {
     try {
       bool isFavorite(int dishId) => state.favoriteDishIds.contains(dishId);
 

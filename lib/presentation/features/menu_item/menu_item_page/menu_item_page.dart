@@ -90,7 +90,9 @@ class MenuItemPage extends StatelessWidget {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (ctx) =>
-                                    FavoriteDishesPage(dishes: favoriteDishes),
+                                    FavoriteDishesPage(
+                                      dishes: favoriteDishes
+                                      ),
                               ),
                             );
                           },

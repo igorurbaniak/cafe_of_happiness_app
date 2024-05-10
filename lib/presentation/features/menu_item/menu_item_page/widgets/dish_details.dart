@@ -12,9 +12,7 @@ class DishDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-      ),
+      appBar: AppBar(backgroundColor: Colors.white),
       body: Padding(
         padding: const EdgeInsets.only(left: 30, right: 30),
         child: Column(
@@ -40,9 +38,10 @@ class DishDetails extends StatelessWidget {
             Text(
               '${dish.dishPrice} PLN',
               style: const TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.brown),
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+                color: Colors.brown,
+              ),
             ),
             const SizedBox(height: 10),
             SizedBox(
@@ -50,9 +49,7 @@ class DishDetails extends StatelessWidget {
               height: 100,
               child: Text(
                 dish.dishIngredients,
-                style: const TextStyle(
-                  fontSize: 18,
-                ),
+                style: const TextStyle(fontSize: 18),
               ),
             ),
             const SizedBox(height: 20),
@@ -95,9 +92,10 @@ class DishDetails extends StatelessWidget {
                           Text(
                             'Nowość',
                             style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold),
+                              fontSize: 18,
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       ),

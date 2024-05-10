@@ -15,10 +15,7 @@ class BackHomeButton extends StatelessWidget {
         foregroundColor: Colors.grey.shade700,
       ),
       onPressed: () {
-        // Navigator.of(context).push(
-        //   MaterialPageRoute(
-        //     builder: (ctx) => ),
-        // );
+        Navigator.of(context).pop();
       },
     );
   }

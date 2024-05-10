@@ -34,9 +34,7 @@ class DishCategoryTitle extends StatelessWidget {
           const SizedBox(height: 5),
           Text(
             categoryTimer,
-            style: const TextStyle(
-              fontSize: 14,
-            ),
+            style: const TextStyle(fontSize: 14),
           ),
         ],
       ),
