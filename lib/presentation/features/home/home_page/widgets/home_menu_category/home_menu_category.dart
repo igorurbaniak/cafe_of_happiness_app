@@ -61,7 +61,7 @@ class HomeMenuCategory extends StatelessWidget {
                 switch (state.status) {
                   case Status.initial:
                     return const Center(
-                      child: Text('Initial state'),
+                      child: Text('Please wait, loading in progess...'),
                     );
                   case Status.loading:
                     return Shimmer.fromColors(
