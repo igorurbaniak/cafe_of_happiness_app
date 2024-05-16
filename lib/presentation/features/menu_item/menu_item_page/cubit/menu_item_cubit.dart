@@ -92,7 +92,7 @@ class MenuItemCubit extends Cubit<MenuItemState> {
       }
 
       emit(
-        MenuItemState(
+        currentState.copyWith(
           dishes: updatedDishes,
           favoriteDishIds: updatedFavoriteDishIds,
           favoriteCounts: updatedFavoriteCounts,
@@ -100,7 +100,7 @@ class MenuItemCubit extends Cubit<MenuItemState> {
       );
     } catch (error) {
       emit(
-        MenuItemState(
+        state.copyWith(
           errorMessage: error.toString(),
         ),
       );
@@ -108,7 +108,7 @@ class MenuItemCubit extends Cubit<MenuItemState> {
   }
 
   List<DishModel> getFavoriteDishes() {
-    return  state.dishes.where((dish) => dish.isDishFavorite).toList();
+    return state.dishes.where((dish) => dish.isDishFavorite).toList();
   }
 
   List<DishModel> getNewDishes() {
