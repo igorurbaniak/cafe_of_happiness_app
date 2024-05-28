@@ -17,8 +17,9 @@ class MenuCategoryItem extends StatelessWidget {
       onTap: onSelectCategory,
       child: Card(
         shape: RoundedRectangleBorder(
-            side: BorderSide(color: Colors.grey.shade200, width: 1),
-            borderRadius: BorderRadius.circular(8)),
+          side: BorderSide(color: Colors.grey.shade200, width: 1),
+          borderRadius: BorderRadius.circular(8),
+        ),
         shadowColor: Colors.grey.shade100,
         elevation: 0.3,
         color: Colors.white,

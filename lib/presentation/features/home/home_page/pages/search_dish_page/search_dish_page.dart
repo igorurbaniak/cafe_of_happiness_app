@@ -21,91 +21,96 @@ class SearchDishPage extends StatelessWidget {
             padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
             child: Column(
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6),
-                    border: Border.all(
-                      color: Colors.brown.shade800,
-                      width: 1.2,
-                    ),
-                  ),
-                  child: TextField(
-                    autofocus: true,
-                    controller: cubit.searchController,
-                    keyboardType: TextInputType.text,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.grey.shade600,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 0.5,
-                    ),
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Nazwa dania ...',
-                      contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      hintStyle:
-                          TextStyle(fontSize: 18, color: Colors.grey.shade500),
-                      suffixIcon: state.hasText
-                          ? IconButton(
-                              onPressed: () => cubit.clearSearch(),
-                              icon: const Icon(Icons.clear),
-                            )
-                          : const Icon(Icons.search),
-                    ),
-                    onChanged: (query) {
-                      cubit.search(query);
-                    },
-                  ),
-                ),
+                _buildSearchField(context, cubit, state),
                 const SizedBox(height: 30),
-                if (state.status == Status.loading)
-                  const CircularProgressIndicator()
-                else if (state.status == Status.error)
-                  Text(state.errorMessage.toString())
-                else if (state.suggestions != null &&
-                    state.suggestions!.isNotEmpty)
-                  Expanded(
-                    child: ListView.separated(
-                      separatorBuilder: (context, index) =>
-                          const SizedBox(height: 20),
-                      shrinkWrap: true,
-                      itemCount: state.suggestions!.length,
-                      itemBuilder: (context, index) {
-                        final suggestion = state.suggestions![index];
-                        final dish = state.dishes
-                            .firstWhere((dish) => dish.dishName == suggestion);
-
-                        return ListTile(
-                          key: UniqueKey(),
-                          onTap: () async {
-                            FocusManager.instance.primaryFocus?.unfocus();
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (ctx) => DishDetails(
-                                  dish: dish,
-                                ),
-                              ),
-                            );
-                          },
-                          leading: Image.asset(
-                            dish.dishImage,
-                            height: 50,
-                            width: 50,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) =>
-                                const Center(child: Icon(Icons.error)),
-                          ),
-                          title: Text(suggestion),
-                        );
-                      },
-                    ),
-                  ),
+                _buildResults(state, cubit),
               ],
             ),
           );
         },
       ),
     );
+  }
+
+  Widget _buildSearchField(
+      BuildContext context, SearchDishCubit cubit, SearchDishState state) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(6),
+        border: Border.all(
+          color: Colors.brown.shade800,
+          width: 1.2,
+        ),
+      ),
+      child: TextField(
+        autofocus: true,
+        controller: cubit.searchController,
+        keyboardType: TextInputType.text,
+        style: TextStyle(
+          fontSize: 18,
+          color: Colors.grey.shade600,
+          fontWeight: FontWeight.bold,
+          letterSpacing: 0.5,
+        ),
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: 'Nazwa dania ...',
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          hintStyle: TextStyle(fontSize: 18, color: Colors.grey.shade500),
+          suffixIcon: state.hasText
+              ? IconButton(
+                  onPressed: cubit.clearSearch,
+                  icon: const Icon(Icons.clear),
+                )
+              : const Icon(Icons.search),
+        ),
+        onChanged: cubit.search,
+      ),
+    );
+  }
+
+  Widget _buildResults(SearchDishState state, SearchDishCubit cubit) {
+    if (state.status == Status.loading) {
+      return const CircularProgressIndicator();
+    } else if (state.status == Status.error) {
+      return Text(state.errorMessage ?? 'An error occurred');
+    } else if (state.suggestions != null && state.suggestions!.isNotEmpty) {
+      return Expanded(
+        child: ListView.separated(
+          separatorBuilder: (context, index) => const SizedBox(height: 20),
+          shrinkWrap: true,
+          itemCount: state.suggestions!.length,
+          itemBuilder: (context, index) {
+            final suggestion = state.suggestions![index];
+            final dish =
+                state.dishes.firstWhere((dish) => dish.dishName == suggestion);
+
+            return ListTile(
+              key: UniqueKey(),
+              onTap: () async {
+                FocusManager.instance.primaryFocus?.unfocus();
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (ctx) => DishDetails(dish: dish),
+                  ),
+                );
+              },
+              leading: Image.asset(
+                dish.dishImage,
+                height: 50,
+                width: 50,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) =>
+                    const Center(child: Icon(Icons.error)),
+              ),
+              title: Text(suggestion),
+            );
+          },
+        ),
+      );
+    } else {
+      return const SizedBox.shrink();
+    }
   }
 }

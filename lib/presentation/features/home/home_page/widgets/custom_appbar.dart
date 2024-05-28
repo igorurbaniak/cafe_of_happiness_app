@@ -32,131 +32,123 @@ class CustomAppBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const SizedBox(width: 20),
-                SizedBox(
-                  height: 40,
-                  width: 90,
-                  child: TextButton(
-                    style: ButtonStyle(
-                      elevation: MaterialStateProperty.all(0),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          side: BorderSide(color: Colors.grey.shade300),
-                        ),
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (ctx) => const SelectLanguagePage(),
-                        ),
-                      );
-                    },
-                    child: Wrap(
-                      children: [
-                        Text(
-                          languageText,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14,
-                          ),
-                        ),
-                        const SizedBox(width: 5),
-                        const Icon(
-                          Icons.arrow_drop_down,
-                          size: 16,
-                        ),
-                      ],
-                    ),
-                  ),
+                _buildLanguageButton(context, languageText),
+                const SizedBox(width: 10),
+                _buildIconButton(
+                  context,
+                  const Icon(Icons.person, size: 20),
+                  const LoginPage(),
                 ),
                 const SizedBox(width: 10),
-                SizedBox(
-                  height: 40,
-                  width: 45,
-                  child: TextButton(
-                    style: ButtonStyle(
-                      elevation: MaterialStateProperty.all(0),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          side: BorderSide(color: Colors.grey.shade300),
-                        ),
-                      ),
-                    ),
-                    child: const Icon(
-                      Icons.person,
-                      size: 20,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (ctx) => const LoginPage(),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                const SizedBox(width: 10),
-                SizedBox(
-                  height: 40,
-                  width: 45,
-                  child: TextButton(
-                    style: ButtonStyle(
-                      elevation: MaterialStateProperty.all(0),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          side: BorderSide(color: Colors.grey.shade300),
-                        ),
-                      ),
-                    ),
-                    child: const Icon(
-                      Icons.search,
-                      size: 20,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (ctx) => const SearchDishPage(),
-                        ),
-                      );
-                    },
-                  ),
+                _buildIconButton(
+                  context,
+                  const Icon(Icons.search, size: 20),
+                  const SearchDishPage(),
                 ),
                 const SizedBox(width: 30),
-                SizedBox(
-                  height: 40,
-                  width: 45,
-                  child: TextButton(
-                    style: ButtonStyle(
-                      elevation: MaterialStateProperty.all(0),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          side: BorderSide(color: Colors.grey.shade300),
-                        ),
-                      ),
-                    ),
-                    child: const Icon(
-                      Icons.menu,
-                      size: 20,
-                    ),
-                    onPressed: () {
-                      if (scaffoldKey.currentState!.isDrawerOpen) {
-                        scaffoldKey.currentState!.closeDrawer();
-                      } else {
-                        scaffoldKey.currentState!.openDrawer();
-                      }
-                    },
-                  ),
-                ),
+                _buildDrawerButton(),
                 const SizedBox(width: 20),
               ],
             ),
           ],
         ),
       ],
+    );
+  }
+
+  Widget _buildLanguageButton(BuildContext context, String languageText) {
+    return SizedBox(
+      height: 40,
+      width: 90,
+      child: TextButton(
+        style: ButtonStyle(
+          elevation: MaterialStateProperty.all(0),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+              side: BorderSide(color: Colors.grey.shade300),
+            ),
+          ),
+        ),
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (ctx) => const SelectLanguagePage(),
+            ),
+          );
+        },
+        child: Wrap(
+          children: [
+            Text(
+              languageText,
+              style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
+              ),
+            ),
+            const SizedBox(width: 5),
+            const Icon(
+              Icons.arrow_drop_down,
+              size: 16,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildIconButton(BuildContext context, Icon icon, Widget page) {
+    return SizedBox(
+      height: 40,
+      width: 45,
+      child: TextButton(
+        style: ButtonStyle(
+          elevation: MaterialStateProperty.all(0),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+              side: BorderSide(color: Colors.grey.shade300),
+            ),
+          ),
+        ),
+        child: icon,
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (ctx) => page,
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildDrawerButton() {
+    return SizedBox(
+      height: 40,
+      width: 45,
+      child: TextButton(
+        style: ButtonStyle(
+          elevation: MaterialStateProperty.all(0),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+              side: BorderSide(color: Colors.grey.shade300),
+            ),
+          ),
+        ),
+        child: const Icon(
+          Icons.menu,
+          size: 20,
+        ),
+        onPressed: () {
+          if (scaffoldKey.currentState!.isDrawerOpen) {
+            scaffoldKey.currentState!.closeDrawer();
+          } else {
+            scaffoldKey.currentState!.openDrawer();
+          }
+        },
+      ),
     );
   }
 }

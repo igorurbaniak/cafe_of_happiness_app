@@ -25,9 +25,10 @@ void main() async {
         ),
         BlocProvider(
           create: (context) => SearchDishCubit(
-              searchDishesRepository: SearchDishesRepository(
-            dishesRemoteDioDataSource: DishesRemoteDioDataSource(),
-          )),
+            searchDishesRepository: SearchDishesRepository(
+              dishesRemoteDioDataSource: DishesRemoteDioDataSource(),
+            ),
+          ),
         ),
         BlocProvider(
           create: (context) => DishesCubit(

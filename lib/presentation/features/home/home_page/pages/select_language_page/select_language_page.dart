@@ -7,8 +7,7 @@ class SelectLanguagePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final systemLocale = Localizations.localeOf(context);
-    final languageText =
-        systemLocale.languageCode == 'pl' ? 'Polski   🇵🇱' : 'English   🇬🇧';
+    final languageText = systemLocale.languageCode == 'pl' ? 'Polski 🇵🇱' : 'English 🇬🇧';
 
     return Scaffold(
       appBar: BackAppBar(title: languageText),

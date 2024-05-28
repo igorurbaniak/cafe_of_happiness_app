@@ -2,11 +2,11 @@ part of 'location_google_map_cubit.dart';
 
 @immutable
 class LocationGoogleMapState {
-  const LocationGoogleMapState({
-    required this.latitude,
-    required this.longitude,
-  });
+  const LocationGoogleMapState({this.mapController});
 
-  final double latitude;
-  final double longitude;
+  final GoogleMapController? mapController;
+
+  LocationGoogleMapState copyWith({GoogleMapController? mapController}) {
+    return LocationGoogleMapState(mapController: mapController ?? this.mapController);
+  }
 }

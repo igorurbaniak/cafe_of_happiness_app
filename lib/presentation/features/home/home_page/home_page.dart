@@ -15,7 +15,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scaffoldKey = GlobalKey<ScaffoldState>();
-
     return Scaffold(
       backgroundColor: Colors.white,
       key: scaffoldKey,
@@ -24,13 +23,13 @@ class HomePage extends StatelessWidget {
         preferredSize: const Size.fromHeight(80),
         child: CustomAppBar(scaffoldKey: scaffoldKey),
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Column(
           children: [
-            const HomeDescription(),
-            const HomeMenuCategory(),
+            HomeDescription(),
+            HomeMenuCategory(),
             ContactInformations(),
-            const LocationGoogleMap(),
+            LocationGoogleMap(),
           ],
         ),
       ),

@@ -58,13 +58,19 @@ class CustomDrawer extends StatelessWidget {
               ),
               title: const Text(
                 'Zaloguj sie aby uprościć proces zamawiania i korzystać z dodatkowych funkcji.',
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
             ),
             const SizedBox(height: 50),
             const Text(
               'Kontakt',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const SizedBox(height: 10),
             Expanded(
@@ -75,51 +81,35 @@ class CustomDrawer extends StatelessWidget {
                   color: Colors.grey.shade300,
                   context: context,
                   tiles: [
-                    ListTile(
-                      leading: const Icon(Icons.phone_in_talk_rounded),
-                      title: const Text(
-                        '555-666-777',
-                        style: TextStyle(fontSize: 12),
-                      ),
-                      onTap: () {},
+                    _buildContactItem(
+                      Icons.phone_in_talk_rounded,
+                      '555-666-777',
+                      () {},
                     ),
-                    ListTile(
-                      leading: const Icon(Icons.mail_sharp),
-                      title: const Text(
-                        'cafe.of.happiness@gmail.com',
-                        style: TextStyle(fontSize: 12),
-                      ),
-                      onTap: () {},
+                    _buildContactItem(
+                      Icons.mail_sharp,
+                      'cafe.of.happiness@gmail.com',
+                      () {},
                     ),
-                    ListTile(
-                      leading: const Icon(Icons.location_on),
-                      title: const Text(
-                        'Drewnowska 58, 91-002 Łódź, Poland',
-                        style: TextStyle(fontSize: 12),
-                      ),
-                      onTap: () {},
-                      trailing: const Icon(Icons.open_in_new),
-                      splashColor: Colors.brown.shade500,
+                    _buildContactItemWithTrailing(
+                      Icons.location_on,
+                      'Drewnowska 58, 91-002 Łódź, Poland',
+                      Icons.open_in_new,
+                      () {},
                     ),
-                    ListTile(
-                      leading: const Icon(Icons.facebook),
-                      title: const Text(
-                        'Facebook',
-                        style: TextStyle(fontSize: 12),
-                      ),
-                      onTap: () {},
-                      trailing: const Icon(Icons.open_in_new),
+                    _buildContactItemWithTrailing(
+                      Icons.facebook,
+                      'Facebook',
+                      Icons.open_in_new,
+                      () {},
                     ),
-                    ListTile(
-                      leading: const Icon(Icons.logout),
-                      title: const Text(
-                        'Logout',
-                        style: TextStyle(fontSize: 12),
-                      ),
-                      onTap: () {
+                    _buildContactItemWithTrailing(
+                      Icons.logout,
+                      'Logout',
+                      Icons.open_in_new,
+                      () {
                         context.read<RootCubit>().signOut();
                       },
-                      trailing: const Icon(Icons.open_in_new),
                     ),
                   ],
                 ).toList(),
@@ -128,6 +118,31 @@ class CustomDrawer extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildContactItem(IconData icon, String text, VoidCallback onTap) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(
+        text,
+        style: const TextStyle(fontSize: 12),
+      ),
+      onTap: onTap,
+    );
+  }
+
+  Widget _buildContactItemWithTrailing(
+      IconData icon, String text, IconData trailingIcon, VoidCallback onTap) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(
+        text,
+        style: const TextStyle(fontSize: 12),
+      ),
+      onTap: onTap,
+      trailing: Icon(trailingIcon),
+      splashColor: Colors.brown.shade500,
     );
   }
 }
