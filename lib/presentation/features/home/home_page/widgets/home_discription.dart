@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class HomeDiscription extends StatelessWidget {
-  const HomeDiscription({super.key});
+class HomeDescription extends StatelessWidget {
+  const HomeDescription({super.key});
 
   @override
   Widget build(BuildContext context) {

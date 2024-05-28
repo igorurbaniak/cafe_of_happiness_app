@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const HomeDiscription(),
+            const HomeDescription(),
             const HomeMenuCategory(),
             ContactInformations(),
             const LocationGoogleMap(),

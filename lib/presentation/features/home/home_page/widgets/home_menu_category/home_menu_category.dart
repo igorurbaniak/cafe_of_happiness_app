@@ -3,7 +3,7 @@ import 'package:cafe_of_happiness_app/data/remote_data_sources/menu_category_dat
 import 'package:cafe_of_happiness_app/domain/repositories/menu_category_repository/menu_category_repository.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/home_menu_category/cubit/home_menu_category_cubit_cubit.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/menu_category_item.dart';
-import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/menu_item_page.dart';
+import 'package:cafe_of_happiness_app/presentation/features/menu_item/dishes_page/menu_item_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';

@@ -1,28 +1,18 @@
 import 'package:cafe_of_happiness_app/domain/models/dish_model/dish_model.dart';
-import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/cubit/menu_item_cubit.dart';
-import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/widgets/dish_details.dart';
-import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/widgets/dish_liked.dart';
+import 'package:cafe_of_happiness_app/presentation/features/menu_item/dishes_page/cubit/dishes_cubit.dart';
+import 'package:cafe_of_happiness_app/presentation/features/menu_item/dishes_page/widgets/dish_details.dart';
+import 'package:cafe_of_happiness_app/presentation/features/menu_item/dishes_page/widgets/dish_liked.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DishMenuItem extends StatelessWidget {
-  const DishMenuItem({
-    super.key,
-    required this.dish,
-    required this.onToggleFavorite,
-  });
+  const DishMenuItem({super.key, required this.dish});
 
   final DishModel dish;
-  final Function(int) onToggleFavorite;
 
   @override
   Widget build(BuildContext context) {
-    final isFavorite =
-        context.read<MenuItemCubit>().state.favoriteDishIds.contains(dish.dishId);
-    final favoriteCounter =
-        context.read<MenuItemCubit>().state.favoriteCounts[dish.dishId] ?? 0;
-
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
       decoration: BoxDecoration(
@@ -35,7 +25,10 @@ class DishMenuItem extends StatelessWidget {
         onTap: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (ctx) => DishDetails(dish: dish),
+              builder: (ctx) => BlocProvider.value(
+                value: context.read<DishesCubit>(),
+                child: DishDetails(dish: dish),
+              ),
             ),
           );
         },
@@ -47,7 +40,7 @@ class DishMenuItem extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Hero(
-                  tag: dish,
+                  tag: 'dish-${dish.dishId}-list',
                   child: Image.asset(
                     dish.dishImage,
                     fit: BoxFit.contain,
@@ -131,6 +124,7 @@ class DishMenuItem extends StatelessWidget {
                       ),
                   ],
                 ),
+                const SizedBox(height: 10),
                 Row(
                   children: [
                     const Icon(
@@ -161,8 +155,6 @@ class DishMenuItem extends StatelessWidget {
                     const Spacer(),
                     DishLiked(
                       dish: dish,
-                      isFavorite: isFavorite,
-                      favoriteCounter: favoriteCounter,
                     ),
                   ],
                 ),

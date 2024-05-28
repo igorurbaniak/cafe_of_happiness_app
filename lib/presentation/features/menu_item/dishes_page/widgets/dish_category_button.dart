@@ -8,7 +8,7 @@ class DishCategoryButton extends StatelessWidget {
   });
 
   final String categoryTitle;
-  final Function() onTap;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {

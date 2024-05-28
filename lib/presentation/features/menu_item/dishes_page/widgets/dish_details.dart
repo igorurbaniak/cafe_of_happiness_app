@@ -1,8 +1,7 @@
 import 'package:cafe_of_happiness_app/domain/models/dish_model/dish_model.dart';
-import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/cubit/menu_item_cubit.dart';
-import 'package:cafe_of_happiness_app/presentation/features/menu_item/menu_item_page/widgets/dish_liked.dart';
+import 'package:cafe_of_happiness_app/presentation/features/menu_item/dishes_page/widgets/dish_liked.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DishDetails extends StatelessWidget {
   const DishDetails({super.key, required this.dish});
@@ -18,11 +17,11 @@ class DishDetails extends StatelessWidget {
         child: Column(
           children: [
             Hero(
-              tag: dish,
+              tag: 'dish-${dish.dishId}-detail',
               child: Image.asset(
                 dish.dishImage,
                 fit: BoxFit.contain,
-                height: 300,
+                height: 260,
                 width: double.infinity,
               ),
             ),
@@ -43,16 +42,18 @@ class DishDetails extends StatelessWidget {
                 color: Colors.brown,
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 15),
             SizedBox(
               width: double.infinity,
-              height: 100,
+              height: 120,
               child: Text(
                 dish.dishIngredients,
                 style: const TextStyle(fontSize: 18),
+                maxLines: 5,
+                overflow: TextOverflow.fade,
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -62,9 +63,11 @@ class DishDetails extends StatelessWidget {
                     const SizedBox(height: 5),
                     Text(
                       '${dish.dishCookTime}min',
-                      style: const TextStyle(fontSize: 18),
+                      style: const TextStyle(
+                        fontSize: 18,
+                      ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 30),
                     Icon(
                       dish.isDishRecommended
                           ? Icons.thumb_up_alt
@@ -74,54 +77,60 @@ class DishDetails extends StatelessWidget {
                     const SizedBox(height: 5),
                     const Text(
                       'Polecany',
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
                     ),
                   ],
                 ),
                 Column(
                   children: [
                     if (dish.isDishNew)
-                      const Row(
+                      Row(
                         children: [
                           Icon(
                             Icons.local_fire_department,
-                            size: 22,
-                            color: Colors.red,
+                            size: 20,
+                            color: Colors.red.shade600,
                           ),
-                          SizedBox(width: 5),
+                          const SizedBox(width: 5),
                           Text(
                             'Nowość',
                             style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.red,
+                              fontSize: 16,
+                              color: Colors.red.shade600,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ],
                       ),
-                    const SizedBox(height: 40),
+                    if (dish.isDishVegetarian)
+                      Row(
+                        children: [
+                          FaIcon(
+                            FontAwesomeIcons.leaf,
+                            size: 20,
+                            color: Colors.green.shade800,
+                          ),
+                          const SizedBox(width: 5),
+                          Text(
+                            'Vege',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.green.shade800,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    (dish.isDishNew && dish.isDishVegetarian)
+                        ? const SizedBox(height: 30)
+                        : const SizedBox(height: 50),
                     SizedBox(
                       height: 50,
                       width: 90,
-                      child: BlocBuilder<MenuItemCubit, MenuItemState>(
-                        builder: (context, state) {
-                          final isFavorite = context
-                              .read<MenuItemCubit>()
-                              .state
-                              .favoriteDishIds
-                              .contains(dish.dishId);
-                          final favoriteCounter = context
-                                  .read<MenuItemCubit>()
-                                  .state
-                                  .favoriteCounts[dish.dishId] ??
-                              0;
-
-                          return DishLiked(
-                            dish: dish,
-                            isFavorite: isFavorite,
-                            favoriteCounter: favoriteCounter,
-                          );
-                        },
+                      child: DishLiked(
+                        dish: dish,
                       ),
                     ),
                   ],

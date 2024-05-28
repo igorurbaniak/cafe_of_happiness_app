@@ -8,7 +8,7 @@ class DishCategoryTitle extends StatelessWidget {
     required this.categoryTimer,
   });
 
-  final GlobalKey<State<StatefulWidget>> dishCategoryKey;
+  final GlobalKey dishCategoryKey;
   final String categoryTitle;
   final String categoryTimer;
 
