@@ -5,14 +5,10 @@ Application status: in development
 An application that allows you to check the menu of available meals, their price, description and other information. Potential customer of the cafe (user of the application) based on the QR code given on the table and available elsewhere in the store to review all items on the menu of the cafe.
 
 To be added in the near future:
-- changing all language content to 4 different ones (PL, EN, ES, UK) after language change, systemically and on button,
-- refinement of the view when you go to the category of dishes (depending on the meal : breakfast, lunch, sweet)
-- changing the view after the user logs into the application (available functionalities or hiding after login),
-- using more data belonging to individual dishes (switch widgets in settings),
 - adding more functionality to buttons (go to phone number when clicked, etc.),
-- using and learning other available packages supported by Dart/Flutter (SQLite, Hive, go_router and others :D) 
+- changing the view after the user logs into the application (available functionalities or hiding after login),
+- changing all language content to 4 different ones (PL, EN, ES, UK) after language change, systemically and on button,
 - adding tests
-- using the available REST API,
 
 
 <p float="left">
@@ -41,11 +37,11 @@ To be added in the near future:
 </p>
 
 <p float="left">
-<img src="https://github.com/igorurbaniak/cafe_of_happiness_app/assets/106092123/66a631ae-b89f-4910-9db8-09a1f6e9f9f6.png" width="300" height="600" />
-<img src="https://github.com/igorurbaniak/cafe_of_happiness_app/assets/106092123/1d0c6bf1-5429-492b-bc9f-89c5321e9447.png" width="300" height="600" />
+<img src="https://github.com/igorurbaniak/cafe_of_happiness_app/assets/106092123/dfa33139-28e9-4d5c-92c3-6c52324c6327.png" width="300" height="600" />
+<img src="https://github.com/igorurbaniak/cafe_of_happiness_app/assets/106092123/1ffa5e6d-d124-41c5-a920-d47556e361d6.png" width="300" height="600" />
 </p>
 
 <p float="left">
-<img src="https://github.com/igorurbaniak/cafe_of_happiness_app/assets/106092123/034543bd-b5ba-482a-8589-6f0508c03633.png" width="300" height="600" />
-<img src="https://github.com/igorurbaniak/cafe_of_happiness_app/assets/106092123/a48693f5-4c1b-4cdf-9e66-c14671ab90a5.png" width="300" height="600" />
+<img src="https://github.com/igorurbaniak/cafe_of_happiness_app/assets/106092123/923a9dac-baa1-4e0a-8eb9-a803c4201964.png" width="300" height="600" />
+<img src="https://github.com/igorurbaniak/cafe_of_happiness_app/assets/106092123/2f9a60bc-593f-447a-8dff-2ec8deb64c96.png" width="300" height="600" />
 </p>
