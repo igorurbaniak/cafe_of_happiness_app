@@ -5,6 +5,7 @@ Application status: in development
 An application that allows you to check the menu of available meals, their price, description and other information. Potential customer of the cafe (user of the application) based on the QR code given on the table and available elsewhere in the store to review all items on the menu of the cafe.
 
 To be added in the near future:
+- improvement of small bugs with display/operation ,
 - adding more functionality to buttons (go to phone number when clicked, etc.),
 - changing the view after the user logs into the application (available functionalities or hiding after login),
 - changing all language content to 4 different ones (PL, EN, ES, UK) after language change, systemically and on button,
