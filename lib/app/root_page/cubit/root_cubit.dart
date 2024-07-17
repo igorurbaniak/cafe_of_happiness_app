@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'root_state.dart';
 
@@ -30,29 +29,29 @@ class RootCubit extends Cubit<RootState> {
       ),
     );
 
-    _streamSubscription =
-        FirebaseAuth.instance.authStateChanges().listen((user) {
-      emit(
-        RootState(
-          user: user,
-          isLoading: false,
-          errorMessage: '',
-          isLogged: true,
-          status: Status.success,
-        ),
-      );
-    })
-          ..onError((error) {
-            emit(
-              RootState(
-                user: null,
-                isLoading: false,
-                errorMessage: error.toString(),
-                isLogged: false,
-                status: Status.error,
-              ),
-            );
-          });
+    _streamSubscription = FirebaseAuth.instance.authStateChanges().listen(
+      (user) {
+        emit(
+          RootState(
+            user: user,
+            isLoading: false,
+            errorMessage: '',
+            isLogged: true,
+            status: Status.success,
+          ),
+        );
+      },
+    )..onError((error) {
+        emit(
+          RootState(
+            user: null,
+            isLoading: false,
+            errorMessage: error.toString(),
+            isLogged: false,
+            status: Status.error,
+          ),
+        );
+      });
   }
 
   Future<void> signOut() async {

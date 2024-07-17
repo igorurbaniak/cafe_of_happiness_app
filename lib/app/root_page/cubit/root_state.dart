@@ -1,6 +1,5 @@
 part of 'root_cubit.dart';
 
-@immutable
 class RootState {
   const RootState({
     required this.user,

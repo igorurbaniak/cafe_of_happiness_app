@@ -1,14 +1,14 @@
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/login_page.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/pages/search_dish_page/search_dish_page.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/pages/select_language_page/select_language_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({
-    super.key,
-    required this.scaffoldKey,
-  });
+  const CustomAppBar(
+      {super.key, required this.scaffoldKey, required this.user});
 
+  final User? user;
   final GlobalKey<ScaffoldState> scaffoldKey;
 
   @override
@@ -25,21 +25,23 @@ class CustomAppBar extends StatelessWidget {
         Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 20),
-            ),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const SizedBox(width: 20),
-                _buildLanguageButton(context, languageText),
-                const SizedBox(width: 10),
-                _buildIconButton(
+                if (user == null || user != null) const SizedBox(width: 20),
+                _buildLanguageButton(
                   context,
-                  const Icon(Icons.person, size: 20),
-                  const LoginPage(),
+                  languageText,
                 ),
-                const SizedBox(width: 10),
+                const SizedBox(width: 5),
+                if (user == null)
+                  _buildIconButton(
+                    context,
+                    const Icon(Icons.person, size: 20),
+                    const LoginPage(),
+                  ),
+                const SizedBox(width: 5),
                 _buildIconButton(
                   context,
                   const Icon(Icons.search, size: 20),

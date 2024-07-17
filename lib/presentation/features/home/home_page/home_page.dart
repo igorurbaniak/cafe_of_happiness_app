@@ -1,6 +1,6 @@
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/contact_informations.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/custom_appbar.dart';
-import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/custom_drawer.dart';
+import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/custom_drawer/custom_drawer.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/home_discription.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/home_menu_category/home_menu_category.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/location_google_map/location_input.dart';
@@ -18,10 +18,10 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       key: scaffoldKey,
-      drawer: const CustomDrawer(),
+      drawer: CustomDrawer(user: user),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(80),
-        child: CustomAppBar(scaffoldKey: scaffoldKey),
+        child: CustomAppBar(user: user, scaffoldKey: scaffoldKey),
       ),
       body: const SingleChildScrollView(
         child: Column(

@@ -1,4 +1,5 @@
 import 'package:cafe_of_happiness_app/app/custom_widgets/back_appbar.dart';
+import 'package:cafe_of_happiness_app/app/root_page/cubit/root_cubit.dart';
 import 'package:cafe_of_happiness_app/data/repositories/auth_repository/auth_repository.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/back_home_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/create_new_account_button.dart';
@@ -84,6 +85,8 @@ class _LoginPageState extends State<LoginPage> {
                       context
                           .read<AuthCubit>()
                           .signIn(email: email!, password: password!);
+                      context.read<RootCubit>().start();
+                      Navigator.of(context).pop();
                     },
                   ),
                   const SizedBox(height: 20),

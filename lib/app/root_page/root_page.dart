@@ -37,11 +37,12 @@ class RootPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<RootCubit, RootState>(
       builder: (context, state) {
-        final user = state.user;
-        if (user == null) {
-          return HomePage(user: user);
+        if (state.isLoading) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         }
-        return HomePage(user: user);
+        return HomePage(user: state.user);
       },
     );
   }
