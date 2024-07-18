@@ -1,3 +1,4 @@
+import 'package:cafe_of_happiness_app/app/core/themes/cubit/theme_cubit.dart';
 import 'package:cafe_of_happiness_app/app/root_page/cubit/root_cubit.dart';
 import 'package:cafe_of_happiness_app/app/root_page/root_page.dart';
 import 'package:cafe_of_happiness_app/data/remote_data_sources/dishes_remote_data_source/dishes_remote_data_source.dart';
@@ -20,6 +21,9 @@ void main() async {
   runApp(
     MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => ThemeCubit(),
+        ),
         BlocProvider(
           create: (context) => RootCubit()..start(),
         ),

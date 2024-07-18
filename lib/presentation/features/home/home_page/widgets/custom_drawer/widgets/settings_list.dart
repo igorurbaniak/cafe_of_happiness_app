@@ -1,3 +1,4 @@
+import 'package:cafe_of_happiness_app/app/core/themes/cubit/theme_cubit.dart';
 import 'package:cafe_of_happiness_app/app/root_page/cubit/root_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -18,9 +19,22 @@ class SettingsList extends StatelessWidget {
         color: Colors.grey.shade300,
         context: context,
         tiles: [
-          _buildSettingsItem(context, Icons.dark_mode, 'Dark mode', Icons.toggle_on_outlined, () {}),
+          BlocBuilder<ThemeCubit, ThemeState>(
+            builder: (context, state) {
+              return _buildSettingsItem(
+                  context,
+                  Icons.dark_mode,
+                  'Dark mode',
+                  state.themeData.brightness == Brightness.dark
+                      ? Icons.toggle_on
+                      : Icons.toggle_off, () {
+                context.read<ThemeCubit>().toggleTheme();
+              });
+            },
+          ),
           if (user != null)
-            _buildSettingsItem(context, Icons.logout, 'Logout', Icons.open_in_new, () {
+            _buildSettingsItem(
+                context, Icons.logout, 'Logout', Icons.open_in_new, () {
               context.read<RootCubit>().signOut();
             }),
         ],
@@ -28,7 +42,8 @@ class SettingsList extends StatelessWidget {
     );
   }
 
-  Widget _buildSettingsItem(BuildContext context, IconData icon, String text, IconData trailingIcon, VoidCallback onTap) {
+  Widget _buildSettingsItem(BuildContext context, IconData icon, String text,
+      IconData trailingIcon, VoidCallback onTap) {
     return ListTile(
       leading: Icon(icon),
       title: Text(
