@@ -95,9 +95,9 @@ class _LoginPageState extends State<LoginPage> {
                   const GoogleButton(),
                   const SizedBox(height: 40),
                   const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CreateNewAccountButton(),
-                      SizedBox(width: 24),
                       BackHomeButton(),
                     ],
                   ),

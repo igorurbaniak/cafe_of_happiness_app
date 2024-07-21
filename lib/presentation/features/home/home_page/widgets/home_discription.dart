@@ -7,6 +7,7 @@ class HomeDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Theme.of(context).colorScheme.surface,
       height: 200,
       padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
       child: Stack(
@@ -15,10 +16,7 @@ class HomeDescription extends StatelessWidget {
             top: 20,
             child: Text(
               AppLocalizations.of(context)!.cafe_of_happines,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 22,
-              ),
+              style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
           Positioned(
@@ -28,12 +26,11 @@ class HomeDescription extends StatelessWidget {
             ),
           ),
           const Positioned(
-            top: 5,
-            right: 35,
+            right: 25,
             child: Image(
               image: AssetImage('images/coffee_logo.png'),
-              width: 80,
-              height: 80,
+              width: 90,
+              height: 90,
             ),
           ),
           Positioned(

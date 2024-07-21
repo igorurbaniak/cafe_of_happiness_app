@@ -1,3 +1,4 @@
+import 'package:cafe_of_happiness_app/app/custom_widgets/back_appbar.dart';
 import 'package:cafe_of_happiness_app/data/repositories/auth_repository/auth_repository.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/forgot_password_page/widgets/reset_password_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/forgot_password_page/widgets/reset_password_email_input.dart';
@@ -20,7 +21,7 @@ class ForgotPassword extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: const Text(
-                  'Pomyślnie wysłano link! Sprawdź swoją pocztę.',
+                  'Successfully sent link! Check your email.',
                   style: TextStyle(),
                 ),
                 backgroundColor: Theme.of(context).colorScheme.tertiary,
@@ -41,9 +42,7 @@ class ForgotPassword extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             resizeToAvoidBottomInset: false,
-            appBar: AppBar(
-              title: const Text('Reset your password'),
-            ),
+            appBar: const BackAppBar(title: 'Reset your password'),
             body: Container(
               padding: const EdgeInsets.only(top: 80, left: 40, right: 40),
               child: Column(
@@ -70,7 +69,9 @@ class ForgotPassword extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 50),
-                  ResetPasswordEmailInput(emailController: emailController,),
+                  ResetPasswordEmailInput(
+                    emailController: emailController,
+                  ),
                   ResetPasswordButton(
                     emailController: emailController,
                     forgotPasswordPressed: () {
