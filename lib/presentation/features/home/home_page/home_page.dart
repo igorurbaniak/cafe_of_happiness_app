@@ -1,4 +1,4 @@
-import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/contact_informations.dart';
+import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/contact_informations/contact_informations.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/custom_appbar.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/custom_drawer/custom_drawer.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/home_discription.dart';

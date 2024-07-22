@@ -1,4 +1,4 @@
-import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/custom_drawer/widgets/contact_list.dart';
+import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/custom_drawer/widgets/contact_us.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/custom_drawer/widgets/logged_in_drawer.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/custom_drawer/widgets/logged_out_drawer.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/custom_drawer/widgets/section_title.dart';
@@ -27,7 +27,7 @@ class CustomDrawer extends StatelessWidget {
               else
                 const LoggedOutDrawer(),
               const SectionTitleDrawer(title: 'Contact us'),
-              const ContactList(),
+              const ContactUs(),
               const SizedBox(height: 50),
               const SectionTitleDrawer(title: 'Settings'),
               SettingsList(user: user),
