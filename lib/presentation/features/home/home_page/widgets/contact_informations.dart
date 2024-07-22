@@ -1,3 +1,5 @@
+import 'package:cafe_of_happiness_app/app/core/themes/dark_theme.dart';
+import 'package:cafe_of_happiness_app/app/core/themes/theme_light.dart';
 import 'package:cafe_of_happiness_app/data/data_sources/cafe_contacts_data/cafe_contacts_data.dart';
 import 'package:cafe_of_happiness_app/domain/models/cafe_contacts_model/cafe_contacts_model.dart';
 import 'package:flutter/material.dart';
@@ -38,17 +40,30 @@ class _ContactInformationsState extends State<ContactInformations> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 10),
-        _buildContactsList(),
-        const Divider(
-          color: Colors.black12,
-          thickness: 1.5,
-        ),
-        const SizedBox(height: 15),
-        _buildContactDetails(context),
-      ],
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    return Container(
+      color: Theme.of(context).colorScheme.surface,
+      child: Column(
+        children: [
+          const SizedBox(height: 10),
+          _buildContactsList(),
+          const SizedBox(height: 10),
+          Divider(
+            color: isDarkMode
+                ? ThemeDark.accentColorDark
+                : ThemeLight.accentColorLight,
+            thickness: 1.5,
+          ),
+          const SizedBox(height: 10),
+          _buildContactDetails(context),
+          Divider(
+            color: isDarkMode
+                ? ThemeDark.accentColorDark
+                : ThemeLight.accentColorLight,
+            thickness: 1.5,
+          ),
+        ],
+      ),
     );
   }
 
@@ -67,7 +82,7 @@ class _ContactInformationsState extends State<ContactInformations> {
     return Card(
       margin: EdgeInsets.zero,
       elevation: 0,
-      color: Colors.white,
+      color: Theme.of(context).colorScheme.surface,
       child: ListTile(
         onTap: () {},
         leading: Container(
@@ -85,17 +100,11 @@ class _ContactInformationsState extends State<ContactInformations> {
             const SizedBox(height: 5),
             Text(
               contact.contactInformation,
-              style: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-              ),
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
             Text(
               contact.contactDetailInformation,
-              style: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-              ),
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
           ],
         ),
@@ -115,21 +124,16 @@ class _ContactInformationsState extends State<ContactInformations> {
               children: [
                 Text(
                   AppLocalizations.of(context)!.contact_details,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
                 SelectableText(
                   AppLocalizations.of(context)!.drewnowska_street,
+                  style: Theme.of(context).textTheme.headlineMedium,
                 ),
-                const SizedBox(height: 25),
+                const SizedBox(height: 35),
                 Text(
                   AppLocalizations.of(context)!.we_in_social_media,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
               ],
             ),
@@ -137,14 +141,14 @@ class _ContactInformationsState extends State<ContactInformations> {
         ),
         Align(
           widthFactor: 3.1,
-          alignment: Alignment.centerLeft,
+          alignment: Alignment.topLeft,
           child: TextButton.icon(
             onPressed: () => _launchUrl(),
             icon: const Icon(Icons.facebook),
-            label: const Text('Facebook'),
+            label:
+                Text('Facebook', style: Theme.of(context).textTheme.titleSmall),
           ),
         ),
-        const SizedBox(height: 10),
       ],
     );
   }

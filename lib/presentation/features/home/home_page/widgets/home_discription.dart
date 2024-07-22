@@ -23,6 +23,7 @@ class HomeDescription extends StatelessWidget {
             top: 50,
             child: Text(
               AppLocalizations.of(context)!.cafetria,
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
           ),
           const Positioned(
@@ -39,6 +40,7 @@ class HomeDescription extends StatelessWidget {
               width: MediaQuery.of(context).size.width - 40,
               child: Text(
                 AppLocalizations.of(context)!.place_where_coffee_tastes,
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
             ),
           ),

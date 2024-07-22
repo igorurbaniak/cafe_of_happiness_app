@@ -24,7 +24,7 @@ class ForgotPassword extends StatelessWidget {
                   'Successfully sent link! Check your email.',
                   style: TextStyle(),
                 ),
-                backgroundColor: Theme.of(context).colorScheme.tertiary,
+                backgroundColor: Theme.of(context).colorScheme.outline,
               ),
             );
           }
@@ -34,7 +34,7 @@ class ForgotPassword extends StatelessWidget {
                 content: Text(
                   state.errorMessage,
                 ),
-                backgroundColor: Theme.of(context).colorScheme.tertiary,
+                backgroundColor: Theme.of(context).colorScheme.error,
               ),
             );
           }

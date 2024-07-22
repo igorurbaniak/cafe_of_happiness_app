@@ -21,7 +21,8 @@ class _LocationLocationGoogleMapState extends State<LocationGoogleMap> {
   }
 
   late GoogleMapController mapController;
-  final LatLng _manufakturaLocation = const LatLng(51.77930448825803, 19.444913339232958);
+  final LatLng _manufakturaLocation =
+      const LatLng(51.77930448825803, 19.444913339232958);
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -30,16 +31,13 @@ class _LocationLocationGoogleMapState extends State<LocationGoogleMap> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             AppLocalizations.of(context)!.our_location,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(height: 5),
           Column(
@@ -73,12 +71,15 @@ class _LocationLocationGoogleMapState extends State<LocationGoogleMap> {
                 width: double.infinity,
                 child: ElevatedButton.icon(
                   onPressed: _launchUrl,
-                  icon: const Icon(Icons.info_outline),
+                  icon: Icon(Icons.route_rounded,
+                      color: Theme.of(context).colorScheme.onTertiaryContainer),
                   label: Text(
-                      AppLocalizations.of(context)!.find_out_how_to_get_here),
+                    AppLocalizations.of(context)!.find_out_how_to_get_here,
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
                   style: ElevatedButton.styleFrom(
                     elevation: 0,
-                    backgroundColor: Colors.white,
+                    backgroundColor: Theme.of(context).colorScheme.onTertiary,
                     shape: RoundedRectangleBorder(
                       side: BorderSide(
                         color: Colors.grey.shade300,

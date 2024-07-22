@@ -17,20 +17,22 @@ class MenuCategoryItem extends StatelessWidget {
       onTap: onSelectCategory,
       child: Card(
         shape: RoundedRectangleBorder(
-          side: BorderSide(color: Colors.grey.shade200, width: 1),
+          side: BorderSide(
+              color: Theme.of(context).colorScheme.secondary, width: 1),
           borderRadius: BorderRadius.circular(8),
         ),
         shadowColor: Colors.grey.shade100,
         elevation: 0.3,
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surface,
         child: ListTile(
           title: Text(
             menuCategoryModel.title,
-            style: const TextStyle(fontWeight: FontWeight.w500),
+            style: Theme.of(context).textTheme.headlineLarge,
           ),
-          trailing: const Icon(
+          trailing: Icon(
             Icons.keyboard_arrow_right,
             size: 30,
+            color: Theme.of(context).colorScheme.secondary,
           ),
         ),
       ),

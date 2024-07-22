@@ -1,4 +1,6 @@
 import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
+import 'package:cafe_of_happiness_app/app/core/themes/dark_theme.dart';
+import 'package:cafe_of_happiness_app/app/core/themes/theme_light.dart';
 import 'package:cafe_of_happiness_app/data/remote_data_sources/menu_category_data_source/menu_category_data_source.dart';
 import 'package:cafe_of_happiness_app/domain/repositories/menu_category_repository/menu_category_repository.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/home_menu_category/cubit/home_menu_category_cubit_cubit.dart';
@@ -13,34 +15,43 @@ class HomeMenuCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      color: Colors.grey.shade100,
+      color:
+          isDarkMode ? ThemeDark.accentColorDark : ThemeLight.accentColorLight,
       padding: const EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 20),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         children: [
           const HomeMenuHeader(),
           const SizedBox(height: 10),
           BlocProvider(
             create: (context) => MenuCategoryCubit(
               menuCategoryRepository: MenuCategoryRepository(
-                menuCategoryRemoteDioDataSource: MenuCategoryRemoteDioDataSource(),
+                menuCategoryRemoteDioDataSource:
+                    MenuCategoryRemoteDioDataSource(),
               ),
             )..loadMenuCategories(),
             child: BlocBuilder<MenuCategoryCubit, MenuCategoryState>(
               builder: (context, state) {
                 switch (state.status) {
                   case Status.initial:
-                    return const Center(child: Text('Please wait, loading in progress...'));
+                    return Center(
+                      child: Text(
+                        'Please wait, loading in progress...',
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                    );
                   case Status.loading:
                     return const HomeMenuShimmerLoading();
                   case Status.success:
-                    return HomeMenuCategoryList(menuCategories: state.menuCategories);
+                    return HomeMenuCategoryList(
+                        menuCategories: state.menuCategories);
                   case Status.error:
                     return Center(
                       child: Text(
                         state.errorMessage ?? 'Unknown error',
-                        style: TextStyle(color: Theme.of(context).colorScheme.error),
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.error),
                       ),
                     );
                 }

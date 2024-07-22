@@ -5,28 +5,25 @@ class HomeMenuHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Expanded(
           child: Divider(
-            color: Colors.black12,
+            color: isDarkMode ? Colors.white12 : Colors.black12,
             thickness: 1.5,
           ),
         ),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         Text(
           'MENU:',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
-            color: Colors.black54,
-          ),
+          style: Theme.of(context).textTheme.displayMedium,
         ),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         Expanded(
           child: Divider(
-            color: Colors.black12,
+            color: isDarkMode ? Colors.white12 : Colors.black12,
             thickness: 1.5,
           ),
         ),
