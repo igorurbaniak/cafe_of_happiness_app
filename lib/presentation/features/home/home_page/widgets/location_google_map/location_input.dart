@@ -39,60 +39,57 @@ class _LocationLocationGoogleMapState extends State<LocationGoogleMap> {
             AppLocalizations.of(context)!.our_location,
             style: Theme.of(context).textTheme.titleMedium,
           ),
-          const SizedBox(height: 5),
-          Column(
-            children: [
-              const SizedBox(height: 5),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: SizedBox(
-                  height: 200,
-                  width: double.infinity,
-                  child: GoogleMap(
-                    onMapCreated: _onMapCreated,
-                    initialCameraPosition: CameraPosition(
-                      target: _manufakturaLocation,
-                      zoom: 15,
-                    ),
-                    markers: {
-                      Marker(
-                        markerId: const MarkerId('Manufaktura'),
-                        position: _manufakturaLocation,
-                        infoWindow:
-                            const InfoWindow(title: 'Drewnowska Street 58'),
-                      ),
-                    },
-                  ),
+          const SizedBox(height: 10),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: SizedBox(
+              height: 200,
+              width: double.infinity,
+              child: GoogleMap(
+                myLocationEnabled: true,
+                trafficEnabled: true,
+                compassEnabled: true,
+                onMapCreated: _onMapCreated,
+                initialCameraPosition: CameraPosition(
+                  target: _manufakturaLocation,
+                  zoom: 14,
                 ),
-              ),
-              const SizedBox(height: 30),
-              SizedBox(
-                height: 45,
-                width: double.infinity,
-                child: ElevatedButton.icon(
-                  onPressed: _launchUrl,
-                  icon: Icon(Icons.route_rounded,
-                      color: Theme.of(context).colorScheme.onTertiaryContainer),
-                  label: Text(
-                    AppLocalizations.of(context)!.find_out_how_to_get_here,
-                    style: Theme.of(context).textTheme.headlineMedium,
+                markers: {
+                  Marker(
+                    markerId: const MarkerId('Manufaktura'),
+                    position: _manufakturaLocation,
+                    infoWindow: const InfoWindow(title: 'Drewnowska Street 58'),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    backgroundColor: Theme.of(context).colorScheme.onTertiary,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        color: Colors.grey.shade300,
-                        width: 0.6,
-                      ),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                ),
+                },
               ),
-              const SizedBox(height: 30),
-            ],
+            ),
           ),
+          const SizedBox(height: 30),
+          SizedBox(
+            height: 45,
+            width: double.infinity,
+            child: ElevatedButton.icon(
+              onPressed: _launchUrl,
+              icon: Icon(Icons.route_rounded,
+                  color: Theme.of(context).colorScheme.onTertiaryContainer),
+              label: Text(
+                AppLocalizations.of(context)!.find_out_how_to_get_here,
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              style: ElevatedButton.styleFrom(
+                elevation: 0,
+                backgroundColor: Theme.of(context).colorScheme.onTertiary,
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                    color: Colors.grey.shade300,
+                    width: 0.6,
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 30),
         ],
       ),
     );
