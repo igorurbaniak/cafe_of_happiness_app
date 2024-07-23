@@ -8,7 +8,7 @@ class HomeMenuShimmerLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
       baseColor: Colors.grey.shade300,
-      highlightColor: Colors.grey.shade100,
+      highlightColor: Theme.of(context).colorScheme.onPrimaryContainer,
       child: ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,

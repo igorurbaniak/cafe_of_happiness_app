@@ -4,10 +4,11 @@ import 'package:shimmer/shimmer.dart';
 class DishesShimmerLoading extends StatelessWidget {
   const DishesShimmerLoading({Key? key}) : super(key: key);
 
-  Widget _buildShimmerPlaceholder({required double width, required double height}) {
+  Widget _buildShimmerPlaceholder(BuildContext context,
+      {required double width, required double height}) {
     return Shimmer.fromColors(
       baseColor: Colors.grey.shade300,
-      highlightColor: Colors.grey.shade100,
+      highlightColor: Theme.of(context).colorScheme.onPrimaryContainer,
       child: Container(
         width: width,
         height: height,
@@ -25,7 +26,7 @@ class DishesShimmerLoading extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
           child: Row(
             children: [
-              _buildShimmerPlaceholder(width: 80.0, height: 30.0),
+              _buildShimmerPlaceholder(context ,width: 80.0, height: 30.0),
             ],
           ),
         ),
@@ -42,16 +43,19 @@ class DishesShimmerLoading extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildShimmerPlaceholder(width: double.infinity, height: 20.0),
+                      _buildShimmerPlaceholder(
+                          context ,width: double.infinity, height: 20.0),
                       const SizedBox(height: 5),
-                      _buildShimmerPlaceholder(width: double.infinity, height: 30.0),
+                      _buildShimmerPlaceholder(
+                          context ,width: double.infinity, height: 30.0),
                       const SizedBox(height: 5),
-                      _buildShimmerPlaceholder(width: double.infinity, height: 40.0),
+                      _buildShimmerPlaceholder(
+                          context ,width: double.infinity, height: 40.0),
                     ],
                   ),
                 ),
                 const SizedBox(width: 10),
-                _buildShimmerPlaceholder(width: 100.0, height: 100.0),
+                _buildShimmerPlaceholder(context ,width: 100.0, height: 100.0),
               ],
             ),
           ),

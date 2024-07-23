@@ -21,7 +21,7 @@ class MenuCategoryItem extends StatelessWidget {
               color: Theme.of(context).colorScheme.secondary, width: 1),
           borderRadius: BorderRadius.circular(8),
         ),
-        shadowColor: Colors.grey.shade100,
+        shadowColor: Theme.of(context).colorScheme.onPrimaryContainer,
         elevation: 0.3,
         color: Theme.of(context).colorScheme.surface,
         child: ListTile(

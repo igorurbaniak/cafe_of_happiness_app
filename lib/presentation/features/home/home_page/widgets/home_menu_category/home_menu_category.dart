@@ -1,6 +1,4 @@
 import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
-import 'package:cafe_of_happiness_app/app/core/themes/dark_theme.dart';
-import 'package:cafe_of_happiness_app/app/core/themes/theme_light.dart';
 import 'package:cafe_of_happiness_app/data/remote_data_sources/menu_category_data_source/menu_category_data_source.dart';
 import 'package:cafe_of_happiness_app/domain/repositories/menu_category_repository/menu_category_repository.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/home_menu_category/cubit/home_menu_category_cubit_cubit.dart';
@@ -15,10 +13,8 @@ class HomeMenuCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      color:
-          isDarkMode ? ThemeDark.accentColorDark : ThemeLight.accentColorLight,
+      color: Theme.of(context).colorScheme.onPrimary,
       padding: const EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 20),
       child: Column(
         children: [

@@ -27,7 +27,8 @@ class HomeDescription extends StatelessWidget {
             ),
           ),
           const Positioned(
-            right: 25,
+            top: -5,
+            right: 5,
             child: Image(
               image: AssetImage('images/coffee_logo.png'),
               width: 90,

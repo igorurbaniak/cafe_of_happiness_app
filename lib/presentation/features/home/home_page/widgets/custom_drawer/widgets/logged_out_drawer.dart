@@ -8,62 +8,55 @@ class LoggedOutDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _buildUserCard(context),
+        Card(
+          margin: EdgeInsets.zero,
+          elevation: 0,
+          color: Theme.of(context).colorScheme.onTertiary,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(width: 1, color: Colors.grey.shade300),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: ListTile(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (ctx) => const LoginPage(),
+                ),
+              );
+            },
+            leading: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6),
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+              ),
+              height: 40,
+              width: 40,
+              child: const Icon(Icons.person),
+            ),
+            title: Text(
+              'Sign in',
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
+            trailing: const Icon(
+              Icons.arrow_right_sharp,
+              size: 30,
+            ),
+          ),
+        ),
         const SizedBox(height: 10),
-        _buildInfoTile(
-          'Login to simplify the ordering process and use additional features.',
+        ListTile(
+          tileColor: Theme.of(context).colorScheme.onTertiary,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(width: 1, color: Colors.grey.shade300),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          title: Text(
+            'Login to simplify the ordering process and use additional features.',
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
         ),
         const SizedBox(height: 50),
       ],
-    );
-  }
-
-  Widget _buildUserCard(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.zero,
-      elevation: 0,
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
-        side: BorderSide(width: 1, color: Colors.grey.shade300),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: ListTile(
-        onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (ctx) => const LoginPage()),
-          );
-        },
-        leading: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(6),
-            color: Colors.grey.shade100,
-          ),
-          height: 40,
-          width: 40,
-          child: const Icon(Icons.person),
-        ),
-        title: const Text(
-          'Sign in',
-          style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-        ),
-        trailing: const Icon(
-          Icons.arrow_right_sharp,
-          size: 30,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildInfoTile(String title) {
-    return ListTile(
-      shape: RoundedRectangleBorder(
-        side: BorderSide(width: 1, color: Colors.grey.shade300),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      title: Text(
-        title,
-        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
-      ),
     );
   }
 }

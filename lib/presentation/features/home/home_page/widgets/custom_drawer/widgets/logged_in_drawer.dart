@@ -1,4 +1,3 @@
-import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -11,18 +10,22 @@ class LoggedInDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _buildUserCard(context, 'Welcome, ${user.email}!'),
+        _buildUserCard(context, 'Welcome Tomek! 😊'),
         const SizedBox(height: 10),
         _buildInfoTile(
-          'Apply to the buffet, give the expediter today\'s promo code and get your second coffee today free!',
+          context,
+          'Apply to the buffet, give the expediter today\'s promo code and get your second coffee for free!',
         ),
         const SizedBox(height: 10),
         _buildInfoTile(
+          context,
           'EURO2024',
-          trailing: const Icon(Icons.sports_soccer),
-          alignment: ListTileTitleAlignment.center,
+          trailing: Icon(
+            Icons.sports_soccer,
+            color: Theme.of(context).iconTheme.color,
+          ),
         ),
-        const SizedBox(height: 50),
+        const SizedBox(height: 40),
       ],
     );
   }
@@ -31,45 +34,37 @@ class LoggedInDrawer extends StatelessWidget {
     return Card(
       margin: EdgeInsets.zero,
       elevation: 0,
-      color: Colors.white,
+      color: Theme.of(context).colorScheme.onTertiary,
       shape: RoundedRectangleBorder(
         side: BorderSide(width: 1, color: Colors.grey.shade300),
         borderRadius: BorderRadius.circular(8),
       ),
       child: ListTile(
-        onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (ctx) => const LoginPage()),
-          );
-        },
         leading: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
-            color: Colors.grey.shade100,
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
           ),
           height: 40,
           width: 40,
-          child: const Icon(Icons.person),
+          child: Icon(Icons.person, color: Colors.grey.shade400),
         ),
         title: Text(
           title,
-          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+          style: Theme.of(context).textTheme.titleSmall,
         ),
       ),
     );
   }
 
-  Widget _buildInfoTile(String title, {Widget? trailing, ListTileTitleAlignment? alignment}) {
+  Widget _buildInfoTile(BuildContext context, String title,
+      {Widget? trailing}) {
     return ListTile(
       shape: RoundedRectangleBorder(
         side: BorderSide(width: 1, color: Colors.grey.shade300),
         borderRadius: BorderRadius.circular(8),
       ),
-      title: Text(
-        title,
-        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
-      ),
-      titleAlignment: alignment ?? ListTileTitleAlignment.center,
+      title: Text(title, style: Theme.of(context).textTheme.headlineSmall),
       trailing: trailing,
     );
   }

@@ -15,7 +15,7 @@ class CustomDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       elevation: 0,
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.onPrimary,
       child: SingleChildScrollView(
         child: SafeArea(
           minimum: const EdgeInsets.only(top: 60, right: 20, left: 20),
@@ -27,9 +27,11 @@ class CustomDrawer extends StatelessWidget {
               else
                 const LoggedOutDrawer(),
               const SectionTitleDrawer(title: 'Contact us'),
+              const SizedBox(height: 10),
               const ContactUs(),
-              const SizedBox(height: 50),
+              const SizedBox(height: 40),
               const SectionTitleDrawer(title: 'Settings'),
+              const SizedBox(height: 10),
               SettingsList(user: user),
             ],
           ),

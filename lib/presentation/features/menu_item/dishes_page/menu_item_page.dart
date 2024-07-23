@@ -45,10 +45,11 @@ class MenuItemPage extends StatelessWidget {
           child: BlocBuilder<DishesCubit, DishesState>(
             builder: (context, state) {
               if (state.status == Status.loading) {
-                return _buildLoadingState();
+                return _buildLoadingState(context);
               } else if (state.status == Status.error) {
                 return Center(
-                  child: Text(state.errorMessage ?? 'You encountered an unexpected error.... try again later'),
+                  child: Text(state.errorMessage ??
+                      'You encountered an unexpected error.... try again later'),
                 );
               }
 
@@ -67,7 +68,7 @@ class MenuItemPage extends StatelessWidget {
     );
   }
 
-  Widget _buildLoadingState() {
+  Widget _buildLoadingState(BuildContext context) {
     return Column(
       children: [
         const DishHeaderNewFavorite(),
@@ -75,7 +76,7 @@ class MenuItemPage extends StatelessWidget {
           DishCategory.values.length,
           (index) => Shimmer.fromColors(
             baseColor: Colors.grey.shade300,
-            highlightColor: Colors.grey.shade100,
+            highlightColor: Theme.of(context).colorScheme.onPrimaryContainer,
             child: const DishesShimmerLoading(),
           ),
         ),

@@ -51,7 +51,7 @@ class DishLiked extends StatelessWidget {
                   flex: 5,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
                       borderRadius: const BorderRadius.only(
                         topRight: Radius.circular(8),
                         bottomRight: Radius.circular(8),

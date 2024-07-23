@@ -8,6 +8,7 @@ class ThemeDark {
   static const Color errorColor = Color.fromARGB(255, 211, 47, 47);
   static const Color successColor = Color.fromARGB(255, 76, 175, 80);
   static const Color accentColorDark = Color.fromARGB(255, 64, 64, 64);
+  static const Color accentColorLight = Color.fromARGB(255, 245, 245, 245);
 
   static final ThemeData darkTheme = ThemeData(
     useMaterial3: true,
@@ -52,6 +53,8 @@ class ThemeDark {
       seedColor: mainColorDark,
       brightness: Brightness.dark,
       primary: mainColorDark,
+      onPrimary: accentColorDark,
+      onPrimaryContainer: Colors.grey.shade100,
       secondary: mainColorLight,
       surface: containerColorDark,
       error: errorColor,
@@ -74,6 +77,14 @@ class ThemeDark {
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(foregroundColor: mainColorLight),
+    ),
+    dividerTheme: const DividerThemeData(
+      color: Colors.white12,
+      thickness: 2,
+    ),
+    iconTheme: const IconThemeData(
+      color: accentColorLight,
+      size: 20,
     ),
   );
 }

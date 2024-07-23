@@ -16,7 +16,7 @@ class DishCategoryTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       key: dishCategoryKey,
-      color: Colors.grey.shade100,
+      color: Theme.of(context).colorScheme.onPrimaryContainer,
       padding: const EdgeInsets.only(left: 15),
       height: 100,
       width: double.infinity,

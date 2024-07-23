@@ -8,20 +8,30 @@ class ContactUs extends StatelessWidget {
     return ListView(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      padding: EdgeInsets.zero,
       children: ListTile.divideTiles(
-        color: Colors.grey.shade300,
         context: context,
         tiles: [
-          _buildContactItem(Icons.phone_in_talk_rounded, '555-666-777', () {}),
-          _buildContactItem(Icons.mail_sharp, 'cafe.of.happiness@gmail.com', () {}),
+          _buildContactItem(
+            context,
+            Icons.phone_in_talk_rounded,
+            '555-666-777',
+            () {},
+          ),
+          _buildContactItem(
+            context,
+            Icons.mail_sharp,
+            'cafe.of.happiness@gmail.com',
+            () {},
+          ),
           _buildContactItemWithTrailing(
+            context,
             Icons.location_on,
             'Drewnowska 58, 91-002 Łódź, Poland',
             Icons.open_in_new,
             () {},
           ),
           _buildContactItemWithTrailing(
+            context,
             Icons.facebook,
             'Facebook',
             Icons.open_in_new,
@@ -32,28 +42,34 @@ class ContactUs extends StatelessWidget {
     );
   }
 
-  Widget _buildContactItem(IconData icon, String text, VoidCallback onTap) {
+  Widget _buildContactItem(
+      BuildContext context, IconData icon, String text, VoidCallback onTap) {
     return ListTile(
-      leading: Icon(icon),
-      title: Text(
-        text,
-        style: const TextStyle(fontSize: 12),
+      leading: Icon(
+        icon,
+        color: Theme.of(context).iconTheme.color,
+        size: Theme.of(context).iconTheme.size,
       ),
+      title: Text(text, style: Theme.of(context).textTheme.headlineSmall),
       onTap: onTap,
     );
   }
 
-  Widget _buildContactItemWithTrailing(
-      IconData icon, String text, IconData trailingIcon, VoidCallback onTap) {
+  Widget _buildContactItemWithTrailing(BuildContext context, IconData icon,
+      String text, IconData trailingIcon, VoidCallback onTap) {
     return ListTile(
-      leading: Icon(icon),
-      title: Text(
-        text,
-        style: const TextStyle(fontSize: 12),
+      leading: Icon(
+        icon,
+        color: Theme.of(context).iconTheme.color,
+        size: Theme.of(context).iconTheme.size,
+      ),
+      title: Text(text, style: Theme.of(context).textTheme.headlineSmall),
+      trailing: Icon(
+        trailingIcon,
+        color: Theme.of(context).iconTheme.color,
+        size: Theme.of(context).iconTheme.size,
       ),
       onTap: onTap,
-      trailing: Icon(trailingIcon),
-      splashColor: Colors.brown.shade500,
     );
   }
 }

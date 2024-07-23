@@ -30,7 +30,7 @@ class ContactList extends StatelessWidget {
         leading: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
-            color: Colors.grey.shade100,
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
           ),
           height: 40,
           width: 40,

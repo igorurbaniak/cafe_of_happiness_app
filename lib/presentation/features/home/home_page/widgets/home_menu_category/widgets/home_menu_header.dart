@@ -5,15 +5,11 @@ class HomeMenuHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Expanded(
-          child: Divider(
-            color: isDarkMode ? Colors.white12 : Colors.black12,
-            thickness: 1.5,
-          ),
+        const Expanded(
+          child: Divider(),
         ),
         const SizedBox(width: 10),
         Text(
@@ -21,11 +17,8 @@ class HomeMenuHeader extends StatelessWidget {
           style: Theme.of(context).textTheme.displayMedium,
         ),
         const SizedBox(width: 10),
-        Expanded(
-          child: Divider(
-            color: isDarkMode ? Colors.white12 : Colors.black12,
-            thickness: 1.5,
-          ),
+        const Expanded(
+          child: Divider(),
         ),
       ],
     );

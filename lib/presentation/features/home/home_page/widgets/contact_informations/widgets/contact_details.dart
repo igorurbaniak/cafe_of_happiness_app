@@ -17,9 +17,13 @@ class _ContactDetailsState extends State<ContactDetails> {
       await launchUrl(url);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          duration: Duration(seconds: 2),
-          content: Text('Could not launch URL'),
+        SnackBar(
+          duration: const Duration(seconds: 2),
+          content: Text(
+            'Couldn\'t launch URL, try again later',
+            style: Theme.of(context).textTheme.titleSmall,
+          ),
+          backgroundColor: Theme.of(context).colorScheme.error,
         ),
       );
     }

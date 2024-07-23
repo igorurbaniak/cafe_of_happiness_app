@@ -15,29 +15,34 @@ class SettingsList extends StatelessWidget {
     return ListView(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      padding: EdgeInsets.zero,
       children: ListTile.divideTiles(
-        color: Colors.grey.shade300,
         context: context,
         tiles: [
           BlocBuilder<ThemeCubit, ThemeState>(
             builder: (context, state) {
               return _buildSettingsItem(
-                  context,
-                  Icons.dark_mode,
-                  'Dark mode',
-                  state.themeData.brightness == Brightness.dark
-                      ? Icons.toggle_on
-                      : Icons.toggle_off, () {
-                context.read<ThemeCubit>().toggleTheme();
-              });
+                context,
+                Icons.dark_mode,
+                'Dark mode',
+                state.themeData.brightness == Brightness.dark
+                    ? Icons.toggle_on
+                    : Icons.toggle_off,
+                () {
+                  context.read<ThemeCubit>().toggleTheme();
+                },
+              );
             },
           ),
           if (user != null)
             _buildSettingsItem(
-                context, Icons.logout, 'Logout', Icons.open_in_new, () {
-              context.read<RootCubit>().signOut();
-            }),
+              context,
+              Icons.logout,
+              'Logout',
+              Icons.open_in_new,
+              () {
+                context.read<RootCubit>().signOut();
+              },
+            ),
         ],
       ).toList(),
     );
@@ -46,13 +51,10 @@ class SettingsList extends StatelessWidget {
   Widget _buildSettingsItem(BuildContext context, IconData icon, String text,
       IconData trailingIcon, VoidCallback onTap) {
     return ListTile(
-      leading: Icon(icon),
-      title: Text(
-        text,
-        style: const TextStyle(fontSize: 12),
-      ),
+      leading: Icon(icon, color: Theme.of(context).iconTheme.color),
+      title: Text(text, style: Theme.of(context).textTheme.headlineSmall),
+      trailing: Icon(trailingIcon, color: Theme.of(context).iconTheme.color),
       onTap: onTap,
-      trailing: Icon(trailingIcon),
     );
   }
 }

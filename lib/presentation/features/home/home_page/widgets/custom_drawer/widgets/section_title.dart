@@ -9,7 +9,7 @@ class SectionTitleDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: const TextStyle(fontWeight: FontWeight.bold),
+      style: Theme.of(context).textTheme.titleMedium,
     );
   }
 }
