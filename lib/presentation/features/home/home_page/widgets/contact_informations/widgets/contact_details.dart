@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -29,50 +30,48 @@ class _ContactDetailsState extends State<ContactDetails> {
     }
   }
 
+  Widget buildSocialButton(
+      BuildContext context, String label, IconData icon, String url) {
+    return TextButton.icon(
+      style: ButtonStyle(
+        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+          const EdgeInsets.only(left: 0),
+        ),
+      ),
+      onPressed: () => _launchUrl(context, Uri.parse(url)),
+      icon: FaIcon(icon, size: 22),
+      label: Text(
+        label,
+        style: Theme.of(context).textTheme.headlineMedium,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: Align(
+    return Padding(
+      padding: const EdgeInsets.only(left: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            AppLocalizations.of(context)!.we_in_social_media,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          const SizedBox(height: 5),
+          Align(
             alignment: Alignment.centerLeft,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  AppLocalizations.of(context)!.contact_details,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                SelectableText(
-                  AppLocalizations.of(context)!.drewnowska_street,
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-                const SizedBox(height: 35),
-                Text(
-                  AppLocalizations.of(context)!.we_in_social_media,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
+                buildSocialButton(context, 'Facebook', Icons.facebook,
+                    'https://www.facebook.com/'),
+                buildSocialButton(context, 'Instagram',
+                    FontAwesomeIcons.instagram, 'https://www.instagram.com/'),
               ],
             ),
           ),
-        ),
-        Align(
-          widthFactor: 3.1,
-          alignment: Alignment.topLeft,
-          child: TextButton.icon(
-            onPressed: () => _launchUrl(
-              context,
-              Uri.parse('https://www.facebook.com/'),
-            ),
-            icon: const Icon(Icons.facebook),
-            label: Text(
-              'Facebook',
-              style: Theme.of(context).textTheme.titleSmall,
-            ),
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

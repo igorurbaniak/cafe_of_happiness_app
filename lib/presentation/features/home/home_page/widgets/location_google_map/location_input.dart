@@ -1,6 +1,6 @@
+import 'package:cafe_of_happiness_app/app/utils/url_launcher_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LocationGoogleMap extends StatefulWidget {
@@ -14,11 +14,6 @@ class _LocationLocationGoogleMapState extends State<LocationGoogleMap> {
   final Uri _urlGoogleMapsLocation = Uri.parse(
       'https://www.google.pl/maps/place/Manufaktura/@51.7792348,19.4423599,17z/data=!3m1!4b1!4m6!3m5!1s0x471bcb56c4119b59:0xfca7f17fec34f65b!8m2!3d51.7792315!4d19.4449348!16s%2Fm%2F0vxgttm?entry=ttu');
 
-  Future<void> _launchUrl() async {
-    if (!await launchUrl(_urlGoogleMapsLocation)) {
-      throw Exception('Could not launch $_urlGoogleMapsLocation');
-    }
-  }
 
   late GoogleMapController mapController;
   final LatLng _manufakturaLocation =
@@ -26,6 +21,10 @@ class _LocationLocationGoogleMapState extends State<LocationGoogleMap> {
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
+  }
+
+  void _launchUrl() {
+    URLLauncherUtils.launchUrls(context, _urlGoogleMapsLocation);
   }
 
   @override

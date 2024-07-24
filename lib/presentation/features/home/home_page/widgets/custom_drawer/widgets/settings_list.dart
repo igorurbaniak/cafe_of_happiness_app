@@ -38,7 +38,7 @@ class SettingsList extends StatelessWidget {
               context,
               Icons.logout,
               'Logout',
-              Icons.open_in_new,
+              null,
               () {
                 context.read<RootCubit>().signOut();
               },
@@ -49,11 +49,13 @@ class SettingsList extends StatelessWidget {
   }
 
   Widget _buildSettingsItem(BuildContext context, IconData icon, String text,
-      IconData trailingIcon, VoidCallback onTap) {
+      IconData? trailingIcon, VoidCallback onTap) {
     return ListTile(
       leading: Icon(icon, color: Theme.of(context).iconTheme.color),
       title: Text(text, style: Theme.of(context).textTheme.headlineSmall),
-      trailing: Icon(trailingIcon, color: Theme.of(context).iconTheme.color),
+      trailing: trailingIcon != null
+          ? Icon(trailingIcon, color: Theme.of(context).iconTheme.color)
+          : null,
       onTap: onTap,
     );
   }

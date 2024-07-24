@@ -1,7 +1,9 @@
+
+
+import 'package:cafe_of_happiness_app/app/utils/copy_to_clipboard_utils.dart';
+import 'package:cafe_of_happiness_app/app/utils/url_launcher_utils.dart';
 import 'package:cafe_of_happiness_app/domain/models/cafe_contacts_model/cafe_contacts_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ContactList extends StatelessWidget {
   final List<CafeContacts> contacts;
@@ -60,45 +62,60 @@ class ContactList extends StatelessWidget {
       case 'E-mail:':
       case 'Address:':
       case 'Working hours:':
-        _copyToClipboard(contact.contactDetailInformation, context);
+        CopyToClipboardUtils.copyToClipboard(context, contact.contactDetailInformation);
         break;
       case 'Phone number:':
         final url = Uri(scheme: 'tel', path: contact.contactDetailInformation);
-        _launchUrl(url, context);
+        URLLauncherUtils .launchUrls(context, url);
         break;
     }
   }
 
-  void _copyToClipboard(String text, BuildContext context) {
-    Clipboard.setData(ClipboardData(text: text)).then(
-      (_) {
-        if (!context.mounted) return;
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            duration: Duration(seconds: 1),
-            content: Text('Copied to your clipboard!'),
-          ),
-        );
-      },
-    );
-  }
+  // void _handleContactTap(BuildContext context, CafeContacts contact) {
+  //   switch (contact.contactInformation) {
+  //     case 'Wi-Fi:':
+  //     case 'E-mail:':
+  //     case 'Address:':
+  //     case 'Working hours:':
+  //       _copyToClipboard(contact.contactDetailInformation, context);
+  //       break;
+  //     case 'Phone number:':
+  //       final url = Uri(scheme: 'tel', path: contact.contactDetailInformation);
+  //       _launchUrl(url, context);
+  //       break;
+  //   }
+  // }
 
-  Future<void> _launchUrl(Uri url, BuildContext context) async {
-    final canLaunch = await canLaunchUrl(url);
-    if (!context.mounted) return;
-    if (canLaunch) {
-      await launchUrl(url);
-    } else {
-      _showSnackBar(context, 'Could not launch URL');
-    }
-  }
+  // void _copyToClipboard(String text, BuildContext context) {
+  //   Clipboard.setData(ClipboardData(text: text)).then(
+  //     (_) {
+  //       if (!context.mounted) return;
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         const SnackBar(
+  //           duration: Duration(seconds: 1),
+  //           content: Text('Copied to your clipboard!'),
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 
-  void _showSnackBar(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        duration: const Duration(seconds: 2),
-        content: Text(message),
-      ),
-    );
-  }
+  // Future<void> _launchUrl(Uri url, BuildContext context) async {
+  //   final canLaunch = await canLaunchUrl(url);
+  //   if (!context.mounted) return;
+  //   if (canLaunch) {
+  //     await launchUrl(url);
+  //   } else {
+  //     _showSnackBar(context, 'Could not launch URL');
+  //   }
+  // }
+
+  // void _showSnackBar(BuildContext context, String message) {
+  //   ScaffoldMessenger.of(context).showSnackBar(
+  //     SnackBar(
+  //       duration: const Duration(seconds: 2),
+  //       content: Text(message),
+  //     ),
+  //   );
+  // }
 }

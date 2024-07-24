@@ -19,7 +19,7 @@ final List<CafeContacts> contacts = [
   ),
   CafeContacts(
     contactInformation: 'Phone number:',
-    contactDetailInformation: "555-666-777",
+    contactDetailInformation: "1234567890",
     contactIcon: const Icon(Icons.phone),
   ),
   CafeContacts(

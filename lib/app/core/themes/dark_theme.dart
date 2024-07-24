@@ -5,8 +5,8 @@ class ThemeDark {
   static const Color mainColorLight = Color.fromARGB(255, 237, 233, 226);
   static const Color mainColorDark = Color.fromARGB(255, 114, 47, 55);
   static const Color containerColorDark = Color.fromARGB(255, 48, 48, 48);
-  static const Color errorColor = Color.fromARGB(255, 211, 47, 47);
-  static const Color successColor = Color.fromARGB(255, 76, 175, 80);
+  static const Color errorColor = Color.fromARGB(255, 215, 106, 106);
+  static const Color successColor = Color.fromARGB(255, 92, 196, 95);
   static const Color accentColorDark = Color.fromARGB(255, 64, 64, 64);
   static const Color accentColorLight = Color.fromARGB(255, 245, 245, 245);
 
