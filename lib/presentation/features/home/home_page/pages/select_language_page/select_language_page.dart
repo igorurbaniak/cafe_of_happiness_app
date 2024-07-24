@@ -11,6 +11,7 @@ class SelectLanguagePage extends StatelessWidget {
         systemLocale.languageCode == 'pl' ? 'Polski  🇵🇱' : 'English  🇬🇧';
 
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: BackAppBar(title: languageText),
       body: Padding(
         padding: const EdgeInsets.all(20),

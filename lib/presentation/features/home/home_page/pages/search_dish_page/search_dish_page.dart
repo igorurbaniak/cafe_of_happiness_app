@@ -13,6 +13,7 @@ class SearchDishPage extends StatelessWidget {
     final cubit = context.read<SearchDishCubit>();
 
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: const BackAppBar(title: 'Wyszukaj w menu'),
       body: BlocBuilder<SearchDishCubit, SearchDishState>(
         bloc: cubit,
@@ -38,8 +39,8 @@ class SearchDishPage extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6),
         border: Border.all(
-          color: Colors.brown.shade800,
-          width: 1.2,
+          color: Theme.of(context).colorScheme.secondaryContainer,
+          width: 1,
         ),
       ),
       child: TextField(
@@ -48,22 +49,26 @@ class SearchDishPage extends StatelessWidget {
         keyboardType: TextInputType.text,
         style: TextStyle(
           fontSize: 18,
-          color: Colors.grey.shade600,
+          color: Theme.of(context).colorScheme.secondaryContainer,
           fontWeight: FontWeight.bold,
           letterSpacing: 0.5,
         ),
         decoration: InputDecoration(
           border: InputBorder.none,
-          hintText: 'Nazwa dania ...',
+          hintText: 'Nazwa dania',
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          hintStyle: TextStyle(fontSize: 18, color: Colors.grey.shade500),
+          hintStyle: TextStyle(
+              fontSize: 16,
+              color: Theme.of(context).colorScheme.secondaryContainer),
           suffixIcon: state.hasText
               ? IconButton(
                   onPressed: cubit.clearSearch,
-                  icon: const Icon(Icons.clear),
+                  icon: Icon(Icons.clear,
+                      color: Theme.of(context).colorScheme.secondaryContainer),
                 )
-              : const Icon(Icons.search),
+              : Icon(Icons.search,
+                  color: Theme.of(context).colorScheme.secondaryContainer),
         ),
         onChanged: cubit.search,
       ),
@@ -78,7 +83,7 @@ class SearchDishPage extends StatelessWidget {
     } else if (state.suggestions != null && state.suggestions!.isNotEmpty) {
       return Expanded(
         child: ListView.separated(
-          separatorBuilder: (context, index) => const SizedBox(height: 20),
+          separatorBuilder: (context, index) => const SizedBox(height: 30),
           shrinkWrap: true,
           itemCount: state.suggestions!.length,
           itemBuilder: (context, index) {
@@ -96,15 +101,28 @@ class SearchDishPage extends StatelessWidget {
                   ),
                 );
               },
-              leading: Image.asset(
-                dish.dishImage,
-                height: 50,
-                width: 50,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) =>
-                    const Center(child: Icon(Icons.error)),
+              contentPadding: EdgeInsets.zero,
+              leading: ClipOval(
+                child: Image.asset(
+                  dish.dishImage,
+                  height: 60,
+                  width: 55,
+                  alignment: Alignment.center,
+                  fit: BoxFit.fill,
+                  errorBuilder: (context, error, stackTrace) => Center(
+                      child: Icon(Icons.error,
+                          color: Theme.of(context).colorScheme.error)),
+                ),
               ),
-              title: Text(suggestion),
+              title: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Text(
+                  suggestion,
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Theme.of(context).colorScheme.secondaryContainer),
+                ),
+              ),
             );
           },
         ),

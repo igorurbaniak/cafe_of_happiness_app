@@ -48,7 +48,7 @@ class CustomAppBar extends StatelessWidget {
                   const SearchDishPage(),
                 ),
                 const SizedBox(width: 30),
-                _buildDrawerButton(),
+                _buildDrawerButton(context),
                 const SizedBox(width: 20),
               ],
             ),
@@ -68,7 +68,9 @@ class CustomAppBar extends StatelessWidget {
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
-              side: BorderSide(color: Colors.grey.shade300),
+              side: BorderSide(
+                  width: 0.8,
+                  color: Theme.of(context).colorScheme.onTertiaryContainer),
             ),
           ),
         ),
@@ -109,7 +111,9 @@ class CustomAppBar extends StatelessWidget {
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
-              side: BorderSide(color: Colors.grey.shade300),
+              side: BorderSide(
+                  width: 0.8,
+                  color: Theme.of(context).colorScheme.onTertiaryContainer),
             ),
           ),
         ),
@@ -125,7 +129,7 @@ class CustomAppBar extends StatelessWidget {
     );
   }
 
-  Widget _buildDrawerButton() {
+  Widget _buildDrawerButton(BuildContext context) {
     return SizedBox(
       height: 40,
       width: 45,
@@ -135,7 +139,9 @@ class CustomAppBar extends StatelessWidget {
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
-              side: BorderSide(color: Colors.grey.shade300),
+              side: BorderSide(
+                  width: 0.8,
+                  color: Theme.of(context).colorScheme.onTertiaryContainer),
             ),
           ),
         ),

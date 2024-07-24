@@ -56,6 +56,8 @@ class ThemeDark {
       onPrimary: accentColorDark,
       onPrimaryContainer: Colors.grey.shade100,
       secondary: mainColorLight,
+      onSecondary: Colors.white,
+      secondaryContainer: Colors.white,
       surface: containerColorDark,
       error: errorColor,
       outline: successColor,

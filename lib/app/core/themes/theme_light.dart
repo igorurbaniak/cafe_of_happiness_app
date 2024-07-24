@@ -56,6 +56,8 @@ class ThemeLight {
       onPrimary: accentColorLight,
       onPrimaryContainer: Colors.grey.shade100,
       secondary: mainColorLight,
+      onSecondary: Colors.transparent,
+      secondaryContainer: mainColorDark,
       surface: containerColorLight,
       error: errorColor,
       outline: successColor,
