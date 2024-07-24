@@ -7,32 +7,30 @@ class SelectLanguagePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final systemLocale = Localizations.localeOf(context);
-    final languageText = systemLocale.languageCode == 'pl' ? 'Polski 🇵🇱' : 'English 🇬🇧';
+    final languageText =
+        systemLocale.languageCode == 'pl' ? 'Polski  🇵🇱' : 'English  🇬🇧';
 
     return Scaffold(
       appBar: BackAppBar(title: languageText),
-      body: const Padding(
-        padding: EdgeInsets.all(20),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Important!',
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.redAccent,
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
                 'If you need to change the language of the application. Please go to your mobile phone settings and change the language of the app according to your needs. \n\nThank you and welcome in \nCafe of Happines ❤️',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
             ],
           ),

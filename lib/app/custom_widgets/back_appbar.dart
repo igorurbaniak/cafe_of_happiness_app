@@ -10,18 +10,28 @@ class BackAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return AppBar(
       titleSpacing: 0,
       toolbarHeight: 80,
       leadingWidth: 100,
-      leading: IconButton(
-        style: IconButton.styleFrom(
-          backgroundColor: Colors.brown.shade700,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+      leading: IconButton.outlined(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Colors.brown.shade700),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+          side: MaterialStateProperty.all(
+            BorderSide(
+              color: isDarkMode ? Colors.white : Colors.transparent,
+              width: 0.5,
+            ),
           ),
         ),
-        icon: const Icon(Icons.arrow_back_rounded, color: Colors.white),
+        icon: Icon(Icons.arrow_back_rounded,
+            color: Theme.of(context).colorScheme.onPrimaryContainer),
         iconSize: 32,
         onPressed: () => Navigator.of(context).pop(),
       ),
