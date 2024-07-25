@@ -12,7 +12,8 @@ class BackHomeButton extends StatelessWidget {
         style: TextStyle(fontSize: 12),
       ),
       style: TextButton.styleFrom(
-        foregroundColor: Colors.grey.shade700,
+        padding: EdgeInsets.zero,
+        foregroundColor: Theme.of(context).colorScheme.secondaryContainer,
       ),
       onPressed: () {
         Navigator.of(context).pop();

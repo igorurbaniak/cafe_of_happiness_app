@@ -5,28 +5,27 @@ class OrSignUpWith extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
         Expanded(
           child: Divider(
-            color: Colors.black12,
-            thickness: 1.5,
+            thickness: 0.5,
+            color: Theme.of(context).colorScheme.tertiary,
           ),
         ),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         Text(
           'Or sign in with',
           style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
-            color: Colors.black54,
+            fontSize: 10,
+            color: Theme.of(context).colorScheme.tertiary,
           ),
         ),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         Expanded(
           child: Divider(
-            color: Colors.black12,
-            thickness: 1.5,
+            thickness: 0.5,
+            color: Theme.of(context).colorScheme.tertiary,
           ),
         ),
       ],

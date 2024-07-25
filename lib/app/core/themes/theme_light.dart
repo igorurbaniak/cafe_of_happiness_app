@@ -45,6 +45,11 @@ class ThemeLight {
         fontSize: 14,
         fontWeight: FontWeight.bold,
       ),
+      labelMedium: GoogleFonts.lato(
+        color: Colors.black,
+        fontSize: 14,
+        fontWeight: FontWeight.bold,
+      ),
     ),
     colorScheme: ColorScheme.fromSeed(
       tertiary: Colors.black,
@@ -54,6 +59,7 @@ class ThemeLight {
       brightness: Brightness.light,
       primary: mainColorDark,
       onPrimary: accentColorLight,
+      primaryContainer: Colors.white,
       onPrimaryContainer: Colors.grey.shade100,
       secondary: mainColorLight,
       onSecondary: Colors.transparent,

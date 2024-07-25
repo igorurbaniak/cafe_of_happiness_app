@@ -39,25 +39,33 @@ class _EmailInputState extends State<EmailInput> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: Colors.grey.shade300,
+              color: Theme.of(context).colorScheme.secondaryContainer,
               width: 1,
             ),
           ),
           child: TextFormField(
+            cursorColor: Theme.of(context).colorScheme.secondaryContainer,
             controller: _emailController,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
-            style: const TextStyle(fontSize: 18, color: Colors.black),
+            style: TextStyle(
+              fontSize: 18,
+              color: Theme.of(context).colorScheme.secondaryContainer,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 1,
+            ),
             onChanged: widget.onEmailChanged,
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: 'Twój adres e-mail',
-              hintStyle: TextStyle(fontSize: 18, color: Colors.grey.shade500),
+              hintStyle: TextStyle(
+                  fontSize: 16,
+                  color: Theme.of(context).colorScheme.secondaryContainer),
               suffixIcon: _showCloseIcon
                   ? IconButton(
                       icon: Icon(
                         Icons.clear,
-                        color: Colors.grey.shade500,
+                        color: Theme.of(context).colorScheme.secondaryContainer,
                       ),
                       onPressed: () {
                         _emailController.clear();
@@ -65,7 +73,10 @@ class _EmailInputState extends State<EmailInput> {
                     )
                   : null,
               contentPadding: const EdgeInsets.symmetric(vertical: 18),
-              prefixIcon: const Icon(Icons.email, size: 26),
+              prefixIcon: Icon(
+                Icons.email,
+                color: Theme.of(context).colorScheme.secondaryContainer,
+              ),
             ),
           ),
         ),

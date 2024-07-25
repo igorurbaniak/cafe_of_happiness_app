@@ -45,6 +45,11 @@ class ThemeDark {
         fontSize: 14,
         fontWeight: FontWeight.bold,
       ),
+      labelMedium: GoogleFonts.lato(
+        color: mainColorDark,
+        fontSize: 14,
+        fontWeight: FontWeight.bold,
+      ),
     ),
     colorScheme: ColorScheme.fromSeed(
       tertiary: Colors.white,
@@ -53,6 +58,7 @@ class ThemeDark {
       seedColor: mainColorDark,
       brightness: Brightness.dark,
       primary: mainColorDark,
+      primaryContainer: Colors.white,
       onPrimary: accentColorDark,
       onPrimaryContainer: Colors.grey.shade100,
       secondary: mainColorLight,

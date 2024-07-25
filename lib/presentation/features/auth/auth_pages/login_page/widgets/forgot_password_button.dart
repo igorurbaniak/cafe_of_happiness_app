@@ -9,7 +9,6 @@ class ForgotPasswordButton extends StatelessWidget {
     return Align(
       alignment: Alignment.centerRight,
       child: TextButton(
-        style: TextButton.styleFrom(foregroundColor: Colors.brown.shade500),
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
@@ -17,12 +16,12 @@ class ForgotPasswordButton extends StatelessWidget {
             ),
           );
         },
-        child: const Text(
+        child: Text(
           'Forgot your Password?',
           style: TextStyle(
-            fontSize: 14,
-            fontStyle: FontStyle.italic,
-          ),
+              fontSize: 12,
+              fontStyle: FontStyle.italic,
+              color: Theme.of(context).colorScheme.secondaryContainer),
         ),
       ),
     );

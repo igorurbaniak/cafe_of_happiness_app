@@ -32,11 +32,11 @@ class _PasswordInputState extends State<PasswordInput> {
     super.dispose();
   }
 
-    void isObscureText() {
-      setState(() {
-        _isObscure = !_isObscure;
-      });
-    }
+  void isObscureText() {
+    setState(() {
+      _isObscure = !_isObscure;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,31 +46,43 @@ class _PasswordInputState extends State<PasswordInput> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: Colors.grey.shade300,
+              color: Theme.of(context).colorScheme.secondaryContainer,
               width: 1,
             ),
           ),
           child: TextFormField(
+            cursorColor: Theme.of(context).colorScheme.secondaryContainer,
             obscureText: _isObscure,
             controller: passwordController,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
-            style: const TextStyle(fontSize: 18, color: Colors.black),
+            style: TextStyle(
+              fontSize: 18,
+              color: Theme.of(context).colorScheme.secondaryContainer,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 1,
+            ),
             onChanged: widget.onPasswordChanged,
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: 'Hasło',
-              hintStyle: TextStyle(fontSize: 18, color: Colors.grey.shade500),
+              hintStyle: TextStyle(
+                  fontSize: 16,
+                  color: Theme.of(context).colorScheme.secondaryContainer),
               suffixIcon: _showObscureIcon
                   ? IconButton(
                       icon: Icon(
                           _isObscure ? Icons.visibility : Icons.visibility_off,
-                          color: Colors.grey.shade500),
+                          color:
+                              Theme.of(context).colorScheme.secondaryContainer),
                       onPressed: isObscureText,
                     )
                   : null,
               contentPadding: const EdgeInsets.symmetric(vertical: 18),
-              prefixIcon: const Icon(Icons.lock, size: 26),
+              prefixIcon: Icon(
+                Icons.lock,
+                color: Theme.of(context).colorScheme.secondaryContainer,
+              ),
             ),
           ),
         ),

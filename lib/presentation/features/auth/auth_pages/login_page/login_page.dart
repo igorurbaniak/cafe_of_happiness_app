@@ -42,27 +42,22 @@ class _LoginPageState extends State<LoginPage> {
         builder: (context, state) {
           return Scaffold(
             resizeToAvoidBottomInset: false,
+            backgroundColor: Theme.of(context).colorScheme.surface,
             appBar: const BackAppBar(title: 'Welcome in Cafeteria'),
             body: Container(
-              padding: const EdgeInsets.only(top: 20, left: 40, right: 40),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
               child: Column(
                 children: [
                   Image.asset(
                     'images/coffee_logo.png',
-                    width: 100,
-                    height: 100,
+                    width: 110,
+                    height: 110,
                     fit: BoxFit.contain,
                   ),
-                  const SizedBox(height: 30),
-                  const Text(
-                    'Sign in',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 25),
+                  Text('Sign in',
+                      style: Theme.of(context).textTheme.titleLarge),
+                  const SizedBox(height: 15),
                   EmailInput(
                     onEmailChanged: (newEmail) {
                       setState(() {
@@ -79,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                   ),
                   const ForgotPasswordButton(),
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 15),
                   LoginButton(
                     loginPressed: () {
                       context
@@ -91,15 +86,18 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 20),
                   const OrSignUpWith(),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 5),
                   const GoogleButton(),
                   const SizedBox(height: 40),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CreateNewAccountButton(),
-                      BackHomeButton(),
-                    ],
+                  Container(
+                    padding: EdgeInsets.zero,
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CreateNewAccountButton(),
+                        BackHomeButton(),
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 20),
                 ],

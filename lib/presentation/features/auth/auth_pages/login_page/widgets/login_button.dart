@@ -10,19 +10,17 @@ class LoginButton extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.brown.shade500,
+        color: Theme.of(context).colorScheme.secondaryContainer,
         borderRadius: BorderRadius.circular(10),
       ),
       child: SizedBox(
-        height: 60,
+        height: 55,
         child: TextButton(
           onPressed: loginPressed,
-          child: const Text(
+          child: Text(
             'Login',
             style: TextStyle(
-              fontSize: 20,
-              color: Colors.white,
-            ),
+                fontSize: 20, color: Theme.of(context).colorScheme.onTertiary),
           ),
         ),
       ),
