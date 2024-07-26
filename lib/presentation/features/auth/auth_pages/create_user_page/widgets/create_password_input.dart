@@ -60,7 +60,7 @@ class _CreatePasswordInputState extends State<CreatePasswordInput> {
               fontSize: 18,
               color: Theme.of(context).colorScheme.secondaryContainer,
               fontWeight: FontWeight.bold,
-              letterSpacing: 1,
+              letterSpacing: 0.6,
             ),
             onChanged: widget.onPasswordChanged,
             decoration: InputDecoration(
@@ -73,12 +73,14 @@ class _CreatePasswordInputState extends State<CreatePasswordInput> {
                   ? IconButton(
                       icon: Icon(
                           _isObscure ? Icons.visibility : Icons.visibility_off,
-                          color: Theme.of(context).colorScheme.secondaryContainer),
+                          color:
+                              Theme.of(context).colorScheme.secondaryContainer),
                       onPressed: isObscureText,
                     )
                   : null,
               contentPadding: const EdgeInsets.symmetric(vertical: 18),
-              prefixIcon: Icon(Icons.lock, color: Theme.of(context).colorScheme.secondaryContainer),
+              prefixIcon: Icon(Icons.lock,
+                  color: Theme.of(context).colorScheme.secondaryContainer),
             ),
           ),
         ),

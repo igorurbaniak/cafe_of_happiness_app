@@ -83,7 +83,7 @@ class SearchDishPage extends StatelessWidget {
     } else if (state.suggestions != null && state.suggestions!.isNotEmpty) {
       return Expanded(
         child: ListView.separated(
-          separatorBuilder: (context, index) => const SizedBox(height: 30),
+          separatorBuilder: (context, index) => const SizedBox(height: 15),
           shrinkWrap: true,
           itemCount: state.suggestions!.length,
           itemBuilder: (context, index) {

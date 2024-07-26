@@ -37,44 +37,42 @@ class _ResetPasswordEmailInputState extends State<ResetPasswordEmailInput> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-          color: Colors.grey.shade300,
+          color: Theme.of(context).colorScheme.secondaryContainer,
           width: 1,
         ),
       ),
       child: TextFormField(
+        cursorColor: Theme.of(context).colorScheme.secondaryContainer,
         controller: widget.emailController,
         keyboardType: TextInputType.emailAddress,
         textInputAction: TextInputAction.done,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 18,
-          color: Colors.black,
+          color: Theme.of(context).colorScheme.secondaryContainer,
+          fontWeight: FontWeight.bold,
+          letterSpacing: 0.6,
         ),
         decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: 'Twój adres e-mail',
+          hintStyle: TextStyle(
+              fontSize: 16,
+              color: Theme.of(context).colorScheme.secondaryContainer),
           suffixIcon: _showCloseIcon
               ? IconButton(
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.clear,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.secondaryContainer,
                   ),
                   onPressed: () {
                     widget.emailController.clear();
                   },
                 )
               : null,
-          contentPadding: const EdgeInsets.symmetric(
-            vertical: 18,
-          ),
-          prefixIcon: const Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 20,
-            ),
-            child: Icon(Icons.email, size: 26),
-          ),
-          border: InputBorder.none,
-          hintText: 'Twój adres e-mail',
-          hintStyle: TextStyle(
-            fontSize: 18,
-            color: Colors.grey.shade500,
+          contentPadding: const EdgeInsets.symmetric(vertical: 18),
+          prefixIcon: Icon(
+            Icons.email,
+            color: Theme.of(context).colorScheme.secondaryContainer,
           ),
         ),
       ),

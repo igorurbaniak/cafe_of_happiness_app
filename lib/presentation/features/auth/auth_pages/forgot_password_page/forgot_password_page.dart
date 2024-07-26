@@ -22,7 +22,6 @@ class ForgotPassword extends StatelessWidget {
               SnackBar(
                 content: const Text(
                   'Successfully sent link! Check your email.',
-                  style: TextStyle(),
                 ),
                 backgroundColor: Theme.of(context).colorScheme.outline,
               ),
@@ -44,7 +43,7 @@ class ForgotPassword extends StatelessWidget {
             resizeToAvoidBottomInset: false,
             appBar: const BackAppBar(title: 'Reset your password'),
             body: Container(
-              padding: const EdgeInsets.only(top: 80, left: 40, right: 40),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
               child: Column(
                 children: [
                   Column(
@@ -61,10 +60,7 @@ class ForgotPassword extends StatelessWidget {
                       Text(
                         'Receive an eamil adress to\n reset your password',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey.shade500),
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ],
                   ),
@@ -72,6 +68,7 @@ class ForgotPassword extends StatelessWidget {
                   ResetPasswordEmailInput(
                     emailController: emailController,
                   ),
+                  const SizedBox(height: 30),
                   ResetPasswordButton(
                     emailController: emailController,
                     forgotPasswordPressed: () {

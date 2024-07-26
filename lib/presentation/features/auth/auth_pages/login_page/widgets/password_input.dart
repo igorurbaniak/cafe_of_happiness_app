@@ -60,7 +60,7 @@ class _PasswordInputState extends State<PasswordInput> {
               fontSize: 18,
               color: Theme.of(context).colorScheme.secondaryContainer,
               fontWeight: FontWeight.bold,
-              letterSpacing: 1,
+              letterSpacing: 0.6,
             ),
             onChanged: widget.onPasswordChanged,
             decoration: InputDecoration(
