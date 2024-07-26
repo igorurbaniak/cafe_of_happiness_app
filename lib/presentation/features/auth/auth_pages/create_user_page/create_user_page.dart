@@ -52,9 +52,10 @@ class _CreateUserPageState extends State<CreateUserPage> {
         builder: (context, state) {
           return Scaffold(
             resizeToAvoidBottomInset: false,
+            backgroundColor: Theme.of(context).colorScheme.surface,
             appBar: const BackAppBar(title: 'Café of Happiness'),
             body: Container(
-              padding: const EdgeInsets.only(top: 20, left: 40, right: 40),
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
               child: Column(
                 children: [
                   const CreateAccountHeader(),

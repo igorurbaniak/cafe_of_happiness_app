@@ -7,9 +7,9 @@ class HaveAccountButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text(
+        Text(
           'Already have an account?',
-          style: TextStyle(color: Colors.black),
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
         TextButton(
           onPressed: () {
@@ -17,7 +17,10 @@ class HaveAccountButton extends StatelessWidget {
           },
           child: const Text(
             'Sign in',
-            style: TextStyle(color: Colors.brown, fontSize: 20),
+            style: TextStyle(
+              color: Colors.blue,
+              fontSize: 22,
+            ),
           ),
         ),
       ],

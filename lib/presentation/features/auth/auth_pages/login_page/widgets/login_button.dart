@@ -20,7 +20,9 @@ class LoginButton extends StatelessWidget {
           child: Text(
             'Login',
             style: TextStyle(
-                fontSize: 20, color: Theme.of(context).colorScheme.onTertiary),
+              fontSize: 20,
+              color: Theme.of(context).colorScheme.onTertiary,
+            ),
           ),
         ),
       ),

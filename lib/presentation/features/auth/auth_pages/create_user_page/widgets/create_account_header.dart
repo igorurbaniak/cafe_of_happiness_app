@@ -13,14 +13,10 @@ class CreateAccountHeader extends StatelessWidget {
           height: 150,
           fit: BoxFit.contain,
         ),
-        const SizedBox(height: 60),
-        const Text(
+        const SizedBox(height: 40),
+        Text(
           'Sign up',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
+          style: Theme.of(context).textTheme.titleLarge,
         ),
       ],
     );
