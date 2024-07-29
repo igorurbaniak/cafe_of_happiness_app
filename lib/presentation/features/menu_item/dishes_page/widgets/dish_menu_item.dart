@@ -16,8 +16,9 @@ class DishMenuItem extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
       decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.onPrimary,
         border: Border.all(
-          color: Colors.grey.shade300,
+          color: Theme.of(context).colorScheme.outlineVariant,
           width: 1,
         ),
       ),
@@ -37,15 +38,15 @@ class DishMenuItem extends StatelessWidget {
             Positioned(
               top: 0,
               right: 0,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
+              child: ClipOval(
                 child: Hero(
                   tag: 'dish-${dish.dishId}-list',
                   child: Image.asset(
                     dish.dishImage,
-                    fit: BoxFit.contain,
+                    fit: BoxFit.fill,
                     height: 100,
-                    width: 140,
+                    width: 100,
+                    alignment: Alignment.center,
                   ),
                 ),
               ),
@@ -55,28 +56,20 @@ class DishMenuItem extends StatelessWidget {
               children: [
                 Text(
                   dish.dishName,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.displayLarge,
                 ),
                 const SizedBox(height: 5),
                 Text(
                   '${dish.dishPrice} PLN',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.brown,
-                  ),
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
                 const SizedBox(height: 5),
                 Container(
                   constraints: const BoxConstraints(maxWidth: 220),
+                  color: Theme.of(context).colorScheme.onPrimary,
                   child: Text(
                     dish.dishIngredients,
-                    style: const TextStyle(
-                      fontSize: 14,
-                    ),
+                    style: Theme.of(context).textTheme.headlineMedium,
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -109,14 +102,14 @@ class DishMenuItem extends StatelessWidget {
                           FaIcon(
                             FontAwesomeIcons.leaf,
                             size: 16,
-                            color: Colors.green.shade800,
+                            color: Colors.green.shade600,
                           ),
                           const SizedBox(width: 5),
                           Text(
                             'Vege',
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.green.shade800,
+                              color: Colors.green.shade600,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -134,9 +127,7 @@ class DishMenuItem extends StatelessWidget {
                     const SizedBox(width: 5),
                     Text(
                       '${dish.dishCookTime}min',
-                      style: const TextStyle(
-                        fontSize: 14,
-                      ),
+                      style: Theme.of(context).textTheme.headlineMedium,
                     ),
                     const SizedBox(width: 30),
                     Icon(
@@ -146,11 +137,9 @@ class DishMenuItem extends StatelessWidget {
                       size: 16,
                     ),
                     const SizedBox(width: 5),
-                    const Text(
+                    Text(
                       'Polecany',
-                      style: TextStyle(
-                        fontSize: 14,
-                      ),
+                      style: Theme.of(context).textTheme.headlineMedium,
                     ),
                     const Spacer(),
                     DishLiked(

@@ -12,8 +12,9 @@ class DishHeaderNewFavorite extends StatelessWidget {
     return Container(
       height: 55,
       decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.onPrimary,
         border: Border.all(
-          color: Colors.grey.shade300,
+          color: Theme.of(context).colorScheme.outlineVariant,
           width: 1,
         ),
       ),
@@ -30,7 +31,7 @@ class DishHeaderNewFavorite extends StatelessWidget {
         },
         style: TextButton.styleFrom(padding: EdgeInsets.zero),
         icon: icon,
-        label: Text(label),
+        label: Text(label, style: Theme.of(context).textTheme.titleMedium),
       ),
     );
   }

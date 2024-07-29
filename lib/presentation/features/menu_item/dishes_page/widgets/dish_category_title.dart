@@ -16,8 +16,8 @@ class DishCategoryTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       key: dishCategoryKey,
-      color: Theme.of(context).colorScheme.onPrimaryContainer,
-      padding: const EdgeInsets.only(left: 15),
+      color: Theme.of(context).colorScheme.surface,
+      padding: const EdgeInsets.only(left: 10, right: 10),
       height: 100,
       width: double.infinity,
       child: Column(
@@ -26,15 +26,12 @@ class DishCategoryTitle extends StatelessWidget {
         children: [
           Text(
             categoryTitle,
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.titleLarge,
           ),
           const SizedBox(height: 5),
           Text(
             categoryTimer,
-            style: const TextStyle(fontSize: 14),
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
         ],
       ),

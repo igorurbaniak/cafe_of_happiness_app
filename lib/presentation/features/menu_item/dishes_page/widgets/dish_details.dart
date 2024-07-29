@@ -1,3 +1,4 @@
+import 'package:cafe_of_happiness_app/app/custom_widgets/back_appbar.dart';
 import 'package:cafe_of_happiness_app/domain/models/dish_model/dish_model.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/dishes_page/widgets/dish_liked.dart';
 import 'package:flutter/material.dart';
@@ -11,36 +12,33 @@ class DishDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.white),
+      appBar: const BackAppBar(title: ''),
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Padding(
-        padding: const EdgeInsets.only(left: 30, right: 30),
+        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
         child: Column(
           children: [
-            Hero(
-              tag: 'dish-${dish.dishId}-detail',
-              child: Image.asset(
-                dish.dishImage,
-                fit: BoxFit.contain,
-                height: 260,
-                width: double.infinity,
+            ClipOval(
+              child: Hero(
+                tag: 'dish-${dish.dishId}-detail',
+                child: Image.asset(
+                  dish.dishImage,
+                  fit: BoxFit.fill,
+                  height: 220,
+                  width: 220,
+                  alignment: Alignment.center,
+                ),
               ),
             ),
             const SizedBox(height: 20),
             Text(
               dish.dishName,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
             Text(
               '${dish.dishPrice} PLN',
-              style: const TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
-                color: Colors.brown,
-              ),
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
             const SizedBox(height: 15),
             SizedBox(
@@ -48,12 +46,11 @@ class DishDetails extends StatelessWidget {
               height: 120,
               child: Text(
                 dish.dishIngredients,
-                style: const TextStyle(fontSize: 18),
+                style: Theme.of(context).textTheme.titleMedium,
                 maxLines: 5,
                 overflow: TextOverflow.fade,
               ),
             ),
-            const SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [

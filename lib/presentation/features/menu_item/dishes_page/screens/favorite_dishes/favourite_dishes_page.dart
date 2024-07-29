@@ -11,8 +11,11 @@ class FavoriteDishesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
-      appBar: const BackAppBar(title: '🖤  Twoje ulubione'),
+      appBar: BackAppBar(
+          title: isDarkMode ? '🤍  Twoje ulubione' : '🖤  Twoje ulubione'),
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: BlocBuilder<DishesCubit, DishesState>(
         builder: (context, state) {
           if (state.status == Status.loading) {

@@ -25,7 +25,7 @@ class DishLiked extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               border: Border.all(
-                color: Colors.grey.shade300,
+                color: Theme.of(context).colorScheme.tertiary,
                 width: 1,
               ),
             ),
@@ -51,7 +51,7 @@ class DishLiked extends StatelessWidget {
                   flex: 5,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      color: Theme.of(context).colorScheme.surface,
                       borderRadius: const BorderRadius.only(
                         topRight: Radius.circular(8),
                         bottomRight: Radius.circular(8),
@@ -60,6 +60,7 @@ class DishLiked extends StatelessWidget {
                     child: Center(
                       child: Text(
                         favoriteCounter.toString(),
+                        style: Theme.of(context).textTheme.headlineMedium,
                       ),
                     ),
                   ),

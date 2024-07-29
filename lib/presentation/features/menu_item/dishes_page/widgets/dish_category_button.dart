@@ -19,13 +19,15 @@ class DishCategoryButton extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.onPrimary,
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
-            color: Colors.grey.shade300,
+            color: Theme.of(context).colorScheme.outlineVariant,
             width: 1,
           ),
         ),
-        child: Text(categoryTitle),
+        child: Text(categoryTitle,
+            style: Theme.of(context).textTheme.headlineMedium),
       ),
     );
   }
