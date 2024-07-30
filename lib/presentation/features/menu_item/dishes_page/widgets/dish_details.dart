@@ -13,6 +13,7 @@ class DishDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const BackAppBar(title: ''),
+      resizeToAvoidBottomInset: false,
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
