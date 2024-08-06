@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class LoginAndSignUpButton extends StatelessWidget {
-  const LoginAndSignUpButton(
+class AuthButton extends StatelessWidget {
+  const AuthButton(
       {super.key, required this.onPressed, required this.buttonText});
 
-  final Function()? onPressed;
+  final VoidCallback onPressed;
   final String buttonText;
 
   @override

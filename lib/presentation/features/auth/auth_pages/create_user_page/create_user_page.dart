@@ -4,7 +4,7 @@ import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/crea
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/create_user_page/widgets/have_account_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/create_user_page/widgets/create_email_input.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/create_user_page/widgets/create_password_input.dart';
-import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/login_and_signup_button.dart';
+import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -76,7 +76,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
                     },
                   ),
                   const SizedBox(height: 50),
-                  LoginAndSignUpButton(
+                  AuthButton(
                     buttonText: 'Sign up',
                     onPressed: () {
                       context.read<AuthCubit>().signUp(

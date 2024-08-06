@@ -1,7 +1,7 @@
 import 'package:cafe_of_happiness_app/app/custom_widgets/back_appbar.dart';
 import 'package:cafe_of_happiness_app/data/repositories/auth_repository/auth_repository.dart';
-import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/forgot_password_page/widgets/reset_password_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/forgot_password_page/widgets/reset_password_email_input.dart';
+import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,8 +20,9 @@ class ForgotPassword extends StatelessWidget {
             Navigator.of(context).pop(context);
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: const Text(
+                content: Text(
                   'Successfully sent link! Check your email.',
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
                 backgroundColor: Theme.of(context).colorScheme.outline,
               ),
@@ -69,9 +70,9 @@ class ForgotPassword extends StatelessWidget {
                     emailController: emailController,
                   ),
                   const SizedBox(height: 30),
-                  ResetPasswordButton(
-                    emailController: emailController,
-                    forgotPasswordPressed: () {
+                  AuthButton(
+                    buttonText: 'Reset Password',
+                    onPressed: () {
                       context.read<AuthCubit>().resetPassword(
                             email: emailController.text,
                           );
