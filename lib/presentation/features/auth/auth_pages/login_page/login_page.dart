@@ -6,9 +6,9 @@ import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/logi
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/forgot_password_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/google_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/email_input.dart';
-import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/login_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/or_sign_up_with.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/password_input.dart';
+import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/login_and_signup_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -75,8 +75,9 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const ForgotPasswordButton(),
                   const SizedBox(height: 15),
-                  LoginButton(
-                    loginPressed: () {
+                  LoginAndSignUpButton(
+                    buttonText: 'Login',
+                    onPressed: () {
                       context
                           .read<AuthCubit>()
                           .signIn(email: email!, password: password!);

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
-class CreateAccountButton extends StatelessWidget {
-  const CreateAccountButton({super.key, required this.signUpPressed});
+class LoginAndSignUpButton extends StatelessWidget {
+  const LoginAndSignUpButton(
+      {super.key, required this.onPressed, required this.buttonText});
 
-  final Function()? signUpPressed;
+  final Function()? onPressed;
+  final String buttonText;
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +18,9 @@ class CreateAccountButton extends StatelessWidget {
       child: SizedBox(
         height: 55,
         child: TextButton(
-          onPressed: signUpPressed,
+          onPressed: onPressed,
           child: Text(
-            'Sign up',
+            buttonText,
             style: TextStyle(
               fontSize: 20,
               color: Theme.of(context).colorScheme.onTertiary,
