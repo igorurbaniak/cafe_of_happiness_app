@@ -1,10 +1,10 @@
 import 'package:cafe_of_happiness_app/app/custom_widgets/back_appbar.dart';
 import 'package:cafe_of_happiness_app/data/repositories/auth_repository/auth_repository.dart';
-import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/create_user_page/widgets/create_account_header.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/create_user_page/widgets/have_account_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/create_user_page/widgets/create_email_input.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/create_user_page/widgets/create_password_input.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_button.dart';
+import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_logo_with_text.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -58,7 +58,11 @@ class _CreateUserPageState extends State<CreateUserPage> {
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
               child: Column(
                 children: [
-                  const CreateAccountHeader(),
+                  const AuthLogoWithText(
+                    authLogoText: 'Sign up',
+                    assetWidth: 150,
+                    assetHeight: 150,
+                  ),
                   const SizedBox(height: 20),
                   CreateEmailInput(
                     onEmailChanged: (newEmail) {

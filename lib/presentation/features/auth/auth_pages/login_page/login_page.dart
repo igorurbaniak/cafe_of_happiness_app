@@ -9,6 +9,7 @@ import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/logi
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/or_sign_up_with.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/password_input.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_button.dart';
+import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_logo_with_text.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -48,15 +49,11 @@ class _LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
               child: Column(
                 children: [
-                  Image.asset(
-                    'images/coffee_logo.png',
-                    width: 110,
-                    height: 110,
-                    fit: BoxFit.contain,
+                  const AuthLogoWithText(
+                    authLogoText: 'Café of Happiness',
+                    assetWidth: 120,
+                    assetHeight: 120,
                   ),
-                  const SizedBox(height: 25),
-                  Text('Sign in',
-                      style: Theme.of(context).textTheme.titleLarge),
                   const SizedBox(height: 15),
                   EmailInput(
                     onEmailChanged: (newEmail) {
@@ -89,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                   const OrSignUpWith(),
                   const SizedBox(height: 5),
                   const GoogleButton(),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 25),
                   Container(
                     padding: EdgeInsets.zero,
                     child: const Row(
