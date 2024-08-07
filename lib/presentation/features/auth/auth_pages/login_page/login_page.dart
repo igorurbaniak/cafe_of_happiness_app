@@ -5,10 +5,10 @@ import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/logi
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/create_new_account_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/forgot_password_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/google_button.dart';
-import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/email_input.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/or_sign_up_with.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/password_input.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_button.dart';
+import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_email_input.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_logo_with_text.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
@@ -50,12 +50,12 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: [
                   const AuthLogoWithText(
-                    authLogoText: 'Café of Happiness',
+                    authLogoText: 'Sign in',
                     assetWidth: 120,
                     assetHeight: 120,
                   ),
                   const SizedBox(height: 15),
-                  EmailInput(
+                  AuthEmailInput(
                     onEmailChanged: (newEmail) {
                       setState(() {
                         email = newEmail;

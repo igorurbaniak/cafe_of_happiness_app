@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CreateEmailInput extends StatefulWidget {
-  const CreateEmailInput({
+class AuthEmailInput extends StatefulWidget {
+  const AuthEmailInput({
     super.key,
     required this.onEmailChanged,
   });
@@ -9,28 +9,28 @@ class CreateEmailInput extends StatefulWidget {
   final Function(String?) onEmailChanged;
 
   @override
-  State<CreateEmailInput> createState() => _CreateEmailInputState();
+  State<AuthEmailInput> createState() => _AuthEmailInputState();
 }
 
-class _CreateEmailInputState extends State<CreateEmailInput> {
+class _AuthEmailInputState extends State<AuthEmailInput> {
   bool _showCloseIcon = false;
-  final emailController = TextEditingController();
+  final _emailController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    emailController.addListener(_onTextChanged);
+    _emailController.addListener(_onTextChanged);
   }
 
   void _onTextChanged() {
     setState(() {
-      _showCloseIcon = emailController.text.isNotEmpty;
+      _showCloseIcon = _emailController.text.isNotEmpty;
     });
   }
 
   @override
   void dispose() {
-    emailController.dispose();
+    _emailController.dispose();
     super.dispose();
   }
 
@@ -48,7 +48,7 @@ class _CreateEmailInputState extends State<CreateEmailInput> {
           ),
           child: TextFormField(
             cursorColor: Theme.of(context).colorScheme.secondaryContainer,
-            controller: emailController,
+            controller: _emailController,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             style: TextStyle(
@@ -71,7 +71,7 @@ class _CreateEmailInputState extends State<CreateEmailInput> {
                         color: Theme.of(context).colorScheme.secondaryContainer,
                       ),
                       onPressed: () {
-                        emailController.clear();
+                        _emailController.clear();
                       },
                     )
                   : null,
