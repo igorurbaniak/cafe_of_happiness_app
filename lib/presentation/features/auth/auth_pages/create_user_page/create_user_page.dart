@@ -31,12 +31,10 @@ class _CreateUserPageState extends State<CreateUserPage> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(
-                  'Pomyślnie utworzono konto!',
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.inversePrimary,
-                  ),
+                  'Account successfully created!',
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
-                backgroundColor: Theme.of(context).colorScheme.tertiary,
+                backgroundColor: Theme.of(context).colorScheme.outline,
               ),
             );
           }

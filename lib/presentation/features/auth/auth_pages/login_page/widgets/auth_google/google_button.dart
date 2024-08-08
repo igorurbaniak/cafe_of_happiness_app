@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class GoogleButton extends StatelessWidget {
-  const GoogleButton({super.key});
+  const GoogleButton({super.key, required this.onPressed});
+
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class GoogleButton extends StatelessWidget {
         ),
       ),
       child: TextButton(
-        onPressed: () {},
+        onPressed: onPressed,
         child: SizedBox(
           height: 30,
           child: Row(
