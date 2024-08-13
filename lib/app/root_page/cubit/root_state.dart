@@ -2,11 +2,11 @@ part of 'root_cubit.dart';
 
 class RootState {
   const RootState({
-    required this.user,
-    required this.isLoading,
-    required this.errorMessage,
-    required this.isLogged,
-    required this.status,
+     this.user,
+     this.isLoading = false,
+     this.errorMessage = '',
+     this.isLogged = false,
+     this.status = Status.initial,
   });
 
   final User? user;
@@ -14,4 +14,20 @@ class RootState {
   final String errorMessage;
   final bool isLogged;
   final Status status;
+
+  RootState copyWith({
+    User? user,
+    bool? isLoading,
+    String? errorMessage,
+    bool? isLogged,
+    Status? status,
+  }) {
+    return RootState(
+      user: user ?? this.user,
+      isLoading: isLoading ?? this.isLoading,
+      errorMessage: errorMessage ?? this.errorMessage,
+      isLogged: isLogged ?? this.isLogged,
+      status: status ?? this.status,
+    );
+  }
 }
