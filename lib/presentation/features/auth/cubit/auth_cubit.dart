@@ -1,5 +1,6 @@
-import 'package:cafe_of_happiness_app/data/repositories/auth_repository/auth_repository.dart';
-import 'package:flutter/material.dart';
+import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
+import 'package:cafe_of_happiness_app/domain/repositories/auth_repository/auth_repository.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'auth_state.dart';
 
@@ -9,62 +10,85 @@ class AuthCubit extends Cubit<AuthState> {
   final AuthRepository authRepository;
 
   Future<void> signUp({required String email, required String password}) async {
+    emit(state.copyWith(isLoading: true));
     try {
-      await authRepository.signUp(email, password);
+      final user = await authRepository.signUp(email, password);
       emit(
-        const AuthState(saved: true),
+        state.copyWith(
+          user: user,
+          isAuthenticated: true,
+          isLoading: false,
+        ),
       );
     } catch (error) {
       emit(
-        AuthState(
+        state.copyWith(
           errorMessage: error.toString(),
+          isLoading: false,
         ),
       );
     }
   }
 
   Future<void> signIn({required String email, required String password}) async {
+    emit(state.copyWith(isLoading: true, status: Status.loading));
+    await Future.delayed(const Duration(seconds: 3));
     try {
-      await authRepository.signIn(email, password);
+      final user = await authRepository.signIn(email, password);
       emit(
-        const AuthState(
-          saved: true,
+        state.copyWith(
+          user: user,
+          isAuthenticated: true,
+          isLoading: false,
+          status: Status.success
         ),
       );
     } catch (error) {
       emit(
-        AuthState(
+        state.copyWith(
           errorMessage: error.toString(),
+          isLoading: false,
+          status: Status.error
         ),
       );
     }
   }
 
   Future<void> signOut() async {
+    emit(state.copyWith(isLoading: true));
     try {
       await authRepository.signOut();
       emit(
-        const AuthState(saved: true),
+        state.copyWith(
+          user: null,
+          isAuthenticated: false,
+          isLoading: false,
+        ),
       );
     } catch (error) {
       emit(
-        AuthState(
+        state.copyWith(
           errorMessage: error.toString(),
+          isLoading: false,
         ),
       );
     }
   }
 
   Future<void> resetPassword({required String email}) async {
+    emit(state.copyWith(isLoading: true));
     try {
       await authRepository.resetPassword(email: email);
       emit(
-        const AuthState(saved: true),
+        state.copyWith(
+          isLoading: false,
+        ),
       );
     } catch (error) {
       emit(
-        AuthState(
+        state.copyWith(
           errorMessage: error.toString(),
+          isLoading: false,
         ),
       );
     }

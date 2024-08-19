@@ -1,21 +1,26 @@
 import 'dart:async';
 import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
+import 'package:cafe_of_happiness_app/domain/repositories/auth_google_repository/auth_google_sign_in_repository.dart';
+import 'package:cafe_of_happiness_app/domain/repositories/auth_repository/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'root_state.dart';
 
 class RootCubit extends Cubit<RootState> {
-  RootCubit()
-      : super(
+  RootCubit({
+    required this.authRepository,
+    required this.authGoogleSignInRepository,
+  }) : super(
           const RootState(
             user: null,
             isLoading: false,
             errorMessage: '',
-            isLogged: false,
             status: Status.initial,
           ),
         );
 
+  final AuthRepository authRepository;
+  final AuthGoogleSignInRepository authGoogleSignInRepository;
   StreamSubscription? _streamSubscription;
 
   Future<void> start() async {
@@ -24,19 +29,17 @@ class RootCubit extends Cubit<RootState> {
         user: null,
         isLoading: true,
         errorMessage: '',
-        isLogged: false,
         status: Status.loading,
       ),
     );
 
-    _streamSubscription = FirebaseAuth.instance.authStateChanges().listen(
+    _streamSubscription = authRepository.authStateChanges().listen(
       (user) {
         emit(
           RootState(
             user: user,
             isLoading: false,
             errorMessage: '',
-            isLogged: true,
             status: Status.success,
           ),
         );
@@ -47,7 +50,6 @@ class RootCubit extends Cubit<RootState> {
             user: null,
             isLoading: false,
             errorMessage: error.toString(),
-            isLogged: false,
             status: Status.error,
           ),
         );
@@ -55,7 +57,27 @@ class RootCubit extends Cubit<RootState> {
   }
 
   Future<void> signOut() async {
-    FirebaseAuth.instance.signOut();
+    try {
+      await authGoogleSignInRepository.signOut();
+      await authRepository.signOut();
+      emit(
+          const RootState(
+            user: null,
+            isLoading: false,
+            errorMessage: '',
+            status: Status.initial,
+          ),
+        );
+    } catch (error) {
+      emit(
+          RootState(
+            user: null,
+            isLoading: false,
+            errorMessage: error.toString(),
+            status: Status.error,
+          ),
+        );
+    }
   }
 
   @override

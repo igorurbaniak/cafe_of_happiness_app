@@ -2,6 +2,8 @@ import 'package:cafe_of_happiness_app/app/core/themes/cubit/theme_cubit.dart';
 import 'package:cafe_of_happiness_app/app/root_page/cubit/root_cubit.dart';
 import 'package:cafe_of_happiness_app/app/root_page/root_page.dart';
 import 'package:cafe_of_happiness_app/data/remote_data_sources/dishes_remote_data_source/dishes_remote_data_source.dart';
+import 'package:cafe_of_happiness_app/domain/repositories/auth_google_repository/auth_google_sign_in_repository.dart';
+import 'package:cafe_of_happiness_app/domain/repositories/auth_repository/auth_repository.dart';
 import 'package:cafe_of_happiness_app/domain/repositories/dishes_repository/dishes_repository.dart';
 import 'package:cafe_of_happiness_app/domain/repositories/search_repository/search_repository.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/pages/search_dish_page/cubit/search_dish_cubit.dart';
@@ -25,7 +27,10 @@ void main() async {
           create: (context) => ThemeCubit(),
         ),
         BlocProvider(
-          create: (context) => RootCubit()..start(),
+          create: (context) => RootCubit(
+              authRepository: AuthRepository(),
+              authGoogleSignInRepository: AuthGoogleSignInRepository())
+            ..start(),
         ),
         BlocProvider(
           create: (context) => SearchDishCubit(

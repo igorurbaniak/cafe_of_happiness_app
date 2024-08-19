@@ -1,5 +1,5 @@
 import 'package:cafe_of_happiness_app/app/custom_widgets/back_appbar.dart';
-import 'package:cafe_of_happiness_app/data/repositories/auth_repository/auth_repository.dart';
+import 'package:cafe_of_happiness_app/domain/repositories/auth_repository/auth_repository.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/forgot_password_page/widgets/reset_password_email_input.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_logo_with_text.dart';
@@ -17,7 +17,7 @@ class ForgotPassword extends StatelessWidget {
       create: (context) => AuthCubit(AuthRepository()),
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
-          if (state.saved) {
+          if (state.isAuthenticated) {
             Navigator.of(context).pop(context);
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
@@ -34,6 +34,7 @@ class ForgotPassword extends StatelessWidget {
               SnackBar(
                 content: Text(
                   state.errorMessage,
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
                 backgroundColor: Theme.of(context).colorScheme.error,
               ),

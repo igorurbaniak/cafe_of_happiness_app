@@ -29,7 +29,7 @@ class CustomAppBar extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                if (user == null || user != null) const SizedBox(width: 20),
+                if (user != null) const SizedBox(width: 20),
                 _buildLanguageButton(
                   context,
                   languageText,

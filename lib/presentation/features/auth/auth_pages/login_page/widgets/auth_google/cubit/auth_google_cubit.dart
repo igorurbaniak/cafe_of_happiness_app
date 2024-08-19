@@ -1,44 +1,51 @@
 import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
-import 'package:cafe_of_happiness_app/domain/repositories/auth_google_repository/auth_google_repository.dart';
+import 'package:cafe_of_happiness_app/domain/repositories/auth_google_repository/auth_google_sign_in_repository.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'auth_google_state.dart';
 
 class AuthGoogleCubit extends Cubit<AuthGoogleState> {
-  AuthGoogleCubit(this.authGoogleRepository) : super(AuthGoogleState());
+  AuthGoogleCubit(this._authGoogleSignInRepository) : super(AuthGoogleState());
 
-  final AuthGoogleRepository authGoogleRepository;
+  final AuthGoogleSignInRepository _authGoogleSignInRepository;
 
   Future<void> signInWithGoogle() async {
     emit(
-      state.copyWith(
+      AuthGoogleState(
         status: Status.loading,
-        isLoading: true,
+        googleIsLoading: true,
+        user: null,
+        googleErrorMessage: '',
       ),
     );
     try {
-      final account = await authGoogleRepository.signInWithGoogle();
+      final account = await _authGoogleSignInRepository.signInWithGoogle();
       if (account != null) {
         emit(
-          state.copyWith(
+          AuthGoogleState(
             status: Status.success,
-            isLoading: false,
+            googleIsLoading: false,
+            user: account,
+            googleErrorMessage: '',
           ),
         );
       } else {
         emit(
-          state.copyWith(
+          AuthGoogleState(
             status: Status.error,
-            isLoading: false,
-            errorMessage: 'Google sign-in failed. Please try again.',
+            googleIsLoading: false,
+            user: null,
+            googleErrorMessage: 'Google sign-in failed. Please try again.',
           ),
         );
       }
     } on Exception catch (error) {
       emit(
-        state.copyWith(
+        AuthGoogleState(
           status: Status.error,
-          isLoading: false,
-          errorMessage: error.toString(),
+          googleIsLoading: false,
+          user: null,
+          googleErrorMessage: error.toString(),
         ),
       );
     }

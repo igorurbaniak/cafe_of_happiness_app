@@ -41,6 +41,7 @@ class SettingsList extends StatelessWidget {
               null,
               () {
                 context.read<RootCubit>().signOut();
+                Navigator.of(context).pop();
               },
             ),
         ],

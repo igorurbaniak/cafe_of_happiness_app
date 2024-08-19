@@ -1,3 +1,4 @@
+import 'package:cafe_of_happiness_app/app/root_page/cubit/root_cubit.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/contact_informations/contact_informations.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/custom_appbar.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/custom_drawer/custom_drawer.dart';
@@ -6,6 +7,7 @@ import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widge
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/location_google_map/location_input.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key, required this.user});
@@ -15,24 +17,29 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scaffoldKey = GlobalKey<ScaffoldState>();
-    return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.surface,
-      key: scaffoldKey,
-      drawer: CustomDrawer(user: user),
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(80),
-        child: CustomAppBar(user: user, scaffoldKey: scaffoldKey),
-      ),
-      body: const SingleChildScrollView(
-        child: Column(
-          children: [
-            HomeDescription(),
-            HomeMenuCategory(),
-            ContactInformations(),
-            LocationGoogleMap(),
-          ],
-        ),
-      ),
+    return BlocBuilder<RootCubit, RootState>(
+      builder: (context, state) {
+        final user = state.user;
+        return Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.surface,
+          key: scaffoldKey,
+          drawer: CustomDrawer(user: user),
+          appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(80),
+            child: CustomAppBar(user: user, scaffoldKey: scaffoldKey),
+          ),
+          body: const SingleChildScrollView(
+            child: Column(
+              children: [
+                HomeDescription(),
+                HomeMenuCategory(),
+                ContactInformations(),
+                LocationGoogleMap(),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

@@ -43,7 +43,9 @@ class AuthRepository {
     }
   }
 
-  Stream<User?> start() {
+  Stream<User?> authStateChanges() {
     return _firebaseAuth.authStateChanges();
   }
+
+  User? get currentUser => _firebaseAuth.currentUser;
 }
