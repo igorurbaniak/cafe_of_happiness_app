@@ -1,11 +1,10 @@
 import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
 import 'package:cafe_of_happiness_app/app/custom_widgets/back_appbar.dart';
 import 'package:cafe_of_happiness_app/domain/repositories/auth_repository/auth_repository.dart';
-import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/create_user_page/widgets/have_account_button.dart';
-import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/create_user_page/widgets/create_password_input.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_email_input.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_logo_with_text.dart';
+import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_password_input.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/cubit/auth_cubit.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/home_page.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +82,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
                         },
                       ),
                       const SizedBox(height: 10),
-                      CreatePasswordInput(
+                      AuthPasswordInput(
                         onPasswordChanged: (newPassword) {
                           setState(() {
                             password = newPassword;
@@ -102,8 +101,23 @@ class _CreateUserPageState extends State<CreateUserPage> {
                           }
                         },
                       ),
-                      const SizedBox(height: 70),
-                      const HaveAccountButton(),
+                      const SizedBox(height: 60),
+                      Text(
+                        'Already have an account?',
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text(
+                          'Sign in',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 22,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),

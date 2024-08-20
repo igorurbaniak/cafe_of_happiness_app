@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AuthButton extends StatelessWidget {
-  const AuthButton(
-      {super.key, required this.onPressed, required this.buttonText});
+  const AuthButton({
+    super.key,
+    required this.onPressed,
+    required this.buttonText,
+  });
 
   final VoidCallback onPressed;
   final String buttonText;

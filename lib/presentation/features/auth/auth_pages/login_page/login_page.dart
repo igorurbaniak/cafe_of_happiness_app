@@ -2,16 +2,16 @@ import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
 import 'package:cafe_of_happiness_app/app/custom_widgets/back_appbar.dart';
 import 'package:cafe_of_happiness_app/domain/repositories/auth_repository/auth_repository.dart';
 import 'package:cafe_of_happiness_app/domain/repositories/auth_google_repository/auth_google_sign_in_repository.dart';
+import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/create_user_page/create_user_page.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/auth_google/cubit/auth_google_cubit.dart';
-import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/back_home_button.dart';
-import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/create_new_account_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/forgot_password_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/auth_google/google_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/or_sign_up_with.dart';
-import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/login_page/widgets/password_input.dart';
+import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_bottom_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_email_input.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_logo_with_text.dart';
+import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_password_input.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/cubit/auth_cubit.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/home_page.dart';
 import 'package:flutter/material.dart';
@@ -96,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                         },
                       ),
                       const SizedBox(height: 10),
-                      PasswordInput(
+                      AuthPasswordInput(
                         onPasswordChanged: (newPassword) {
                           setState(() {
                             password = newPassword;
@@ -121,8 +121,8 @@ class _LoginPageState extends State<LoginPage> {
                       BlocConsumer<AuthGoogleCubit, AuthGoogleState>(
                         listener: (context, state) {
                           if (state.status == Status.loading) {
-                           ScaffoldMessenger.of(context).hideCurrentSnackBar(); 
-                           ScaffoldMessenger.of(context).showSnackBar(
+                            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                            ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
                                   'Signing in with Google...',
@@ -162,7 +162,7 @@ class _LoginPageState extends State<LoginPage> {
                                     Theme.of(context).colorScheme.error,
                               ),
                             );
-                          } 
+                          }
                         },
                         builder: (context, state) {
                           return GoogleButton(
@@ -177,11 +177,25 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(height: 25),
                       Container(
                         padding: EdgeInsets.zero,
-                        child: const Row(
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            CreateNewAccountButton(),
-                            BackHomeButton(),
+                            AuthBottomButton(
+                              buttonText: 'Create Account',
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (ctx) => const CreateUserPage(),
+                                  ),
+                                );
+                              },
+                            ),
+                            AuthBottomButton(
+                              buttonText: 'Cafeteria Menu',
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
                           ],
                         ),
                       ),

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class PasswordInput extends StatefulWidget {
-  const PasswordInput({super.key, required this.onPasswordChanged});
+class AuthPasswordInput extends StatefulWidget {
+  const AuthPasswordInput({super.key, required this.onPasswordChanged});
 
   final Function(String?) onPasswordChanged;
 
   @override
-  State<PasswordInput> createState() => _PasswordInputState();
+  State<AuthPasswordInput> createState() => _AuthPasswordInputState();
 }
 
-class _PasswordInputState extends State<PasswordInput> {
+class _AuthPasswordInputState extends State<AuthPasswordInput> {
   bool _isObscure = true;
   bool _showObscureIcon = false;
   final passwordController = TextEditingController();
