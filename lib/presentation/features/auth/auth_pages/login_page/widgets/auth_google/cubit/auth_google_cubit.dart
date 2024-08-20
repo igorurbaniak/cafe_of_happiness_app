@@ -13,9 +13,6 @@ class AuthGoogleCubit extends Cubit<AuthGoogleState> {
     emit(
       AuthGoogleState(
         status: Status.loading,
-        googleIsLoading: true,
-        user: null,
-        googleErrorMessage: '',
       ),
     );
     try {
@@ -23,29 +20,23 @@ class AuthGoogleCubit extends Cubit<AuthGoogleState> {
       if (account != null) {
         emit(
           AuthGoogleState(
-            status: Status.success,
-            googleIsLoading: false,
             user: account,
-            googleErrorMessage: '',
+            status: Status.success,
           ),
         );
       } else {
         emit(
           AuthGoogleState(
+            errorMessage: 'Google sign-in failed. Please try again.',
             status: Status.error,
-            googleIsLoading: false,
-            user: null,
-            googleErrorMessage: 'Google sign-in failed. Please try again.',
           ),
         );
       }
     } on Exception catch (error) {
       emit(
         AuthGoogleState(
+          errorMessage: error.toString(),
           status: Status.error,
-          googleIsLoading: false,
-          user: null,
-          googleErrorMessage: error.toString(),
         ),
       );
     }

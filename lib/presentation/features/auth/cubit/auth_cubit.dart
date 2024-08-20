@@ -10,85 +10,97 @@ class AuthCubit extends Cubit<AuthState> {
   final AuthRepository authRepository;
 
   Future<void> signUp({required String email, required String password}) async {
-    emit(state.copyWith(isLoading: true));
+    emit(
+      state.copyWith(
+        status: Status.loading,
+      ),
+    );
     try {
       final user = await authRepository.signUp(email, password);
       emit(
         state.copyWith(
           user: user,
           isAuthenticated: true,
-          isLoading: false,
+          status: Status.success,
         ),
       );
     } catch (error) {
       emit(
         state.copyWith(
+          isAuthenticated: false,
           errorMessage: error.toString(),
-          isLoading: false,
+          status: Status.error,
         ),
       );
     }
   }
 
   Future<void> signIn({required String email, required String password}) async {
-    emit(state.copyWith(isLoading: true, status: Status.loading));
-    await Future.delayed(const Duration(seconds: 3));
+    emit(
+      state.copyWith(
+        status: Status.loading,
+      ),
+    );
     try {
       final user = await authRepository.signIn(email, password);
       emit(
         state.copyWith(
           user: user,
           isAuthenticated: true,
-          isLoading: false,
-          status: Status.success
+          status: Status.success,
         ),
       );
     } catch (error) {
       emit(
         state.copyWith(
+          isAuthenticated: false,
           errorMessage: error.toString(),
-          isLoading: false,
-          status: Status.error
+          status: Status.error,
         ),
       );
     }
   }
 
   Future<void> signOut() async {
-    emit(state.copyWith(isLoading: true));
+    emit(state.copyWith(
+      status: Status.loading,
+    ));
     try {
       await authRepository.signOut();
       emit(
         state.copyWith(
           user: null,
           isAuthenticated: false,
-          isLoading: false,
+          status: Status.initial,
         ),
       );
     } catch (error) {
       emit(
         state.copyWith(
+          isAuthenticated: false,
           errorMessage: error.toString(),
-          isLoading: false,
+          status: Status.error,
         ),
       );
     }
   }
 
   Future<void> resetPassword({required String email}) async {
-    emit(state.copyWith(isLoading: true));
+    emit(state.copyWith(
+      status: Status.loading,
+    ));
     try {
       await authRepository.resetPassword(email: email);
       emit(
         state.copyWith(
-          isLoading: false,
+          status: Status.success,
         ),
       );
     } catch (error) {
       emit(
         state.copyWith(
           errorMessage: error.toString(),
-          isLoading: false,
+          status: Status.error,
         ),
       );
     }
