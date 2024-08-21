@@ -1,6 +1,8 @@
 import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
 import 'package:cafe_of_happiness_app/app/custom_widgets/back_appbar.dart';
+import 'package:cafe_of_happiness_app/app/root_page/cubit/root_cubit.dart';
 import 'package:cafe_of_happiness_app/domain/repositories/auth_repository/auth_repository.dart';
+import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/create_user_page/user_name_input.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_email_input.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_logo_with_text.dart';
@@ -19,6 +21,7 @@ class CreateUserPage extends StatefulWidget {
 
 String? email;
 String? password;
+String? displayName;
 
 class _CreateUserPageState extends State<CreateUserPage> {
   @override
@@ -28,6 +31,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state.status == Status.success) {
+            context.read<RootCubit>().start();
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                 builder: (context) => HomePage(user: state.user),
@@ -37,7 +41,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(
-                  'Account successfully created! Welcome!👋',
+                  'Account created! Welcome, ${state.user?.displayName ?? 'User'}!👋',
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
                 backgroundColor: Theme.of(context).colorScheme.outline,
@@ -70,8 +74,8 @@ class _CreateUserPageState extends State<CreateUserPage> {
                     children: [
                       const AuthLogoWithText(
                         authLogoText: 'Sign up',
-                        assetWidth: 150,
-                        assetHeight: 150,
+                        assetWidth: 120,
+                        assetHeight: 120,
                       ),
                       const SizedBox(height: 20),
                       AuthEmailInput(
@@ -89,19 +93,30 @@ class _CreateUserPageState extends State<CreateUserPage> {
                           });
                         },
                       ),
-                      const SizedBox(height: 50),
+                      const SizedBox(height: 40),
+                      UserNameInput(
+                        onNameChanged: (newName) {
+                          setState(() {
+                            displayName = newName;
+                          });
+                        },
+                      ),
+                      const SizedBox(height: 10),
                       AuthButton(
                         buttonText: 'Sign up',
                         onPressed: () {
-                          if (email != null && password != null) {
+                          if (email != null &&
+                              password != null &&
+                              displayName != null) {
                             context.read<AuthCubit>().signUp(
                                   email: email!,
                                   password: password!,
+                                  displayName: displayName!,
                                 );
                           }
                         },
                       ),
-                      const SizedBox(height: 60),
+                      const SizedBox(height: 30),
                       Text(
                         'Already have an account?',
                         style: Theme.of(context).textTheme.headlineMedium,

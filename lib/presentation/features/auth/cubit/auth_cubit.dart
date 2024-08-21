@@ -9,24 +9,31 @@ class AuthCubit extends Cubit<AuthState> {
 
   final AuthRepository authRepository;
 
-  Future<void> signUp({required String email, required String password}) async {
+  Future<void> signUp({
+    required String email,
+    required String password,
+    required String displayName,
+  }) async {
     emit(
-      state.copyWith(
+      const AuthState(
         status: Status.loading,
       ),
     );
     try {
       final user = await authRepository.signUp(email, password);
+      await user?.updateDisplayName(displayName);
+      await user?.reload();
+      final updatedUser = authRepository.currentUser;
       emit(
-        state.copyWith(
-          user: user,
+        AuthState(
+          user: updatedUser,
           isAuthenticated: true,
           status: Status.success,
         ),
       );
     } catch (error) {
       emit(
-        state.copyWith(
+        AuthState(
           isAuthenticated: false,
           errorMessage: error.toString(),
           status: Status.error,
@@ -37,14 +44,14 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> signIn({required String email, required String password}) async {
     emit(
-      state.copyWith(
+      const AuthState(
         status: Status.loading,
       ),
     );
     try {
       final user = await authRepository.signIn(email, password);
       emit(
-        state.copyWith(
+        AuthState(
           user: user,
           isAuthenticated: true,
           status: Status.success,
@@ -52,7 +59,7 @@ class AuthCubit extends Cubit<AuthState> {
       );
     } catch (error) {
       emit(
-        state.copyWith(
+        AuthState(
           isAuthenticated: false,
           errorMessage: error.toString(),
           status: Status.error,
@@ -62,13 +69,15 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> signOut() async {
-    emit(state.copyWith(
-      status: Status.loading,
-    ));
+    emit(
+      const AuthState(
+        status: Status.loading,
+      ),
+    );
     try {
       await authRepository.signOut();
       emit(
-        state.copyWith(
+        const AuthState(
           user: null,
           isAuthenticated: false,
           status: Status.initial,
@@ -76,7 +85,7 @@ class AuthCubit extends Cubit<AuthState> {
       );
     } catch (error) {
       emit(
-        state.copyWith(
+        AuthState(
           isAuthenticated: false,
           errorMessage: error.toString(),
           status: Status.error,
@@ -86,19 +95,21 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> resetPassword({required String email}) async {
-    emit(state.copyWith(
-      status: Status.loading,
-    ));
+    emit(
+      const AuthState(
+        status: Status.loading,
+      ),
+    );
     try {
       await authRepository.resetPassword(email: email);
       emit(
-        state.copyWith(
+        const AuthState(
           status: Status.success,
         ),
       );
     } catch (error) {
       emit(
-        state.copyWith(
+        AuthState(
           errorMessage: error.toString(),
           status: Status.error,
         ),

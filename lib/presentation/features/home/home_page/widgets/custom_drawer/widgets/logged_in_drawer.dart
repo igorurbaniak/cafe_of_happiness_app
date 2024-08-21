@@ -10,7 +10,7 @@ class LoggedInDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _buildUserCard(context, 'Welcome Tomek! 😊'),
+        _buildUserCard(context, 'Welcome ${user.displayName ?? 'User'}! 😊'),
         const SizedBox(height: 10),
         _buildInfoTile(
           context,
