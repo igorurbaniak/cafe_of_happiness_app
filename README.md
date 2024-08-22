@@ -21,9 +21,9 @@ https://github.com/user-attachments/assets/1173423a-fe78-4e4b-932b-a94c69d1115a
 </p>
 
 <p float="left">
-<img src="https://github.com/user-attachments/assets/c89a3b55-347d-4704-8c4b-f2cbeb4eabf2" width="450" height="900" />
+<img src="https://github.com/user-attachments/assets/c89a3b55-347d-4704-8c4b-f2cbeb4eabf2" width="350" height="700" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="https://github.com/user-attachments/assets/4bd6bd03-5930-4d17-b411-490a78562e9e" width="450" height="900" />
+<img src="https://github.com/user-attachments/assets/4bd6bd03-5930-4d17-b411-490a78562e9e" width="350" height="700" />
 </p>
 
 <p float="right">
