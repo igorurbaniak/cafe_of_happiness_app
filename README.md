@@ -10,16 +10,14 @@ To be added in the near future:
 - changing all language content to 2 different ones (PL, EN) after language change
 - adding tests
 
-![Record_2024-08-22-14-49-441-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/84f30970-4cd5-4ec2-922f-0954cbd133e9)
-
 <p float="right">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 </p>
 
-https://github.com/user-attachments/assets/1173423a-fe78-4e4b-932b-a94c69d1115a
+![Record_2024-08-22-14-49-441-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/84f30970-4cd5-4ec2-922f-0954cbd133e9)
 
 <p float="right">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 </p>
 
 <p float="left">
