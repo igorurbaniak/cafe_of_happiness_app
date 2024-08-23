@@ -14,6 +14,10 @@ To be added in the near future:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 </p>
 
+![Record_2024-08-22-14-49-441-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/309694c8-ec18-464c-bca1-7d56ec8d5ba4)
+<p float="right">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+</p>
 ![Record_2024-08-22-14-49-441-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/84f30970-4cd5-4ec2-922f-0954cbd133e9)
 
 <p float="right">
