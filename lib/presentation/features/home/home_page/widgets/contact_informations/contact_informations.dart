@@ -8,6 +8,7 @@ class ContactInformations extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final contacts = getContacts(context);
     return Container(
       color: Theme.of(context).colorScheme.surface,
       child: Column(
