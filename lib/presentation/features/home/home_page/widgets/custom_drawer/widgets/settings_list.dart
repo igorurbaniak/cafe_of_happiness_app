@@ -42,6 +42,15 @@ class SettingsList extends StatelessWidget {
               () {
                 context.read<RootCubit>().signOut();
                 Navigator.of(context).pop();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      'You have been logged out!',
+                      style: Theme.of(context).textTheme.titleSmall,
+                    ),
+                    backgroundColor: Theme.of(context).colorScheme.error,
+                  ),
+                );
               },
             ),
         ],
