@@ -5,17 +5,19 @@ class AuthButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.buttonText,
+    required this.buttonColor,
   });
 
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final String buttonText;
+  final Color? buttonColor;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.secondaryContainer,
+        color: buttonColor,
         borderRadius: BorderRadius.circular(10),
       ),
       child: SizedBox(

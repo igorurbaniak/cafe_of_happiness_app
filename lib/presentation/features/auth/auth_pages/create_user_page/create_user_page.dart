@@ -1,6 +1,7 @@
 import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
 import 'package:cafe_of_happiness_app/app/custom_widgets/back_appbar.dart';
 import 'package:cafe_of_happiness_app/app/root_page/cubit/root_cubit.dart';
+import 'package:cafe_of_happiness_app/app/utils/validation_utils.dart';
 import 'package:cafe_of_happiness_app/domain/repositories/auth_repository/auth_repository.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/create_user_page/user_name_input.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/widgets/auth_button.dart';
@@ -19,11 +20,21 @@ class CreateUserPage extends StatefulWidget {
   State<CreateUserPage> createState() => _CreateUserPageState();
 }
 
-String? email;
-String? password;
-String? displayName;
-
 class _CreateUserPageState extends State<CreateUserPage> {
+  String? email;
+  String? password;
+  String? displayName;
+  bool isButtonEnabled = false;
+
+  void validateCreateUserForm() {
+    setState(() {
+      isButtonEnabled = (email != null &&
+              ValidationUtils.validateEmail(email!)) &&
+          (password != null && ValidationUtils.validatePassword(password!)) &&
+          (displayName != null && ValidationUtils.validateName(displayName!));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -62,78 +73,89 @@ class _CreateUserPageState extends State<CreateUserPage> {
         },
         builder: (context, state) {
           return Scaffold(
-            resizeToAvoidBottomInset: false,
             backgroundColor: Theme.of(context).colorScheme.surface,
             appBar: const BackAppBar(title: 'Café of Happiness'),
             body: Stack(
               children: [
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-                  child: Column(
-                    children: [
-                      const AuthLogoWithText(
-                        authLogoText: 'Sign up',
-                        assetWidth: 120,
-                        assetHeight: 120,
-                      ),
-                      const SizedBox(height: 20),
-                      AuthEmailInput(
-                        onEmailChanged: (newEmail) {
-                          setState(() {
-                            email = newEmail;
-                          });
-                        },
-                      ),
-                      const SizedBox(height: 10),
-                      AuthPasswordInput(
-                        onPasswordChanged: (newPassword) {
-                          setState(() {
-                            password = newPassword;
-                          });
-                        },
-                      ),
-                      const SizedBox(height: 40),
-                      UserNameInput(
-                        onNameChanged: (newName) {
-                          setState(() {
-                            displayName = newName;
-                          });
-                        },
-                      ),
-                      const SizedBox(height: 10),
-                      AuthButton(
-                        buttonText: 'Sign up',
-                        onPressed: () {
-                          if (email != null &&
-                              password != null &&
-                              displayName != null) {
-                            context.read<AuthCubit>().signUp(
-                                  email: email!,
-                                  password: password!,
-                                  displayName: displayName!,
-                                );
-                          }
-                        },
-                      ),
-                      const SizedBox(height: 30),
-                      Text(
-                        'Already have an account?',
-                        style: Theme.of(context).textTheme.headlineMedium,
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: const Text(
-                          'Sign in',
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontSize: 22,
+                SafeArea(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 40),
+                    child: Column(
+                      children: [
+                        const AuthLogoWithText(
+                          authLogoText: 'Sign up',
+                          assetWidth: 120,
+                          assetHeight: 120,
+                        ),
+                        const SizedBox(height: 20),
+                        AuthEmailInput(
+                          onEmailChanged: (newEmail) {
+                            setState(() {
+                              email = newEmail;
+                              validateCreateUserForm();
+                            });
+                          },
+                        ),
+                        const SizedBox(height: 10),
+                        AuthPasswordInput(
+                          onPasswordChanged: (newPassword) {
+                            setState(() {
+                              password = newPassword;
+                              validateCreateUserForm();
+                            });
+                          },
+                        ),
+                        const SizedBox(height: 40),
+                        UserNameInput(
+                          onNameChanged: (newName) {
+                            setState(() {
+                              displayName = newName;
+                              validateCreateUserForm();
+                            });
+                          },
+                        ),
+                        const SizedBox(height: 10),
+                        AuthButton(
+                          buttonText: 'Sign up',
+                          buttonColor: isButtonEnabled
+                              ? Theme.of(context).colorScheme.secondaryContainer
+                              : Theme.of(context)
+                                  .colorScheme
+                                  .secondaryContainer
+                                  .withOpacity(0.5),
+                          onPressed: isButtonEnabled
+                              ? () {
+                                  if (email != null &&
+                                      password != null &&
+                                      displayName != null) {
+                                    context.read<AuthCubit>().signUp(
+                                        email: email!,
+                                        password: password!,
+                                        displayName: displayName!);
+                                  }
+                                }
+                              : null,
+                        ),
+                        const SizedBox(height: 30),
+                        Text(
+                          'Already have an account?',
+                          style: Theme.of(context).textTheme.headlineMedium,
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text(
+                            'Sign in',
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 22,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 if (state.status == Status.loading)

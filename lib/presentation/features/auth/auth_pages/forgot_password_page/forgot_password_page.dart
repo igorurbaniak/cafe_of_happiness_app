@@ -43,10 +43,9 @@ class ForgotPassword extends StatelessWidget {
         },
         builder: (context, state) {
           return Scaffold(
-            resizeToAvoidBottomInset: false,
             backgroundColor: Theme.of(context).colorScheme.surface,
             appBar: const BackAppBar(title: 'Reset your password'),
-            body: Container(
+            body: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
               child: Column(
                 children: [
@@ -61,6 +60,7 @@ class ForgotPassword extends StatelessWidget {
                   ResetPasswordEmailInput(emailController: emailController),
                   const SizedBox(height: 30),
                   AuthButton(
+                    buttonColor: Theme.of(context).colorScheme.secondaryContainer,
                     buttonText: 'Reset Password',
                     onPressed: () {
                       context.read<AuthCubit>().resetPassword(
