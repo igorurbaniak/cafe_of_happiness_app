@@ -1,17 +1,15 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'menu_category_model.freezed.dart';
 part 'menu_category_model.g.dart';
 
-@JsonSerializable()
-class MenuCategoryModel {
-  MenuCategoryModel({
-    required this.id,
-    required this.title,
-  });
+@freezed
+class MenuCategoryModel with _$MenuCategoryModel {
+  factory MenuCategoryModel({
+    required String id,
+    required String title,
+  }) = _MenuCategoryModel;
 
-  final String id;
-  final String title;
-
-  factory MenuCategoryModel.fromJson(Map<String, dynamic> json) => _$MenuCategoryModelFromJson(json);
-  Map<String, dynamic> toJson() => _$MenuCategoryModelToJson(this);
+  factory MenuCategoryModel.fromJson(Map<String, dynamic> json) =>
+      _$MenuCategoryModelFromJson(json);
 }

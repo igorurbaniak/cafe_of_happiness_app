@@ -6,13 +6,15 @@ part of 'menu_category_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-MenuCategoryModel _$MenuCategoryModelFromJson(Map<String, dynamic> json) =>
-    MenuCategoryModel(
+_$MenuCategoryModelImpl _$$MenuCategoryModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$MenuCategoryModelImpl(
       id: json['id'] as String,
       title: json['title'] as String,
     );
 
-Map<String, dynamic> _$MenuCategoryModelToJson(MenuCategoryModel instance) =>
+Map<String, dynamic> _$$MenuCategoryModelImplToJson(
+        _$MenuCategoryModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
