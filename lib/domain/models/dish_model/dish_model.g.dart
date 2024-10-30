@@ -6,7 +6,8 @@ part of 'dish_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-DishModel _$DishModelFromJson(Map<String, dynamic> json) => DishModel(
+_$DishModelImpl _$$DishModelImplFromJson(Map<String, dynamic> json) =>
+    _$DishModelImpl(
       dishId: (json['dishId'] as num).toInt(),
       dishName: json['dishName'] as String,
       dishPrice: (json['dishPrice'] as num).toInt(),
@@ -21,7 +22,8 @@ DishModel _$DishModelFromJson(Map<String, dynamic> json) => DishModel(
       isDishFavorite: json['isDishFavorite'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$DishModelToJson(DishModel instance) => <String, dynamic>{
+Map<String, dynamic> _$$DishModelImplToJson(_$DishModelImpl instance) =>
+    <String, dynamic>{
       'dishId': instance.dishId,
       'dishName': instance.dishName,
       'dishPrice': instance.dishPrice,
