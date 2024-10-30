@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'menu_category_model.g.dart';
+
+@JsonSerializable()
 class MenuCategoryModel {
   MenuCategoryModel({
     required this.id,
@@ -7,7 +12,6 @@ class MenuCategoryModel {
   final String id;
   final String title;
 
-  MenuCategoryModel.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        title = json['title'];
+  factory MenuCategoryModel.fromJson(Map<String, dynamic> json) => _$MenuCategoryModelFromJson(json);
+  Map<String, dynamic> toJson() => _$MenuCategoryModelToJson(this);
 }
