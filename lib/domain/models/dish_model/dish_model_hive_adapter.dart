@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 
-part 'generated/dish_model_hive_adapter.g.dart';
+part 'generated_hive/dish_model_hive_adapter.g.dart';
 
 @HiveType(typeId: 0)
 class HiveDishModel extends HiveObject {

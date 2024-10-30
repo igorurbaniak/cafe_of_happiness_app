@@ -1,6 +1,9 @@
 import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
-import 'package:cafe_of_happiness_app/app/core/extensions/extensions.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'dish_model.g.dart';
+
+@JsonSerializable()
 class DishModel {
   DishModel({
     required this.dishId,
@@ -47,17 +50,6 @@ class DishModel {
     );
   }
 
-  DishModel.fromJson(Map<String, dynamic> json)
-      : dishId = json['dishId'],
-        dishName = json['dishName'],
-        dishPrice = json['dishPrice'],
-        dishIngredients = json['dishIngredients'],
-        dishCookTime = json['dishCookTime'],
-        dishImage = json['dishImage'],
-        isDishVegetarian = json['isDishVegetarian'],
-        isDishRecommended = json['isDishRecommended'],
-        isDishNew = json['isDishNew'],
-        dishCategory = getDishCategoryFromValue(json['dishCategory']),
-        dishCategoriesId = json['dishCategoriesId'],
-        isDishFavorite = json['isDishFavorite'] ?? false;
+  factory DishModel.fromJson(Map<String, dynamic> json) => _$DishModelFromJson(json);
+  Map<String, dynamic> toJson() => _$DishModelToJson(this);
 }
