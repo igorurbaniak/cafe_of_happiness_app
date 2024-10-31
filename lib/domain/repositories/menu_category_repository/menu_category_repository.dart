@@ -2,15 +2,11 @@ import 'package:cafe_of_happiness_app/data/remote_data_sources/menu_category_dat
 import 'package:cafe_of_happiness_app/domain/models/menu_category_model/menu_category_model.dart';
 
 class MenuCategoryRepository {
-  MenuCategoryRepository({required this.menuCategoryRemoteDioDataSource});
+  MenuCategoryRepository({required this.menuCategoryRemoteDataSource});
 
-  final MenuCategoryRemoteDioDataSource menuCategoryRemoteDioDataSource;
+  final MenuCategoryRemoteRetrofitDataSource menuCategoryRemoteDataSource;
 
   Future<List<MenuCategoryModel>> getMenuCategoryModels() async {
-    final json = await menuCategoryRemoteDioDataSource.getMenuCategory();
-    if (json == null) {
-      return [];
-    }
-    return json.map((item) => MenuCategoryModel.fromJson(item)).toList();
+    return menuCategoryRemoteDataSource.getMenuCategory();
   }
 }

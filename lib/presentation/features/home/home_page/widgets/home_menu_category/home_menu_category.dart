@@ -5,6 +5,7 @@ import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widge
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/home_menu_category/widgets/home_menu_category_list.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/home_menu_category/widgets/home_menu_header.dart';
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/widgets/home_menu_category/widgets/home_menu_shimmer_loading.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,8 +24,8 @@ class HomeMenuCategory extends StatelessWidget {
           BlocProvider(
             create: (context) => MenuCategoryCubit(
               menuCategoryRepository: MenuCategoryRepository(
-                menuCategoryRemoteDioDataSource:
-                    MenuCategoryRemoteDioDataSource(),
+                menuCategoryRemoteDataSource:
+                    MenuCategoryRemoteRetrofitDataSource(Dio()),
               ),
             )..loadMenuCategories(),
             child: BlocBuilder<MenuCategoryCubit, MenuCategoryState>(

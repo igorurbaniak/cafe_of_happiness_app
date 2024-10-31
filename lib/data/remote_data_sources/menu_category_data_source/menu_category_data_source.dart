@@ -1,14 +1,16 @@
+import 'package:cafe_of_happiness_app/domain/models/menu_category_model/menu_category_model.dart';
+import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
-class MenuCategoryRemoteDioDataSource {
-  Future<List<Map<String, dynamic>>?> getMenuCategory() async {
-    final response = await Dio().get<List<dynamic>>(
-        'https://my-json-server.typicode.com/igorurbaniak/cafe-of-happines-json/menuCategory');
-    final listDynamic = response.data;
+part 'menu_category_data_source.g.dart';
 
-    if (listDynamic == null) {
-      return null;
-    }
-    return listDynamic.map((e) => e as Map<String, dynamic>).toList();
-  }
+@RestApi(
+    baseUrl:
+        'https://my-json-server.typicode.com/igorurbaniak/cafe-of-happines-json')
+abstract class MenuCategoryRemoteRetrofitDataSource {
+  factory MenuCategoryRemoteRetrofitDataSource(Dio dio, {String? baseUrl}) =
+      _MenuCategoryRemoteRetrofitDataSource;
+
+  @GET('/menuCategory')
+  Future<List<MenuCategoryModel>> getMenuCategory();
 }
