@@ -4,18 +4,15 @@ import 'package:cafe_of_happiness_app/app/utils/constants_utils.dart';
 import 'package:hive/hive.dart';
 
 class DishesRepository {
-  DishesRepository({required this.dishesRemoteDioDataSource});
+  DishesRepository({required this.dishesRemoteDataSource});
 
-  final DishesRemoteDioDataSource dishesRemoteDioDataSource;
+  final DishesRemoteRetrofitDataSource dishesRemoteDataSource;
 
   Future<List<DishModel>> getAllDishes(String categories) async {
-    final json = await dishesRemoteDioDataSource.getDishes();
-    if (json == null) {
-      return [];
-    }
-    
-    final allDishes = json.map((item) => DishModel.fromJson(item)).toList();
-    return allDishes.where((dish) => dish.dishCategoriesId == categories).toList();
+    final allDishes = await dishesRemoteDataSource.getDishes();
+    return allDishes
+        .where((dish) => dish.dishCategoriesId == categories)
+        .toList();
   }
 
   Future<List<int>> getFavoriteDishIds() async {

@@ -9,6 +9,7 @@ import 'package:cafe_of_happiness_app/domain/repositories/search_repository/sear
 import 'package:cafe_of_happiness_app/presentation/features/home/home_page/pages/search_dish_page/cubit/search_dish_cubit.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/dishes_page/cubit/dishes_cubit.dart';
 import 'package:cafe_of_happiness_app/domain/models/dish_model/dish_model_hive_adapter.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,14 +36,14 @@ void main() async {
         BlocProvider(
           create: (context) => SearchDishCubit(
             searchDishesRepository: SearchDishesRepository(
-              dishesRemoteDioDataSource: DishesRemoteDioDataSource(),
+              dishesRemoteDataSource: DishesRemoteRetrofitDataSource(Dio()),
             ),
           ),
         ),
         BlocProvider(
           create: (context) => DishesCubit(
             dishesRepository: DishesRepository(
-              dishesRemoteDioDataSource: DishesRemoteDioDataSource(),
+              dishesRemoteDataSource: DishesRemoteRetrofitDataSource(Dio()),
             ),
           ),
         ),

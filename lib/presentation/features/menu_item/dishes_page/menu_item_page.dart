@@ -12,6 +12,7 @@ import 'package:cafe_of_happiness_app/presentation/features/menu_item/dishes_pag
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/dishes_page/widgets/dish_description.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/dishes_page/widgets/dish_header_new_favorite.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/dishes_page/widgets/dish_shimmer_loading.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
@@ -41,7 +42,7 @@ class MenuItemPage extends StatelessWidget {
           child: BlocProvider(
             create: (context) => DishesCubit(
               dishesRepository: DishesRepository(
-                dishesRemoteDioDataSource: DishesRemoteDioDataSource(),
+                dishesRemoteDataSource: DishesRemoteRetrofitDataSource(Dio()),
               ),
             )..loadDishes(categories: menuCategoryModel.id),
             child: BlocBuilder<DishesCubit, DishesState>(
