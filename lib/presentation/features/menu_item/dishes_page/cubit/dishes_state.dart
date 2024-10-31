@@ -1,42 +1,18 @@
-part of 'dishes_cubit.dart';
+import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../../../../domain/models/dish_model/dish_model.dart';
 
-@immutable
-class DishesState {
-  final List<DishModel> dishes;
-  final List<DishModel> newDishes;
-  final List<DishModel> favoriteDishes;
-  final Map<int, int> favoriteCounts;
-  final List<int> favoriteDishIds;
-  final Status status;
-  final String? errorMessage;
+part 'dishes_state.freezed.dart';
 
-  const DishesState({
-    this.dishes = const [],
-    this.newDishes = const [],
-    this.favoriteDishes = const [],
-    this.favoriteCounts = const {},
-    this.favoriteDishIds = const [],
-    this.status = Status.initial,
-    this.errorMessage,
-  });
-
-  DishesState copyWith({
-    List<DishModel>? dishes,
-    List<DishModel>? newDishes,
-    List<DishModel>? favoriteDishes,
-    Map<int, int>? favoriteCounts,
-    List<int>? favoriteDishIds,
-    Status? status,
+@freezed
+class DishesState with _$DishesState {
+  const factory DishesState({
+    @Default([]) List<DishModel> dishes,
+    @Default([]) List<DishModel> newDishes,
+    @Default([]) List<DishModel> favoriteDishes,
+    @Default({}) Map<int, int> favoriteCounts,
+    @Default([]) List<int> favoriteDishIds,
+    @Default(Status.initial) Status status,
     String? errorMessage,
-  }) {
-    return DishesState(
-      dishes: dishes ?? this.dishes,
-      newDishes: newDishes ?? this.newDishes,
-      favoriteDishes: favoriteDishes ?? this.favoriteDishes,
-      favoriteCounts: favoriteCounts ?? this.favoriteCounts,
-      favoriteDishIds: favoriteDishIds ?? this.favoriteDishIds,
-      status: status ?? this.status,
-      errorMessage: errorMessage ?? this.errorMessage,
-    );
-  }
+  }) = _DishesState;
 }

@@ -6,6 +6,7 @@ import 'package:cafe_of_happiness_app/domain/models/dish_model/dish_model.dart';
 import 'package:cafe_of_happiness_app/domain/models/menu_category_model/menu_category_model.dart';
 import 'package:cafe_of_happiness_app/domain/repositories/dishes_repository/dishes_repository.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/dishes_page/cubit/dishes_cubit.dart';
+import 'package:cafe_of_happiness_app/presentation/features/menu_item/dishes_page/cubit/dishes_state.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/dishes_page/widgets/dish_category_button.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/dishes_page/widgets/dish_category_title.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/dishes_page/widgets/dish_description.dart';
