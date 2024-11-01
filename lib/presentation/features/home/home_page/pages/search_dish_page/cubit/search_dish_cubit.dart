@@ -3,8 +3,10 @@ import 'package:cafe_of_happiness_app/domain/models/dish_model/dish_model.dart';
 import 'package:cafe_of_happiness_app/domain/repositories/search_repository/search_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 part 'search_dish_state.dart';
 
+@injectable  
 class SearchDishCubit extends Cubit<SearchDishState> {
   SearchDishCubit({required this.searchDishesRepository})
       : super(const SearchDishState());

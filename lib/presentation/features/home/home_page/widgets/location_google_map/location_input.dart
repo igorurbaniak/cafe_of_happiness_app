@@ -1,4 +1,4 @@
-import 'package:cafe_of_happiness_app/app/utils/url_launcher_utils.dart';
+import 'package:cafe_of_happiness_app/app/core/utils/url_launcher_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

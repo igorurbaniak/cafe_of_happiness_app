@@ -4,8 +4,10 @@ import 'package:cafe_of_happiness_app/domain/repositories/auth_google_repository
 import 'package:cafe_of_happiness_app/domain/repositories/auth_repository/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 part 'root_state.dart';
 
+@injectable  
 class RootCubit extends Cubit<RootState> {
   RootCubit({
     required this.authRepository,

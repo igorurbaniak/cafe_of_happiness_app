@@ -1,8 +1,10 @@
 import 'package:cafe_of_happiness_app/data/remote_data_sources/dishes_remote_data_source/dishes_remote_data_source.dart';
 import 'package:cafe_of_happiness_app/domain/models/dish_model/dish_model.dart';
-import 'package:cafe_of_happiness_app/app/utils/constants_utils.dart';
+import 'package:cafe_of_happiness_app/app/core/utils/constants_utils.dart';
 import 'package:hive/hive.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable  
 class DishesRepository {
   DishesRepository({required this.dishesRemoteDataSource});
 

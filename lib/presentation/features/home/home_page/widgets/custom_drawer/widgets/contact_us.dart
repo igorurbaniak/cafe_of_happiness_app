@@ -1,5 +1,5 @@
-import 'package:cafe_of_happiness_app/app/utils/copy_to_clipboard_utils.dart';
-import 'package:cafe_of_happiness_app/app/utils/url_launcher_utils.dart';
+import 'package:cafe_of_happiness_app/app/core/utils/copy_to_clipboard_utils.dart';
+import 'package:cafe_of_happiness_app/app/core/utils/url_launcher_utils.dart';
 import 'package:flutter/material.dart';
 
 class ContactUs extends StatelessWidget {

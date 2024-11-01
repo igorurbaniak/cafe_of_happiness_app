@@ -2,7 +2,9 @@ import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
 import 'package:cafe_of_happiness_app/domain/repositories/dishes_repository/dishes_repository.dart';
 import 'package:cafe_of_happiness_app/presentation/features/menu_item/dishes_page/cubit/dishes_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable  
 class DishesCubit extends Cubit<DishesState> {
   final DishesRepository dishesRepository;
 

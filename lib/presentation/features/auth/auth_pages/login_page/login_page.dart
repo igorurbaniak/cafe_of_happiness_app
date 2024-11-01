@@ -1,6 +1,6 @@
 import 'package:cafe_of_happiness_app/app/core/enums/enums.dart';
 import 'package:cafe_of_happiness_app/app/custom_widgets/back_appbar.dart';
-import 'package:cafe_of_happiness_app/app/utils/validation_utils.dart';
+import 'package:cafe_of_happiness_app/app/core/utils/validation_utils.dart';
 import 'package:cafe_of_happiness_app/domain/repositories/auth_repository/auth_repository.dart';
 import 'package:cafe_of_happiness_app/domain/repositories/auth_google_repository/auth_google_sign_in_repository.dart';
 import 'package:cafe_of_happiness_app/presentation/features/auth/auth_pages/create_user_page/create_user_page.dart';

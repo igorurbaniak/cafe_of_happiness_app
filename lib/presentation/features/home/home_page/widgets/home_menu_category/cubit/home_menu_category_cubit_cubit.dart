@@ -3,8 +3,10 @@ import 'package:cafe_of_happiness_app/domain/models/menu_category_model/menu_cat
 import 'package:cafe_of_happiness_app/domain/repositories/menu_category_repository/menu_category_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 part 'home_menu_category_cubit_state.dart';
 
+@injectable  
 class MenuCategoryCubit extends Cubit<MenuCategoryState> {
   MenuCategoryCubit({required this.menuCategoryRepository})
       : super(const MenuCategoryState());
