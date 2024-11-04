@@ -6,9 +6,11 @@ An application that allows you to check the menu of available meals, their price
 
 To be added in the near future:
 - improvement of small bugs with display/operation,
-- use more flutter packages (freezed, retrofit, get_it, route etc.)
-- changing all language content to 2 different ones (PL, EN) after language change
-- adding tests
+- use more flutter packages (go_router etc.),
+- adding tests,
+- responsive design,
+- changing all language content to 2 different ones (PL, EN) after language change.
+
 
 <p float="right">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
