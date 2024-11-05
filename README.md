@@ -1,4 +1,4 @@
-# cafe_of_happiness_app
+# Cafe of Happines
 
 Application status: in development
 
@@ -11,6 +11,55 @@ To be added in the near future:
 - responsive design,
 - changing all language content to 2 different ones (PL, EN) after language change.
 
+## How to Use 
+
+**Step 1:**
+
+Download or clone this repo by using the link below:
+
+```
+https://github.com/igorurbaniak/cafe_of_happiness_app.git
+```
+
+**Step 2:**
+
+Go to project root and execute the following command in console to get the required dependencies: 
+
+```
+flutter pub get 
+```
+
+**Step 3:**
+
+This project uses `inject` library that works with code generation, execute the following command to generate files:
+
+```
+flutter packages pub run build_runner build --delete-conflicting-outputs
+```
+
+or watch command in order to keep the source code synced automatically:
+
+```
+flutter packages pub run build_runner watch
+```
+
+### Libraries & Tools Used
+
+* [Bloc/Cubit](https://github.com/felangel/bloc)
+* [Dio](https://github.com/flutterchina/dio)
+* [Firebase Core](https://github.com/firebase/flutterfire/tree/main/packages/firebase_core/firebase_core)
+* [Firebase Auth](https://github.com/firebase/flutterfire/tree/main/packages/firebase_auth/firebase_auth)
+* [Json Serialization](https://github.com/google/json_serializable.dart/tree/master/json_serializable)
+* [Freezed](https://github.com/rrousselGit/freezed)
+* [Retrofit](https://github.com/square/retrofit)
+* [GetIt](https://github.com/fluttercommunity/get_it)
+* [Injectable](https://github.com/Milad-Akarie/injectable)
+* [Hive](https://github.com/apache/hive)
+* [Google Maps](https://github.com/flutter/packages/tree/main/packages/google_maps_flutter/google_maps_flutter)
+* [Shimmer](https://github.com/hnvn/flutter_shimmer)
+* [Google Sign In](https://github.com/flutter/packages/tree/main/packages/google_sign_in/google_sign_in)
+* [Mocktail](https://github.com/felangel/mocktail)
+* [URL launcher](https://github.com/flutter/packages/tree/main/packages/url_launcher/url_launcher)
 
 <p float="right">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
